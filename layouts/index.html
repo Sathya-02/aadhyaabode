@@ -71,7 +71,7 @@
 </section>
 
 <!-- Gallery section -->
-<section id="gallery" class="py-10 sm:py-14 bg-white border-b border-slate-100">
+<section id="gallery" class="py-12 sm:py-16 bg-white border-b border-slate-100">
   {{ $gallery := .Site.Data.content.gallery }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
@@ -79,13 +79,40 @@
         <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $gallery.heading }}</h2>
         <p class="mt-1 text-sm text-slate-600 max-w-xl">{{ $gallery.description }}</p>
       </div>
+      <div class="hidden sm:flex items-center gap-2 text-xs text-slate-500">
+        <button type="button" class="gallery-arrow gallery-arrow-left inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100" aria-label="Scroll gallery left">
+          &#8592;
+        </button>
+        <button type="button" class="gallery-arrow gallery-arrow-right inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100" aria-label="Scroll gallery right">
+          &#8594;
+        </button>
+      </div>
     </div>
-    <div class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {{ range $gallery.images }}
-      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
-        <img src="{{ .src }}" alt="{{ .alt }}" class="h-full w-full object-cover" loading="lazy" />
-      </figure>
-      {{ end }}
+    <div class="group relative">
+      <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {{ range $gallery.images }}
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="{{ .src }}" data-gallery-alt="{{ .alt }}">
+          <img src="{{ .src }}" alt="{{ .alt }}" class="h-full w-full object-cover" loading="lazy" />
+        </figure>
+        {{ end }}
+      </div>
+      <!-- Overlay arrows on mobile/desktop when hovering/scrolling -->
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1 sm:hidden">
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
+      </div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1 sm:hidden">
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm" aria-hidden="true">&#8594;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox modal -->
+  <div id="gallery-lightbox" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/80 p-4">
+    <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">
+      ✕
+    </button>
+    <div class="max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
+      <img id="gallery-lightbox-image" src="" alt="" class="max-h-full w-auto rounded-2xl shadow-2xl" />
     </div>
   </div>
 </section>
@@ -110,18 +137,18 @@
                 data-filter="all">
           All
         </button>
-        <!--<button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="1bhk">
           Premium 1BHK
-        </button>-->
+        </button>
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="2bhk">
           Luxury 2BHK
         </button>
-        <!--<button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="villa">
           4BHK Villa
-        </button>-->
+        </button>
       </div>
     </div>
 
