@@ -8,14 +8,14 @@ gallery:
   heading: "Gallery"
   description: "A glimpse into our interiors, cozy corners, and the coastal charm around Aadhya Abode."
   images:
-    - src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80"
+    - src: "/images/gallery/gallery-4.jpg"
       alt: "Warmly lit living room with sofa and coffee table"
-    - src: "https://images.unsplash.com/photo-1600585154154-8f54a8e87b8d?auto=format&fit=crop&w=1200&q=80"
+    - src: "/images/gallery/gallery-8.jpg"
       alt: "Well designed bedroom with large window"
-    - src: "https://images.unsplash.com/photo-1600607687920-4e2a534a9c97?auto=format&fit=crop&w=1200&q=80"
+    - src: "/images/gallery/gallery-11.jpg"
       alt: "Dining space with table setup"
-    - src: "https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=1200&q=80"
-      alt: "Kanyakumari style coastal sunset view"
+    - src: "/images/gallery/gallery-12.jpg"
+      alt: "Well designed Modular Kitchen with Breakfast counter."
 
 abodes_section:
   heading: "Our Abodes"
