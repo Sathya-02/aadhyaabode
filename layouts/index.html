@@ -124,18 +124,18 @@
                 data-filter="all">
           All
         </button>
-        <!--<button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="1bhk">
           Premium 1BHK
-        </button>-->
+        </button>
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="2bhk">
           Luxury 2BHK
         </button>
-        <!--<button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="villa">
           4BHK Villa
-        </button>-->
+        </button>
       </div>
     </div>
 
@@ -284,20 +284,26 @@
         </div>
       </div>
 
-      <!-- Map placeholder -->
+      <!-- Map image + link -->
       <div class="rounded-2xl bg-white border border-slate-100 p-3">
-        <div class="aspect-video rounded-xl overflow-hidden bg-slate-200 flex items-center justify-center">
-          <!-- Replace this with embedded map iframe when ready -->
-          <p class="text-xs text-slate-500 px-4 text-center">
-            Google Maps integration will appear here. For now, view the location directly on Maps:
-            <a href="{{ .Site.Params.links.maps_url }}"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="text-teal-700 underline">
-              Open in Google Maps
-            </a>
-          </p>
+        <div class="aspect-video rounded-xl overflow-hidden bg-slate-200">
+          <img
+            src="/images/map-aadhya-abode.png"
+            alt="Map showing the location of Aadhya Abode in Kanyakumari"
+            class="h-full w-full object-cover"
+            loading="lazy"
+            width="1200"
+            height="675" />
         </div>
+        <p class="mt-3 text-xs text-slate-500 text-center">
+          View the live location on Google Maps:
+          <a href="{{ .Site.Params.links.maps_url }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="text-teal-700 underline">
+            Open in Google Maps
+          </a>
+        </p>
       </div>
     </div>
   </div>
