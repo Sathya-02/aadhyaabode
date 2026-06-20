@@ -12,32 +12,38 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
     .hero-overlay {
-      background: linear-gradient(to bottom, rgba(15,23,42,0.15), rgba(15,23,42,0.55));
+      background: linear-gradient(to bottom, rgba(15,23,42,0.12), rgba(15,23,42,0.5));
     }
     .hero-title {
-      text-shadow: 0 10px 25px rgba(15,23,42,0.55);
+      text-shadow: 0 16px 40px rgba(15,23,42,0.7);
+      letter-spacing: 0.03em;
     }
     .hero-subtitle {
-      text-shadow: 0 8px 22px rgba(15,23,42,0.45);
+      text-shadow: 0 10px 26px rgba(15,23,42,0.55);
+    }
+    .section-heading {
+      letter-spacing: 0.04em;
     }
     .floating-whatsapp {
       z-index: 40;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 scroll-smooth">
+<body class="bg-slate-50 text-slate-900 scroll-smooth text-[15px] leading-relaxed">
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
     
-    <a href="/" class="flex items-center gap-2">
+    <a href="/" class="flex items-center gap-3">
       
       <span class="inline-flex items-center justify-center">
-        <img src="/images/logo/aadhya-abode-logo.jpeg" alt="Aadhya Abode logo" class="h-8 w-auto rounded-full object-cover" loading="lazy" />
+        <img src="/images/logo/aadhya-abode-logo.jpeg" alt="Aadhya Abode logo" class="h-9 w-auto rounded-full object-cover" loading="lazy" />
       </span>
       
       <div class="flex flex-col leading-tight">
@@ -63,13 +69,25 @@
     
     <div class="hidden md:flex items-center gap-3">
       <a href="#ZgotmplZ"
-         class="text-sm font-medium text-slate-700 hover:text-teal-700 transition">
-        &#43;91 80151 60563
+         class="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 hover:text-teal-700 transition">
+        <span class="inline-flex h-4 w-4 items-center justify-center text-teal-600">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.39 1.77.8 2.58a2 2 0 0 1-.45 2.18l-1.1 1.1a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.18-.45c.81.41 1.68.68 2.58.8A2 2 0 0 1 22 16.92Z" />
+          </svg>
+        </span>
+        <span>&#43;91 80151 60563</span>
       </a>
       <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
          target="_blank"
          rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-800 transition">
+         class="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-[#1ebe5b] transition">
+        <span class="inline-flex h-4 w-4 items-center justify-center text-slate-900">
+          
+          <svg viewBox="0 0 24 24" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.76 11.76 0 0 0 12.01 0C5.73 0 .6 5.13.6 11.41c0 2.01.53 3.98 1.55 5.72L0 24l6.05-2.11a11.4 11.4 0 0 0 5.96 1.64h.01c6.28 0 11.41-5.13 11.41-11.41a11.3 11.3 0 0 0-3.91-8.64ZM12.02 21.2h-.01c-1.82 0-3.6-.49-5.16-1.42l-.37-.22-3.59 1.26 1.23-3.49-.24-.36a9.45 9.45 0 0 1-1.47-5.1c0-5.23 4.26-9.49 9.5-9.49a9.4 9.4 0 0 1 6.73 2.78 9.4 9.4 0 0 1 2.77 6.72c0 5.23-4.26 9.49-9.49 9.49Zm5.2-7.08c-.28-.14-1.65-.81-1.9-.9-.25-.09-.44-.14-.63.14-.19.28-.73.9-.9 1.08-.17.18-.33.2-.61.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.4-1.66-1.56-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.3.42-.45.14-.15.18-.25.27-.42.09-.18.05-.34-.02-.48-.07-.14-.63-1.52-.87-2.08-.23-.55-.47-.47-.64-.48h-.54c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.13 2.84.14.19 1.95 2.98 4.72 4.17.66.29 1.18.47 1.58.6.66.21 1.27.18 1.75.11.53-.08 1.65-.68 1.88-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33Z" />
+          </svg>
+        </span>
         <span>WhatsApp Booking</span>
       </a>
     </div>
@@ -98,14 +116,26 @@
       <a href="#location" class="py-1">Location</a>
       <div class="flex items-center justify-between pt-2 border-t border-slate-200 mt-2">
         <a href="#ZgotmplZ"
-           class="text-sm text-slate-700">
-          &#43;91 80151 60563
+           class="inline-flex items-center gap-1.5 text-sm text-slate-700">
+          <span class="inline-flex h-4 w-4 items-center justify-center text-teal-600">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.39 1.77.8 2.58a2 2 0 0 1-.45 2.18l-1.1 1.1a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.18-.45c.81.41 1.68.68 2.58.8A2 2 0 0 1 22 16.92Z" />
+            </svg>
+          </span>
+          <span>&#43;91 80151 60563</span>
         </a>
         <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
            target="_blank"
            rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 rounded-full bg-teal-700 px-3 py-2 text-xs font-semibold text-white">
-          WhatsApp Booking
+           class="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] px-3 py-2 text-xs font-semibold text-slate-900">
+          <span class="inline-flex h-4 w-4 items-center justify-center text-slate-900">
+            
+            <svg viewBox="0 0 24 24" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+              <path d="M20.52 3.48A11.76 11.76 0 0 0 12.01 0C5.73 0 .6 5.13.6 11.41c0 2.01.53 3.98 1.55 5.72L0 24l6.05-2.11a11.4 11.4 0 0 0 5.96 1.64h.01c6.28 0 11.41-5.13 11.41-11.41a11.3 11.3 0 0 0-3.91-8.64ZM12.02 21.2h-.01c-1.82 0-3.6-.49-5.16-1.42l-.37-.22-3.59 1.26 1.23-3.49-.24-.36a9.45 9.45 0 0 1-1.47-5.1c0-5.23 4.26-9.49 9.5-9.49a9.4 9.4 0 0 1 6.73 2.78 9.4 9.4 0 0 1 2.77 6.72c0 5.23-4.26 9.49-9.49 9.49Zm5.2-7.08c-.28-.14-1.65-.81-1.9-.9-.25-.09-.44-.14-.63.14-.19.28-.73.9-.9 1.08-.17.18-.33.2-.61.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.4-1.66-1.56-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.3.42-.45.14-.15.18-.25.27-.42.09-.18.05-.34-.02-.48-.07-.14-.63-1.52-.87-2.08-.23-.55-.47-.47-.64-.48h-.54c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.13 2.84.14.19 1.95 2.98 4.72 4.17.66.29 1.18.47 1.58.6.66.21 1.27.18 1.75.11.53-.08 1.65-.68 1.88-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33Z" />
+            </svg>
+          </span>
+          <span>WhatsApp</span>
         </a>
       </div>
     </div>
@@ -115,17 +145,17 @@
   <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
      target="_blank"
      rel="noopener noreferrer"
-     class="floating-whatsapp fixed bottom-4 right-4 md:hidden inline-flex items-center justify-center rounded-full bg-teal-600 text-white shadow-lg h-12 w-12 hover:bg-teal-700 transition">
+     class="floating-whatsapp fixed bottom-4 right-4 md:hidden inline-flex items-center justify-center rounded-full bg-[#25D366] text-slate-900 shadow-lg h-12 w-12 hover:bg-[#1ebe5b] transition">
     <span class="sr-only">Book via WhatsApp</span>
     
-    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.5 3.5A11 11 0 0 0 3 19.92L2 22l2.17-.95A11 11 0 1 0 20.5 3.5Zm-8.77 14.2a8.01 8.01 0 0 1-4.08-1.12L7 16.4l-1.2-.38a6.7 6.7 0 0 1-2.18-1.3 6.6 6.6 0 0 1-1.44-2.03c-.33-.79-.5-1.63-.5-2.5a8 8 0 1 1 14.4 4.63 7.93 7.93 0 0 1-5.25 3.88ZM16 13.24c-.27-.13-1.6-.79-1.84-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.13-1.12-.41-2.13-1.3-.79-.7-1.32-1.55-1.47-1.81-.15-.27-.02-.41.11-.54.11-.11.27-.29.4-.43.13-.14.18-.24.27-.4.09-.18.05-.34-.02-.47-.07-.13-.61-1.47-.84-2-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.26s.97 2.63 1.11 2.81c.14.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.58.64.2 1.22.17 1.68.1.51-.08 1.6-.65 1.83-1.27.23-.63.23-1.16.16-1.27-.07-.11-.25-.18-.52-.31Z" />
+    <svg class="h-6 w-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.76 11.76 0 0 0 12.01 0C5.73 0 .6 5.13.6 11.41c0 2.01.53 3.98 1.55 5.72L0 24l6.05-2.11a11.4 11.4 0 0 0 5.96 1.64h.01c6.28 0 11.41-5.13 11.41-11.41a11.3 11.3 0 0 0-3.91-8.64ZM12.02 21.2h-.01c-1.82 0-3.6-.49-5.16-1.42l-.37-.22-3.59 1.26 1.23-3.49-.24-.36a9.45 9.45 0 0 1-1.47-5.1c0-5.23 4.26-9.49 9.5-9.49a9.4 9.4 0 0 1 6.73 2.78 9.4 9.4 0 0 1 2.77 6.72c0 5.23-4.26 9.49-9.49 9.49Zm5.2-7.08c-.28-.14-1.65-.81-1.9-.9-.25-.09-.44-.14-.63.14-.19.28-.73.9-.9 1.08-.17.18-.33.2-.61.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.4-1.66-1.56-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.3.42-.45.14-.15.18-.25.27-.42.09-.18.05-.34-.02-.48-.07-.14-.63-1.52-.87-2.08-.23-.55-.47-.47-.64-.48h-.54c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.13 2.84.14.19 1.95 2.98 4.72 4.17.66.29 1.18.47 1.58.6.66.21 1.27.18 1.75.11.53-.08 1.65-.68 1.88-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33Z" />
     </svg>
   </a>
 </header>
 
 
-  <main id="main-content">
+  <main id="main-content" class="tracking-[0.01em]">
     
 
 
@@ -136,7 +166,6 @@
     <div class="absolute inset-0">
       <div class="hidden sm:flex h-full w-full overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div class="flex h-full w-full">
-          
           
           <div class="relative h-full w-full flex-shrink-0 snap-start">
             <img
@@ -182,28 +211,28 @@
     <div class="relative inset-0 flex items-center h-full">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
-          <p class="text-[11px] sm:text-xs uppercase tracking-[0.28em] text-amber-300/90">
+          <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-amber-300 font-medium">
             Kanyakumari · Coastal Luxury Stays
           </p>
-          <h1 class="hero-title text-3xl sm:text-4xl lg:text-5xl font-semibold lg:font-bold leading-tight text-slate-50">
+          <h1 class="hero-title font-semibold lg:font-extrabold leading-tight text-white text-[28px] sm:text-[34px] lg:text-[46px]">
             Where Coastal Serenity Meets Luxury Comfort
           </h1>
-          <p class="hero-subtitle text-[13px] sm:text-sm lg:text-base text-slate-100/95">
+          <p class="hero-subtitle text-[13px] sm:text-[14px] lg:text-[15px] text-slate-100/95 font-normal">
             Fully furnished luxury Home for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway.
           </p>
-          <div class="flex flex-wrap items-center gap-3 pt-2">
+          <div class="flex flex-wrap items-center gap-3 pt-3">
             <a href="#abodes"
-               class="inline-flex items-center justify-center rounded-full bg-amber-400/95 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-500/40 hover:bg-amber-300 transition">
+               class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-2.5 text-[13px] font-semibold text-slate-900 shadow-lg shadow-amber-500/50 hover:bg-amber-300 transition-transform transform hover:-translate-y-0.5">
               Check Availability
             </a>
             <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
                target="_blank"
                rel="noopener noreferrer"
-               class="inline-flex items-center justify-center rounded-full border border-slate-100/60 bg-slate-900/25 px-5 py-2.5 text-sm font-medium text-slate-50 hover:bg-slate-900/45 transition">
+               class="inline-flex items-center justify-center rounded-full border border-teal-200/80 bg-slate-900/40 px-6 py-2.5 text-[13px] font-medium text-slate-50 hover:bg-slate-900/65 hover:border-teal-100 transition-transform transform hover:-translate-y-0.5">
               Chat with Host
             </a>
           </div>
-          <p class="text-[11px] text-slate-100/90">
+          <p class="text-[11px] text-slate-100/90 font-normal">
             Instant WhatsApp confirmations · Trusted host · Flexible short-term stays
           </p>
         </div>
@@ -213,81 +242,72 @@
 </section>
 
 
-<section id="gallery" class="py-12 sm:py-16 bg-white border-b border-slate-100">
+<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100">
   
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">Gallery</h2>
-        <p class="mt-1 text-sm text-slate-600 max-w-xl">A glimpse into our interiors, cozy corners, and the coastal charm around Aadhya Abode.</p>
-      </div>
-      <div class="hidden sm:flex items-center gap-2 text-xs text-slate-500">
-        <button type="button" class="gallery-arrow gallery-arrow-left inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100" aria-label="Scroll gallery left">
-          &#8592;
-        </button>
-        <button type="button" class="gallery-arrow gallery-arrow-right inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-100" aria-label="Scroll gallery right">
-          &#8594;
-        </button>
-      </div>
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">Gallery</h3>
+      <p class="mt-1 text-sm text-slate-600 max-w-xl mx-auto">A glimpse into our interiors, cozy corners, and the coastal charm around Aadhya Abode.</p>
     </div>
+
     <div class="group relative">
-      <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-1.jpg" data-gallery-alt="Warmly lit living room with sofa and coffee table">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-1.jpg" data-gallery-alt="Warmly lit living room with sofa and coffee table">
           <img src="/images/gallery/gallery-1.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-2.jpg" data-gallery-alt="Well designed bedroom with large window">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-2.jpg" data-gallery-alt="Well designed bedroom with large window">
           <img src="/images/gallery/gallery-2.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-3.jpg" data-gallery-alt="Dining space with table setup">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-3.jpg" data-gallery-alt="Dining space with table setup">
           <img src="/images/gallery/gallery-3.jpg" alt="Dining space with table setup" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-4.jpg" data-gallery-alt="Well designed Modular Kitchen with Breakfast counter.">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-4.jpg" data-gallery-alt="Well designed Modular Kitchen with Breakfast counter.">
           <img src="/images/gallery/gallery-4.jpg" alt="Well designed Modular Kitchen with Breakfast counter." class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-5.jpg" data-gallery-alt="Warmly lit living room with sofa and coffee table">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-5.jpg" data-gallery-alt="Warmly lit living room with sofa and coffee table">
           <img src="/images/gallery/gallery-5.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-6.jpg" data-gallery-alt="Well designed bedroom with large window">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-6.jpg" data-gallery-alt="Well designed bedroom with large window">
           <img src="/images/gallery/gallery-6.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-7.jpg" data-gallery-alt="Dining space with table setup">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-7.jpg" data-gallery-alt="Dining space with table setup">
           <img src="/images/gallery/gallery-7.jpg" alt="Dining space with table setup" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-8.jpg" data-gallery-alt="Well designed Modular Kitchen with Breakfast counter.">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-8.jpg" data-gallery-alt="Well designed Modular Kitchen with Breakfast counter.">
           <img src="/images/gallery/gallery-8.jpg" alt="Well designed Modular Kitchen with Breakfast counter." class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-9.jpg" data-gallery-alt="Warmly lit living room with sofa and coffee table">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-9.jpg" data-gallery-alt="Warmly lit living room with sofa and coffee table">
           <img src="/images/gallery/gallery-9.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-10.jpg" data-gallery-alt="Well designed bedroom with large window">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-10.jpg" data-gallery-alt="Well designed bedroom with large window">
           <img src="/images/gallery/gallery-10.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-11.jpg" data-gallery-alt="Dining space with table setup">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-11.jpg" data-gallery-alt="Dining space with table setup">
           <img src="/images/gallery/gallery-11.jpg" alt="Dining space with table setup" class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-48 sm:h-56 md:h-64 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-12.jpg" data-gallery-alt="Well designed Modular Kitchen with Breakfast counter.">
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="/images/gallery/gallery-12.jpg" data-gallery-alt="Well designed Modular Kitchen with Breakfast counter.">
           <img src="/images/gallery/gallery-12.jpg" alt="Well designed Modular Kitchen with Breakfast counter." class="h-full w-full object-cover" loading="lazy" />
         </figure>
         
       </div>
       
-      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1 sm:hidden">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1">
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
       </div>
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1 sm:hidden">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm" aria-hidden="true">&#8594;</div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1">
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8594;</div>
       </div>
     </div>
   </div>
@@ -304,37 +324,28 @@
 </section>
 
 
-<section id="abodes" class="py-12 sm:py-16 bg-slate-50">
+<section id="abodes" class="py-10 sm:py-12 bg-slate-50">
   
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
-          Our Abodes
-        </h2>
-        <p class="mt-1 text-sm text-slate-600">
-          Fully furnished luxury Home for families, and groups.
-        </p>
-      </div>
-
+    <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        Our Abodes
+      </h3>
+      <p class="text-sm text-slate-600">
+        Fully furnished luxury Home for families, and groups.
+      </p>
       
-      <div class="flex flex-wrap gap-2 text-xs sm:text-sm">
+      <div class="flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs pt-2">
         <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium"
                 data-filter="all">
           All
         </button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="1bhk">
-          Premium 1BHK
-        </button>
+        
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="2bhk">
           Luxury 2BHK
         </button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="villa">
-          4BHK Villa
-        </button>
+        
       </div>
     </div>
 
@@ -440,12 +451,12 @@
               
             
           </div>
-          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-semibold text-slate-50">
+          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/85 px-3 py-1 text-[11px] font-semibold text-amber-300">
             Luxury 2BHK Family House
           </span>
         </div>
         <div class="flex-1 flex flex-col p-4 space-y-3">
-          <p class="text-sm text-slate-600">
+          <p class="text-sm text-slate-700 font-medium">
             Spacious family-friendly suite with a full kitchen, living space, and modern conveniences.
           </p>
           <ul class="text-xs text-slate-600 space-y-1">
@@ -459,8 +470,8 @@
             <li>• Inhouse and comfortable parking space outside</li>
             
           </ul>
-          <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
-            <span>Perfect for families</span>
+          <div class="mt-3 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-medium text-slate-700">Perfect for families</span>
             <span>Up to 6-8 guests</span>
           </div>
         </div>
@@ -468,7 +479,7 @@
           <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
              target="_blank"
              rel="noopener noreferrer"
-             class="inline-flex w-full items-center justify-center rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800 transition">
+             class="inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-700 transition-transform transform hover:-translate-y-0.5">
             Book via WhatsApp
           </a>
         </div>
@@ -479,13 +490,13 @@
 </section>
 
 
-<section id="amenities" class="py-12 sm:py-16 bg-white">
+<section id="amenities" class="py-10 sm:py-12 bg-white">
   
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">
         All-In-One Comfort Services
-      </h2>
+      </h3>
       <p class="mt-2 text-sm text-slate-600">
         Everything you need for a seamless coastal vacation — from stay essentials to local guidance.
       </p>
@@ -526,13 +537,13 @@
 </section>
 
 
-<section id="policies" class="py-12 sm:py-16 bg-white">
+<section id="policies" class="py-10 sm:py-12 bg-white">
   
-  <div class="max-w-6xl mx:auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <h2 class="text-2xl sm:tex-3xl font-semibold text-slate-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <h3 class="text-2xl sm:tex-3xl font-semibold text-slate-900">
         Booking &amp; Payment Policies
-      </h2>
+      </h3>
       <p class="mt-2 text-sm text-slate-600">
         Transparent, guest-first policies so you always know what to expect.
       </p>
@@ -542,7 +553,7 @@
       
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
         <h3 class="text-sm font-semibold text-slate-900 mb-2">Check-in &amp; Check-out</h3>
-        <ul class="space-y-1 text-xs">
+        <ul class="space-y-1 text-xs text-left">
           
           <li>• Standard check-in: 2:00 PM (flexible subject to availability).</li>
           
@@ -557,7 +568,7 @@
       
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
         <h3 class="text-sm font-semibold text-slate-900 mb-2">Payments</h3>
-        <ul class="space-y-1 text-xs">
+        <ul class="space-y-1 text-xs text-left">
           
           <li>• Advance payment required to confirm the booking.</li>
           
@@ -572,7 +583,7 @@
       
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
         <h3 class="text-sm font-semibold text-slate-900 mb-2">Cancellation &amp; Refunds</h3>
-        <ul class="space-y-1 text-xs">
+        <ul class="space-y-1 text-xs text-left">
           
           <li>• Free cancellation up to a certain number of days before check-in.</li>
           
@@ -588,17 +599,20 @@
 </section>
 
 
-<section id="location" class="py-12 sm:py-16 bg-slate-50">
+<section id="location" class="py-10 sm:py-12 bg-slate-50">
   
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">
+        Location &amp; Nearby Highlights
+      </h3>
+      <p class="text-sm text-slate-600">
+        Stay minutes away from Kanyakumari’s iconic Vivekananda Rock, sunrise and sunset points, with easy access to major landmarks.
+      </p>
+    </div>
+
     <div class="grid gap-8 lg:grid-cols-2 items-start">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">
-          Location &amp; Nearby Highlights
-        </h2>
-        <p class="text-sm text-slate-600 mb-4">
-          Stay minutes away from Kanyakumari’s iconic Vivekananda Rock, sunrise and sunset points, with easy access to major landmarks.
-        </p>
+      <div class="space-y-4">
         <ul class="space-y-1 text-sm text-slate-700">
           
           <li>• Short drive to Vivekananda Rock Memorial &amp; Thiruvalluvar Statue.</li>
@@ -612,7 +626,7 @@
         </ul>
 
         
-        <div class="mt-6 space-y-3 text-xs text-slate-600">
+        <div class="mt-4 space-y-3 text-xs text-slate-600">
           
           <div class="rounded-xl bg-white border border-slate-100 px-4 py-3">
             <p class="font-semibold text-slate-900 text-sm">Guest Reviews</p>
@@ -676,24 +690,58 @@
 
     <div>
       <h4 class="font-semibold text-white mb-3 text-sm">Contact</h4>
-      <ul class="space-y-1 text-slate-400">
-        <li>Kanyakumari, Tamil Nadu</li>
-        <li>India</li>
-        <li><a href="#ZgotmplZ" class="hover:text-amber-400 transition">
-          &#43;91 80151 60563
-        </a></li>
-        <li><a href="mailto:care.babystep@gmail.com" class="hover:text-amber-400 transition">
-          care.babystep@gmail.com
-        </a></li>
+      <ul class="space-y-2 text-slate-400 text-sm">
+        <li class="flex items-start gap-2">
+          <span class="mt-0.5 inline-flex h-4 w-4 items-center justify-center text-amber-300">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10Z" />
+              <circle cx="12" cy="11" r="2.5" />
+            </svg>
+          </span>
+          <span>Kanyakumari, Tamil Nadu<br/>India</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="inline-flex h-4 w-4 items-center justify-center text-amber-300">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.39 1.77.8 2.58a2 2 0 0 1-.45 2.18l-1.1 1.1a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.18-.45c.81.41 1.68.68 2.58.8A2 2 0 0 1 22 16.92Z" />
+            </svg>
+          </span>
+          <a href="#ZgotmplZ" class="hover:text-amber-400 transition">
+            &#43;91 80151 60563
+          </a>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="inline-flex h-4 w-4 items-center justify-center text-amber-300">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <polyline points="3 7 12 13 21 7" />
+            </svg>
+          </span>
+          <a href="mailto:care.babystep@gmail.com" class="hover:text-amber-400 transition">
+            care.babystep@gmail.com
+          </a>
+        </li>
       </ul>
     </div>
 
     <div>
       <h4 class="font-semibold text-white mb-3 text-sm">Follow</h4>
-      <div class="flex gap-3 text-slate-400">
+      <div class="flex flex-col gap-2 text-slate-400 text-sm">
         <a href="https://instagram.com/aadhyaabode" target="_blank" rel="noopener noreferrer"
-           class="hover:text-amber-400 transition">Instagram</a>
-        
+           class="inline-flex items-center gap-2 hover:text-amber-400 transition">
+          <span class="inline-flex h-4 w-4 items-center justify-center text-amber-300">
+            
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <path d="M12 8.5A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5Z" />
+              <circle cx="17" cy="7" r="0.7" />
+            </svg>
+          </span>
+          <span>Instagram</span>
+        </a>
       </div>
     </div>
   </div>
