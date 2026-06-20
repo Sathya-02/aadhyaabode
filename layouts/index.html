@@ -5,19 +5,39 @@
 <!-- Hero -->
 <section id="hero" class="relative">
   {{ $hero := .Site.Data.content.hero }}
-  <!-- Background image -->
+  <!-- Background image with horizontal scrollable strip on desktop -->
   <div class="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1526481280695-3c687fd543c6?auto=format&fit=crop&w=1600&q=80"
-      alt="Coastal view near Aadhya Abode in Kanyakumari"
-      class="h-full w-full object-cover"
-      loading="lazy"
-      width="1920"
-      height="1080"
-    />
-    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="absolute inset-0">
+      <div class="hidden sm:flex h-full w-full overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div class="flex h-full w-full">
+          {{/* Simple three-image strip for hero */}}
+          {{ range $heroIndex, $img := slice \
+            "https://images.unsplash.com/photo-1526481280695-3c687fd543c6?auto=format&fit=crop&w=1600&q=80" \
+            "https://images.unsplash.com/photo-1526481280695-3c687fd543c6?auto=format&fit=crop&w=1600&q=80" \
+            "https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=1600&q=80" \
+          }}
+          <div class="relative h-full w-full flex-shrink-0 snap-start">
+            <img
+              src="{{ $img }}"
+              alt="Kanyakumari coastal view {{ add $heroIndex 1 }}"
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 hero-overlay"></div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1526481280695-3c687fd543c6?auto=format&fit=crop&w=1600&q=80"
+        alt="Coastal view near Aadhya Abode in Kanyakumari"
+        class="sm:hidden h-full w-full object-cover"
+        loading="lazy"
+      />
+      <div class="sm:hidden absolute inset-0 hero-overlay"></div>
+    </div>
 
-    <div class="absolute inset-0 flex items-center">
+    <div class="relative inset-0 flex items-center h-full">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
         <div class="max-w-xl space-y-4">
           <p class="text-xs uppercase tracking-[0.2em] text-teal-200">
@@ -46,6 +66,26 @@
           </p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery section -->
+<section id="gallery" class="py-10 sm:py-14 bg-white border-b border-slate-100">
+  {{ $gallery := .Site.Data.content.gallery }}
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $gallery.heading }}</h2>
+        <p class="mt-1 text-sm text-slate-600 max-w-xl">{{ $gallery.description }}</p>
+      </div>
+    </div>
+    <div class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {{ range $gallery.images }}
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="{{ .src }}" alt="{{ .alt }}" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      {{ end }}
     </div>
   </div>
 </section>
@@ -91,14 +131,24 @@
       <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
                data-type="{{ .type }}">
         <div class="relative">
-          <img
-            src="{{ .image }}"
-            alt="{{ .alt }}"
-            class="h-48 w-full object-cover"
-            loading="lazy"
-            width="800"
-            height="600"
-          />
+          <div class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory h-48 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <img
+              src="{{ .image }}"
+              alt="{{ .alt }}"
+              class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
+              loading="lazy"
+            />
+            {{ if .gallery }}
+              {{ range .gallery }}
+              <img
+                src="{{ . }}"
+                alt="{{ $.title }} gallery image"
+                class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
+                loading="lazy"
+              />
+              {{ end }}
+            {{ end }}
+          </div>
           <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-semibold text-slate-50">
             {{ .badge }}
           </span>

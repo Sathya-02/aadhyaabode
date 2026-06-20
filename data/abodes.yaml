@@ -5,8 +5,12 @@
   tagline: "Ideal for couples or solo travelers seeking a cozy, air-conditioned space with a sleek workspace."
   image: "https://images.unsplash.com/photo-1600585154340-0ef3c08c0632?auto=format&fit=crop&w=900&q=80"
   alt: "Premium 1BHK room interior"
+  gallery:
+    - "https://images.unsplash.com/photo-1600585154154-8f54a8e87b8d?auto=format&fit=crop&w=900&q=80"
+    - "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
+    - "https://images.unsplash.com/photo-1600585154523-832a8da643a3?auto=format&fit=crop&w=900&q=80"
   bullets:
-    - "Fully air"
+    - "Fully air-conditioned bedroom"
     - "Dedicated work desk & ergonomic chair"
     - "Smart TV with OTT apps"
     - "Compact equipped kitchenette"
@@ -17,16 +21,20 @@
   type: "2bhk"
   badge: "Luxury 2BHK Family Suite"
   title: "Luxury 2BHK Family Suite"
-  tagline: "Spacious family"
+  tagline: "Spacious family-friendly suite with a full kitchen, living space, and modern conveniences."
   image: "https://images.unsplash.com/photo-1617099404995-0a5e1c553cf8?auto=format&fit=crop&w=900&q=80"
   alt: "Luxury 2BHK family suite interior"
+  gallery:
+    - "https://images.unsplash.com/photo-1600585154206-0ef3c08c0632?auto=format&fit=crop&w=900&q=80"
+    - "https://images.unsplash.com/photo-1617099404995-0a5e1c553cf8?auto=format&fit=crop&w=900&q=80"
+    - "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
   bullets:
     - "Two AC bedrooms with plush bedding"
     - "Spacious living room with smart TV"
     - "Fully equipped modular kitchen"
     - "Balcony seating for evening tea"
   suitability: "Perfect for families"
-  occupancy: "Up to 4"
+  occupancy: "Up to 4–5 guests"
 
 - id: exquisite-4bhk-villa
   type: "villa"
@@ -35,10 +43,14 @@
   tagline: "A full private villa with rooftop access, ideal for large families, groups, or extended stays."
   image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
   alt: "Exquisite 4BHK entire villa with rooftop"
+  gallery:
+    - "https://images.unsplash.com/photo-1600585154516-990dced4db0d?auto=format&fit=crop&w=900&q=80"
+    - "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
+    - "https://images.unsplash.com/photo-1600585154356-832a8da643a3?auto=format&fit=crop&w=900&q=80"
   bullets:
     - "Four AC bedrooms & multiple bathrooms"
-    - "Private rooftop with sit"
+    - "Private rooftop with sit-out"
     - "Large living & dining areas"
-    - "100% power backup & high"
+    - "100% power backup & high-speed Wi-Fi"
   suitability: "Perfect for groups"
-  occupancy: "Up to 8"
+  occupancy: "Up to 8–10 guests"
