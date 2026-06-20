@@ -12,6 +12,9 @@ Premium, fully furnished short-term luxury rentals and vacation stays in Kanyaku
 
 ```text
 ├── config.toml                 # Global site configuration & editable links
+├── data/
+│   ├── content.yaml           # All main static marketing copy per section
+│   └── abodes.yaml            # Configurable list of rooms / abodes
 ├── layouts/
 │   ├── _default/
 │   │   └── baseof.html        # Base layout with header/footer wrappers
@@ -19,16 +22,23 @@ Premium, fully furnished short-term luxury rentals and vacation stays in Kanyaku
 │   │   ├── header.html        # Sticky nav + WhatsApp CTA
 │   │   ├── footer.html        # Dark footer with quick links & contact
 │   │   └── scripts.html       # JS includes
-│   └── index.html             # Home page sections & content
+│   └── index.html             # Home page sections, now fully data-driven
 └── static/
+    ├── images/                # Place local hero / room / amenity images here
+    │   └── .gitkeep
+    ├── videos/                # Place any static mp4/webm assets here
+    │   └── .gitkeep
     └── js/
         └── main.js            # Mobile menu toggle & property filter
 ```
 
-- Images are currently loaded from Unsplash CDN placeholders. You can swap them to your own assets later.
+- Images are currently loaded from Unsplash CDN placeholders defined in `data/abodes.yaml` and `layouts/index.html`. You can swap them to your own assets in `static/images/` and update the paths in `data/abodes.yaml` (for example: `/images/abodes/premium-1bhk.jpg`).
 - All external links (WhatsApp booking, Maps, social, contact) are configured in `config.toml` under `params`.
+- All guest-facing section copy (hero, abodes heading text, amenities, add-on services, policies, location highlights, trust cards) lives in `data/content.yaml`.
 
 ## Configuration
+
+### Contact & links
 
 Open `config.toml` and update as needed:
 
@@ -39,6 +49,40 @@ Open `config.toml` and update as needed:
 - `params.footer.instagram` / `facebook`
 
 These values are used throughout the layouts so you can change them in a single place.
+
+### Static text content
+
+Open `data/content.yaml` to edit all major static text content:
+
+- Hero section (tag line, heading, subtitle, small note)
+- "Our Abodes" section heading/description
+- Amenities grid titles & descriptions
+- Add-on services grid items
+- Booking & payment policy columns and bullet points
+- Location heading, description, nearby highlights, and simple trust cards
+
+### Our Abodes / rooms configuration
+
+`data/abodes.yaml` defines each room/abode card:
+
+```yaml
+- id: premium-1bhk
+  type: "1bhk"           # Used by the filter pills
+  badge: "Premium 1BHK Room"
+  title: "Premium 1BHK Room"
+  tagline: "Ideal for couples..."
+  image: "/images/abodes/premium-1bhk.jpg"   # Or external CDN URL
+  alt: "Premium 1BHK room interior"
+  bullets:
+    - "Fully air-conditioned bedroom"
+    - "Dedicated work desk & ergonomic chair"
+  suitability: "Perfect for couples"
+  occupancy: "Max 2 guests"
+```
+
+To add a new room type, simply append another block with a unique `id` and an appropriate `type` value (for example `studio`, `1bhk`, `2bhk`, `villa`). The "Our Abodes" grid will automatically update on the homepage.
+
+To remove a room, delete its entry from `data/abodes.yaml`.
 
 ## Running the site locally
 
@@ -71,7 +115,7 @@ Then open the URL printed in the terminal (by default):
 
 - http://localhost:1313
 
-Hugo will watch the files and live-reload as you edit layouts, content, or config.
+Hugo will watch the files and live-reload as you edit layouts, data, or config.
 
 ## Building for production
 

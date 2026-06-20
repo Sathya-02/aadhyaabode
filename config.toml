@@ -1,6 +1,9 @@
 baseURL = "https://aadhyaabode.com/"
-languageCode = "en-us"
+# Use locale instead of deprecated languageCode
+locale = "en-IN"
+
 title = "Aadhya Abode | Kanyakumari"
+
 theme = ""
 
 [params.brand]
