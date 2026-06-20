@@ -2,9 +2,15 @@
   <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
     <!-- Left: Logo / Brand -->
     <a href="{{ "/" | relURL }}" class="flex items-center gap-2">
+      {{ with .Site.Params.brand.logo }}
+      <span class="inline-flex items-center justify-center">
+        <img src="{{ . }}" alt="{{ $.Site.Params.brand.name }} logo" class="h-8 w-auto rounded-full object-cover" loading="lazy" />
+      </span>
+      {{ else }}
       <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-teal-700 text-white text-xs font-semibold tracking-wide">
         AA
       </span>
+      {{ end }}
       <div class="flex flex-col leading-tight">
         <span class="font-semibold text-slate-900 text-sm sm:text-base">
           {{ .Site.Params.brand.name }}
