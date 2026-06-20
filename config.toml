@@ -4,7 +4,7 @@ locale = "en-IN"
 
 title = "Aadhya Abode | Kanyakumari"
 
-theme = ""
+#theme = ""
 
 [params.brand]
 name    = "Aadhya Abode"
