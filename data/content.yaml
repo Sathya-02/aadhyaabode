@@ -68,8 +68,7 @@ policies:
         - "Detailed payment instructions will be shared on WhatsApp."
     - title: "Cancellation & Refunds"
       bullets:
-        - "Free cancellation up to a certain number of days before check-in (customisable)."
-        - "Partial refund window for late cancellations."
+        - "Free cancellation up to a certain number of days before check-in."
         - "No-show bookings are non-refundable."
         - "Exact policy details will be shared at time of booking."
 

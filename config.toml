@@ -9,6 +9,7 @@ title = "Aadhya Abode | Kanyakumari"
 [params.brand]
 name    = "Aadhya Abode"
 tagline = "Coastal luxury stays in Kanyakumari"
+logo = "/images/logo/aadhya-abode-logo.jpeg"
 
 [params.location]
 city    = "Kanyakumari"
