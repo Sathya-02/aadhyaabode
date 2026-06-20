@@ -32,7 +32,7 @@ gallery:
       alt: "Dining space with table setup"
     - src: "/images/gallery/gallery-12.jpg"
       alt: "Well designed Modular Kitchen with Breakfast counter."
-      
+
 abodes_section:
   heading: "Our Abodes"
   description: "Fully furnished luxury Home for families, and groups."
@@ -41,14 +41,14 @@ amenities:
   heading: "All-In-One Comfort Services"
   description: "Everything you need for a seamless coastal vacation — from stay essentials to local guidance."
   items:
-    - title: "Food & Dining"
-      text: "Local culinary arrangements, homely meal options, or fully equipped kitchens for self-cooking."
     - title: "Transit Support"
       text: "Airport & railway station pickups and drop-offs on request with trusted partners."
     - title: "Local Exploration"
       text: "Curated itineraries for sunrise points, beaches, and temples."
     - title: "Stay Perks"
       text: "High-speed Wi-Fi, 100% power backup, AC bedrooms, and secure gated premises."
+    - title: "Food & Dining"
+      text: "Kitchen equipped for self-cooking. Online Food delivery available for convinience - Swiggy and Zomato. Nearby Hotels and supermarkets in reach."
 
 policies:
   heading: "Booking & Payment Policies"
