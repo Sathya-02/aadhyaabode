@@ -1,73 +1,59 @@
 hero:
-  tag: "Kanyakumari Coastal Luxury"
+  tag: "Kanyakumari · Coastal Luxury Stays"
   title: "Where Coastal Serenity Meets Luxury Comfort"
   subtitle: "Fully furnished luxury apartments and villas for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway."
-  note: "Instant WhatsApp confirmations"
+  note: "Instant WhatsApp confirmations · Trusted host · Flexible short-term stays"
 
 abodes_section:
   heading: "Our Abodes"
   description: "Handpicked apartments and villas tailored for couples, families, and groups."
 
 amenities:
-  heading: "All"
-  description: "Everything you need for a seamless coastal vacation from stay essentials to local guidance."
+  heading: "All-In-One Comfort Services"
+  description: "Everything you need for a seamless coastal vacation — from stay essentials to local guidance."
   items:
     - title: "Food & Dining"
       text: "Local culinary arrangements, homely meal options, or fully equipped kitchens for self-cooking."
     - title: "Transit Support"
       text: "Airport & railway station pickups and drop-offs on request with trusted partners."
     - title: "Local Exploration"
-      text: "Bike and car rentals, curated itineraries for sunrise points, beaches, And temples."
+      text: "Bike and car rentals, curated itineraries for sunrise points, beaches, and temples."
     - title: "Stay Perks"
-      text: "High-speed WiFi, 100% power backup, AC bedrooms, and secure gated premises."
-
-addons:
-  heading: "Addon Service"
-  description: "Upgrade your stay with curated conveniences, easily arranged by your host."
-  items:
-    - title: "Airport & Station Transfers"
-      text: "Pre-arranged pickups and drops from nearby airports and Kanyakumari railway station."
-      note: "Add while booking over WhatsApp."
-    - title: "Rental Two Wheelers & Cars"
-      text: "Explore the coastline at your pace with trusted local rental partners."
-      note: "Daily or multi-day rentals available."
-    - title: "Custom Food Setups"
-      text: "Birthday surprises, group dinners, or homely breakfast spreads can be set up on request."
-      note: "Discuss your requirements while confirming."
+      text: "High-speed Wi-Fi, 100% power backup, AC bedrooms, and secure gated premises."
 
 policies:
   heading: "Booking & Payment Policies"
   description: "Transparent, guest-first policies so you always know what to expect."
   columns:
-    - title: "Checkin & Checkout"
+    - title: "Check-in & Check-out"
       bullets:
-        - "Standard checkin: 2:00 PM."
-        - "Standard checkout: 11:00 AM."
-        - "Government"
-        - "Early checkin / late checkout on prior request only."
+        - "Standard check-in: 1:00 PM (flexible subject to availability)."
+        - "Standard check-out: 11:00 AM."
+        - "Government-approved ID proof mandatory for all guests."
+        - "Early check-in / late check-out on prior request only."
     - title: "Payments"
       bullets:
         - "Advance payment required to confirm the booking."
-        - "Remaining amount payable at or before checkin."
+        - "Remaining amount payable at or before check-in."
         - "UPI, bank transfer, and select wallet payments accepted."
         - "Detailed payment instructions will be shared on WhatsApp."
     - title: "Cancellation & Refunds"
       bullets:
-        - "Free cancellation up to a certain number of days before check"
+        - "Free cancellation up to a certain number of days before check-in (customisable)."
         - "Partial refund window for late cancellations."
-        - "Noshow bookings are nonrefundable."
+        - "No-show bookings are non-refundable."
         - "Exact policy details will be shared at time of booking."
 
 location:
   heading: "Location & Nearby Highlights"
-  description: "Stay minutes away from Kanyakumari iconic sunrise and sunset points, with easy access to major landmarks."
+  description: "Stay minutes away from Kanyakumari’s iconic sunrise and sunset points, with easy access to major landmarks."
   bullets:
     - "Short drive to Vivekananda Rock Memorial & Thiruvalluvar Statue."
     - "Easy access to sunset viewpoints along the coastline."
     - "Convenient distance from Kanyakumari railway station & bus stand."
-    - "Calm residential neighborhood away from tourist rush, yet well connected."
+    - "Calm residential neighborhood away from tourist rush, yet well-connected."
   trusts:
     - title: "Guest Reviews"
       text: "Warm host, clean property, and perfect location for exploring Kanyakumari."
     - title: "Reservation Assurance"
-      text: "Booking confirmations and checkin instructions shared directly on WhatsApp for complete clarity."
+      text: "Booking confirmations and check-in instructions shared directly on WhatsApp for complete clarity."
