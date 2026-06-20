@@ -17,7 +17,13 @@
   <style>
     body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
     .hero-overlay {
-      background: radial-gradient(circle at top, rgba(15,23,42,0.8), rgba(15,23,42,0.95));
+      background: linear-gradient(to bottom, rgba(15,23,42,0.15), rgba(15,23,42,0.55));
+    }
+    .hero-title {
+      text-shadow: 0 10px 25px rgba(15,23,42,0.55);
+    }
+    .hero-subtitle {
+      text-shadow: 0 8px 22px rgba(15,23,42,0.45);
     }
     .floating-whatsapp {
       z-index: 40;
@@ -172,30 +178,30 @@
     </div>
 
     <div class="relative inset-0 flex items-center h-full">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
-          <p class="text-xs uppercase tracking-[0.2em] text-teal-200">
+          <p class="text-[11px] sm:text-xs uppercase tracking-[0.28em] text-amber-300/90">
             Kanyakumari · Coastal Luxury Stays
           </p>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+          <h1 class="hero-title text-3xl sm:text-4xl lg:text-5xl font-semibold lg:font-bold leading-tight text-slate-50">
             Where Coastal Serenity Meets Luxury Comfort
           </h1>
-          <p class="text-sm sm:text-base text-slate-200">
-            Fully furnished luxury apartments and villas for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway.
+          <p class="hero-subtitle text-[13px] sm:text-sm lg:text-base text-slate-100/95">
+            Fully furnished luxury Home for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway.
           </p>
           <div class="flex flex-wrap items-center gap-3 pt-2">
             <a href="#abodes"
-               class="inline-flex items-center justify-center rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-amber-300 transition">
+               class="inline-flex items-center justify-center rounded-full bg-amber-400/95 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-lg shadow-amber-500/40 hover:bg-amber-300 transition">
               Check Availability
             </a>
             <a href="https://wa.me/8015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
                target="_blank"
                rel="noopener noreferrer"
-               class="inline-flex items-center justify-center rounded-full border border-slate-200/60 bg-slate-900/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-900/60 transition">
+               class="inline-flex items-center justify-center rounded-full border border-slate-100/60 bg-slate-900/25 px-5 py-2.5 text-sm font-medium text-slate-50 hover:bg-slate-900/45 transition">
               Chat with Host
             </a>
           </div>
-          <p class="text-[11px] text-slate-200/80">
+          <p class="text-[11px] text-slate-100/90">
             Instant WhatsApp confirmations · Trusted host · Flexible short-term stays
           </p>
         </div>
@@ -217,11 +223,43 @@
     <div class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       
       <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
-        <img src="/images/gallery/gallery-4.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
+        <img src="/images/gallery/gallery-1.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
       </figure>
       
       <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
-        <img src="/images/gallery/gallery-8.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
+        <img src="/images/gallery/gallery-2.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-3.jpg" alt="Dining space with table setup" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-4.jpg" alt="Well designed Modular Kitchen with Breakfast counter." class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-5.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-6.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-7.jpg" alt="Dining space with table setup" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-8.jpg" alt="Well designed Modular Kitchen with Breakfast counter." class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-9.jpg" alt="Warmly lit living room with sofa and coffee table" class="h-full w-full object-cover" loading="lazy" />
+      </figure>
+      
+      <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
+        <img src="/images/gallery/gallery-10.jpg" alt="Well designed bedroom with large window" class="h-full w-full object-cover" loading="lazy" />
       </figure>
       
       <figure class="relative w-64 sm:w-80 h-40 sm:h-48 flex-shrink-0 snap-start rounded-2xl overflow-hidden bg-slate-200">
@@ -246,7 +284,7 @@
           Our Abodes
         </h2>
         <p class="mt-1 text-sm text-slate-600">
-          Handpicked apartments and villas tailored for couples, families, and groups.
+          Fully furnished luxury Home for families, and groups.
         </p>
       </div>
 
@@ -256,18 +294,12 @@
                 data-filter="all">
           All
         </button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="1bhk">
-          Premium 1BHK
-        </button>
+        
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="2bhk">
           Luxury 2BHK
         </button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="villa">
-          4BHK Villa
-        </button>
+        
       </div>
     </div>
 
@@ -443,7 +475,7 @@
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
         <h3 class="text-sm font-semibold text-slate-900 mb-1">Local Exploration</h3>
         <p class="text-xs text-slate-600">
-          Bike and car rentals, curated itineraries for sunrise points, beaches, and temples.
+          Curated itineraries for sunrise points, beaches, and temples.
         </p>
       </div>
       
@@ -461,7 +493,7 @@
 
 <section id="policies" class="py-12 sm:py-16 bg-white">
   
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx:auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-10">
       <h2 class="text-2xl sm:tex-3xl font-semibold text-slate-900">
         Booking &amp; Payment Policies
@@ -477,7 +509,7 @@
         <h3 class="text-sm font-semibold text-slate-900 mb-2">Check-in &amp; Check-out</h3>
         <ul class="space-y-1 text-xs">
           
-          <li>• Standard check-in: 1:00 PM (flexible subject to availability).</li>
+          <li>• Standard check-in: 2:00 PM (flexible subject to availability).</li>
           
           <li>• Standard check-out: 11:00 AM.</li>
           
@@ -532,7 +564,7 @@
           Location &amp; Nearby Highlights
         </h2>
         <p class="text-sm text-slate-600 mb-4">
-          Stay minutes away from Kanyakumari’s iconic sunrise and sunset points, with easy access to major landmarks.
+          Stay minutes away from Kanyakumari’s iconic Vivekananda Rock, sunrise and sunset points, with easy access to major landmarks.
         </p>
         <ul class="space-y-1 text-sm text-slate-700">
           

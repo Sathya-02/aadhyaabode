@@ -1,25 +1,41 @@
 hero:
   tag: "Kanyakumari · Coastal Luxury Stays"
   title: "Where Coastal Serenity Meets Luxury Comfort"
-  subtitle: "Fully furnished luxury apartments and villas for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway."
+  subtitle: "Fully furnished luxury Home for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway."
   note: "Instant WhatsApp confirmations · Trusted host · Flexible short-term stays"
 
 gallery:
   heading: "Gallery"
   description: "A glimpse into our interiors, cozy corners, and the coastal charm around Aadhya Abode."
   images:
-    - src: "/images/gallery/gallery-4.jpg"
+    - src: "/images/gallery/gallery-1.jpg"
       alt: "Warmly lit living room with sofa and coffee table"
+    - src: "/images/gallery/gallery-2.jpg"
+      alt: "Well designed bedroom with large window"
+    - src: "/images/gallery/gallery-3.jpg"
+      alt: "Dining space with table setup"
+    - src: "/images/gallery/gallery-4.jpg"
+      alt: "Well designed Modular Kitchen with Breakfast counter."
+    - src: "/images/gallery/gallery-5.jpg"
+      alt: "Warmly lit living room with sofa and coffee table"
+    - src: "/images/gallery/gallery-6.jpg"
+      alt: "Well designed bedroom with large window"
+    - src: "/images/gallery/gallery-7.jpg"
+      alt: "Dining space with table setup"
     - src: "/images/gallery/gallery-8.jpg"
+      alt: "Well designed Modular Kitchen with Breakfast counter."
+    - src: "/images/gallery/gallery-9.jpg"
+      alt: "Warmly lit living room with sofa and coffee table"
+    - src: "/images/gallery/gallery-10.jpg"
       alt: "Well designed bedroom with large window"
     - src: "/images/gallery/gallery-11.jpg"
       alt: "Dining space with table setup"
     - src: "/images/gallery/gallery-12.jpg"
       alt: "Well designed Modular Kitchen with Breakfast counter."
-
+      
 abodes_section:
   heading: "Our Abodes"
-  description: "Handpicked apartments and villas tailored for couples, families, and groups."
+  description: "Fully furnished luxury Home for families, and groups."
 
 amenities:
   heading: "All-In-One Comfort Services"
@@ -30,7 +46,7 @@ amenities:
     - title: "Transit Support"
       text: "Airport & railway station pickups and drop-offs on request with trusted partners."
     - title: "Local Exploration"
-      text: "Bike and car rentals, curated itineraries for sunrise points, beaches, and temples."
+      text: "Curated itineraries for sunrise points, beaches, and temples."
     - title: "Stay Perks"
       text: "High-speed Wi-Fi, 100% power backup, AC bedrooms, and secure gated premises."
 
@@ -40,7 +56,7 @@ policies:
   columns:
     - title: "Check-in & Check-out"
       bullets:
-        - "Standard check-in: 1:00 PM (flexible subject to availability)."
+        - "Standard check-in: 2:00 PM (flexible subject to availability)."
         - "Standard check-out: 11:00 AM."
         - "Government-approved ID proof mandatory for all guests."
         - "Early check-in / late check-out on prior request only."
@@ -59,7 +75,7 @@ policies:
 
 location:
   heading: "Location & Nearby Highlights"
-  description: "Stay minutes away from Kanyakumari’s iconic sunrise and sunset points, with easy access to major landmarks."
+  description: "Stay minutes away from Kanyakumari’s iconic Vivekananda Rock, sunrise and sunset points, with easy access to major landmarks."
   bullets:
     - "Short drive to Vivekananda Rock Memorial & Thiruvalluvar Statue."
     - "Easy access to sunset viewpoints along the coastline."
