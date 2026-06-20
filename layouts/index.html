@@ -1,0 +1,410 @@
+{{ define "title" }}Aadhya Abode | Coastal Luxury Stays in Kanyakumari{{ end }}
+
+{{ define "main" }}
+
+<!-- Hero -->
+<section id="hero" class="relative">
+  <!-- Background image -->
+  <div class="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1526481280695-3c687fd543c6?auto=format&fit=crop&w=1600&q=80"
+      alt="Coastal view near Aadhya Abode in Kanyakumari"
+      class="h-full w-full object-cover"
+      loading="lazy"
+      width="1920"
+      height="1080"
+    />
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <div class="absolute inset-0 flex items-center">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+        <div class="max-w-xl space-y-4">
+          <p class="text-xs uppercase tracking-[0.2em] text-teal-200">
+            {{ .Site.Params.location.city }} • Coastal Luxury Stays
+          </p>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+            Where Coastal Serenity Meets Luxury Comfort
+          </h1>
+          <p class="text-sm sm:text-base text-slate-200">
+            Fully furnished luxury apartments and villas for short-term stays in Kanyakumari.
+            Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#abodes"
+               class="inline-flex items-center justify-center rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-amber-300 transition">
+              Check Availability
+            </a>
+            <a href="{{ .Site.Params.links.whatsapp_booking }}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center justify-center rounded-full border border-slate-200/60 bg-slate-900/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-900/60 transition">
+              Chat with Host
+            </a>
+          </div>
+          <p class="text-[11px] text-slate-200/80">
+            Instant WhatsApp confirmations • Trusted host • Flexible short-term stays
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Abodes -->
+<section id="abodes" class="py-12 sm:py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+          Our Abodes
+        </h2>
+        <p class="mt-1 text-sm text-slate-600">
+          Handpicked apartments and villas tailored for couples, families, and groups.
+        </p>
+      </div>
+
+      <!-- Interactive filter -->
+      <div class="flex flex-wrap gap-2 text-xs sm:text-sm">
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium"
+                data-filter="all">
+          All
+        </button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+                data-filter="1bhk">
+          Premium 1BHK
+        </button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+                data-filter="2bhk">
+          Luxury 2BHK
+        </button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+                data-filter="villa">
+          4BHK Villa
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="abode-grid">
+      <!-- Premium 1BHK Room -->
+      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
+               data-type="1bhk">
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-0ef3c08c0632?auto=format&fit=crop&w=900&q=80"
+            alt="Premium 1BHK room interior"
+            class="h-48 w-full object-cover"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-semibold text-slate-50">
+            Premium 1BHK Room
+          </span>
+        </div>
+        <div class="flex-1 flex flex-col p-4 space-y-3">
+          <p class="text-sm text-slate-600">
+            Ideal for couples or solo travelers seeking a cozy, air-conditioned space with a sleek workspace.
+          </p>
+          <ul class="text-xs text-slate-600 space-y-1">
+            <li>• Fully air-conditioned bedroom</li>
+            <li>• Dedicated work desk & ergonomic chair</li>
+            <li>• Smart TV with OTT apps</li>
+            <li>• Compact equipped kitchenette</li>
+          </ul>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
+            <span>Perfect for couples</span>
+            <span>Max 2 guests</span>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="{{ .Site.Params.links.whatsapp_booking }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex w-full items-center justify-center rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800 transition">
+            Book via WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- Luxury 2BHK Family Suite -->
+      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
+               data-type="2bhk">
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1617099404995-0a5e1c553cf8?auto=format&fit=crop&w=900&q=80"
+            alt="Luxury 2BHK family suite interior"
+            class="h-48 w-full object-cover"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-semibold text-slate-50">
+            Luxury 2BHK Family Suite
+          </span>
+        </div>
+        <div class="flex-1 flex flex-col p-4 space-y-3">
+          <p class="text-sm text-slate-600">
+            Spacious family-friendly suite with a full kitchen, living space, and modern conveniences.
+          </p>
+          <ul class="text-xs text-slate-600 space-y-1">
+            <li>• Two AC bedrooms with plush bedding</li>
+            <li>• Spacious living room with smart TV</li>
+            <li>• Fully equipped modular kitchen</li>
+            <li>• Balcony seating for evening tea</li>
+          </ul>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
+            <span>Perfect for families</span>
+            <span>Up to 4–5 guests</span>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="{{ .Site.Params.links.whatsapp_booking }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex w-full items-center justify-center rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800 transition">
+            Book via WhatsApp
+          </a>
+        </div>
+      </article>
+
+      <!-- Exquisite 4BHK Entire Villa -->
+      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
+               data-type="villa">
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80"
+            alt="Exquisite 4BHK entire villa with rooftop"
+            class="h-48 w-full object-cover"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-semibold text-slate-50">
+            Exquisite 4BHK Entire Villa
+          </span>
+        </div>
+        <div class="flex-1 flex flex-col p-4 space-y-3">
+          <p class="text-sm text-slate-600">
+            A full private villa with rooftop access, ideal for large families, groups, or extended stays.
+          </p>
+          <ul class="text-xs text-slate-600 space-y-1">
+            <li>• Four AC bedrooms & multiple bathrooms</li>
+            <li>• Private rooftop with sit-out</li>
+            <li>• Large living & dining areas</li>
+            <li>• 100% power backup & high-speed Wi‑Fi</li>
+          </ul>
+          <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
+            <span>Perfect for groups</span>
+            <span>Up to 8–10 guests</span>
+          </div>
+        </div>
+        <div class="px-4 pb-4">
+          <a href="{{ .Site.Params.links.whatsapp_booking }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex w-full items-center justify-center rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800 transition">
+            Book via WhatsApp
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities / Value Proposition -->
+<section id="amenities" class="py-12 sm:py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        All‑In‑One Comfort Services
+      </h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Everything you need for a seamless coastal vacation — from stay essentials to local guidance.
+      </p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-1">Food & Dining</h3>
+        <p class="text-xs text-slate-600">
+          Local culinary arrangements, homely meal options, or fully equipped kitchens for self-cooking.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-1">Transit Support</h3>
+        <p class="text-xs text-slate-600">
+          Airport & railway station pickups and drop-offs on request with trusted partners.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-1">Local Exploration</h3>
+        <p class="text-xs text-slate-600">
+          Bike and car rentals, curated itineraries for sunrise points, beaches, and temples.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-1">Stay Perks</h3>
+        <p class="text-xs text-slate-600">
+          High-speed Wi‑Fi, 100% power backup, AC bedrooms, and secure gated premises.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add‑on services -->
+<section id="addons" class="py-12 sm:py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+          Add‑on Services
+        </h2>
+        <p class="mt-1 text-sm text-slate-600">
+          Upgrade your stay with curated conveniences, easily arranged by your host.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-3">
+      <div class="rounded-2xl bg-white border border-slate-100 p-4 flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900 mb-1">Airport & Station Transfers</h3>
+          <p class="text-xs text-slate-600">
+            Pre-arranged pickups and drops from nearby airports and Kanyakumari railway station.
+          </p>
+        </div>
+        <p class="mt-3 text-[11px] text-slate-500">
+          Add while booking over WhatsApp.
+        </p>
+      </div>
+
+      <div class="rounded-2xl bg-white border border-slate-100 p-4 flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900 mb-1">Rental Two‑Wheelers & Cars</h3>
+          <p class="text-xs text-slate-600">
+            Explore the coastline at your pace with trusted local rental partners.
+          </p>
+        </div>
+        <p class="mt-3 text-[11px] text-slate-500">
+          Daily or multi-day rentals available.
+        </p>
+      </div>
+
+      <div class="rounded-2xl bg-white border border-slate-100 p-4 flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900 mb-1">Custom Food Setups</h3>
+          <p class="text-xs text-slate-600">
+            Birthday surprises, group dinners, or homely breakfast spreads can be set up on request.
+          </p>
+        </div>
+        <p class="mt-3 text-[11px] text-slate-500">
+          Discuss your requirements while confirming.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking & Payment Policies -->
+<section id="policies" class="py-12 sm:py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        Booking & Payment Policies
+      </h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Transparent, guest-first policies so you always know what to expect.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3 text-sm text-slate-600">
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-2">Check‑in & Check‑out</h3>
+        <ul class="space-y-1 text-xs">
+          <li>• Standard check‑in: 1:00 PM (flexible subject to availability).</li>
+          <li>• Standard check‑out: 11:00 AM.</li>
+          <li>• Government‑approved ID proof mandatory for all guests.</li>
+          <li>• Early check‑in / late check‑out on prior request only.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-2">Payments</h3>
+        <ul class="space-y-1 text-xs">
+          <li>• Advance payment required to confirm the booking.</li>
+          <li>• Remaining amount payable at or before check‑in.</li>
+          <li>• UPI, bank transfer, and select wallet payments accepted.</li>
+          <li>• Detailed payment instructions will be shared on WhatsApp.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900 mb-2">Cancellation & Refunds</h3>
+        <ul class="space-y-1 text-xs">
+          <li>• Free cancellation up to a certain number of days before check‑in.</li>
+          <li>• Partial refund window for late cancellations.</li>
+          <li>• No‑show bookings are non‑refundable.</li>
+          <li>• Custom policy details will be shared at time of booking.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location & Map / Trust Triggers -->
+<section id="location" class="py-12 sm:py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-8 lg:grid-cols-2 items-start">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">
+          Location & Nearby Highlights
+        </h2>
+        <p class="text-sm text-slate-600 mb-4">
+          Stay minutes away from Kanyakumari’s iconic sunrise and sunset points, with easy access to major landmarks.
+        </p>
+        <ul class="space-y-1 text-sm text-slate-700">
+          <li>• Short drive to Vivekananda Rock Memorial & Thiruvalluvar Statue.</li>
+          <li>• Easy access to sunset viewpoints along the coastline.</li>
+          <li>• Convenient distance from Kanyakumari railway station & bus stand.</li>
+          <li>• Calm residential neighborhood away from tourist rush, yet well‑connected.</li>
+        </ul>
+
+        <!-- Simple trust triggers -->
+        <div class="mt-6 space-y-3 text-xs text-slate-600">
+          <div class="rounded-xl bg-white border border-slate-100 px-4 py-3">
+            <p class="font-semibold text-slate-900 text-sm">Guest Reviews</p>
+            <p class="mt-1">
+              “Warm host, clean property, and perfect location for exploring Kanyakumari.”
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-slate-100 px-4 py-3">
+            <p class="font-semibold text-slate-900 text-sm">Reservation Assurance</p>
+            <p class="mt-1">
+              Booking confirmations and check‑in instructions shared directly on WhatsApp for complete clarity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map placeholder -->
+      <div class="rounded-2xl bg-white border border-slate-100 p-3">
+        <div class="aspect-video rounded-xl overflow-hidden bg-slate-200 flex items-center justify-center">
+          <!-- Replace this with embedded map iframe when ready -->
+          <p class="text-xs text-slate-500 px-4 text-center">
+            Google Maps integration will appear here. For now, view the location directly on Maps:
+            <a href="{{ .Site.Params.links.maps_url }}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="text-teal-700 underline">
+              Open in Google Maps
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,28 @@
+baseURL = "https://aadhyaabode.com/"
+languageCode = "en-us"
+title = "Aadhya Abode | Kanyakumari"
+theme = ""
+
+[params.brand]
+name    = "Aadhya Abode"
+tagline = "Coastal luxury stays in Kanyakumari"
+
+[params.location]
+city    = "Kanyakumari"
+state   = "Tamil Nadu"
+country = "India"
+
+[params.contact]
+phone_display = "+91 80151 60563"
+phone_link    = "tel:+918015160563"
+whatsapp_number  = "8015160563"
+whatsapp_message = "Hi Aadhya Abode, I'd like to check availability"
+email           = "stay@aadhyaabode.com"
+
+[params.links]
+whatsapp_booking = "https://wa.me/8015160563?text=Hi%20Aadhya%20Abode,%20I'd%20like%20to%20check%20availability"
+maps_url         = "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA"
+
+[params.footer]
+instagram = "https://instagram.com/aadhyaabode"
+facebook  = "https://facebook.com/aadhyaabode"
