@@ -15,6 +15,17 @@
 
   <style>
     html, body { margin: 0; padding: 0; }
+
+    /*
+     * scroll-behavior and scroll-padding-top MUST be on <html>, not <body>.
+     * scroll-padding-top = header height (h-28 = 7rem = 112px) so anchor
+     * targets are never hidden under the fixed header.
+     */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 7rem; /* matches h-28 header */
+    }
+
     body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
 
     /* Hero fills full viewport height minus sticky header */
@@ -23,7 +34,7 @@
       min-height: 480px;
     }
 
-    /* Transparent top → readable dark bottom — same on mobile & desktop */
+    /* Transparent top → readable dark bottom */
     .hero-overlay {
       background: linear-gradient(
         to bottom,
@@ -53,17 +64,16 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 scroll-smooth">
+<body class="bg-slate-50 text-slate-900">
   {{ partial "header.html" . }}
 
-  <!-- Non-hero sections use scroll-mt-20 on the section element for anchor offset -->
   <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
 
   {{ partial "footer.html" . }}
 
-  <!-- Floating WhatsApp FAB — rendered at body level so z-index is never clipped by header stacking context -->
+  <!-- Floating WhatsApp FAB -->
   <a href="{{ .Site.Params.links.whatsapp_booking }}"
      target="_blank"
      rel="noopener noreferrer"
