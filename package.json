@@ -4,12 +4,13 @@
   "description": "Aadhya Abode — Hugo static site",
   "private": true,
   "scripts": {
-    "css:watch": "npx tailwindcss -i ./assets/css/main.css -o ./static/css/tailwind.css --watch",
-    "css:build": "npx tailwindcss -i ./assets/css/main.css -o ./static/css/tailwind.css --minify",
+    "css:watch": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/tailwind.css --watch",
+    "css:build": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/tailwind.css --minify",
     "dev": "npm run css:build && hugo server",
     "build": "npm run css:build && hugo --minify"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
     "tailwindcss": "^4.1.0"
   }
 }
