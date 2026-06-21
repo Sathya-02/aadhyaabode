@@ -1,34 +1,19 @@
 /*
   Tailwind CSS v4 entry point.
-  The Tailwind CLI reads this file and outputs static/css/tailwind.css.
-
-  Run locally:
-    npm run css:watch   (rebuilds on every template change)
-    npm run css:build   (one-shot minified output)
-
-  In CI / production, the GitHub Actions workflow runs:
-    npm ci && npm run css:build && hugo --minify
+  Run: npm run css:watch  (dev)  |  npm run css:build  (production)
 */
 @import "tailwindcss";
 
-/* ── Custom base styles (previously inlined in baseof.html) ── */
+/* ── Base ───────────────────────────────────────────────────── */
+html, body { margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Hero: fills full viewport height minus sticky header */
+/* ── Hero ──────────────────────────────────────────────────── */
 .hero-fullscreen {
   height: calc(100dvh - 7rem);
   min-height: 480px;
 }
 
-/* Gradient overlay on hero images */
 .hero-overlay {
   background: linear-gradient(
     to bottom,
@@ -38,12 +23,10 @@ body {
   );
 }
 
-/* Cross-fade transition for hero slides */
 .hero-slide {
   transition: opacity 0.8s ease-in-out;
 }
 
-/* Bottom dot indicators */
 .hero-dot {
   width: 8px;
   height: 8px;
@@ -56,4 +39,26 @@ body {
 .hero-dot.active {
   background: rgba(255, 255, 255, 0.95);
   width: 22px;
+}
+
+/* ── Testimonials marquee ────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.testimonial-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-marquee {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    padding: 0 1rem;
+  }
 }

@@ -25,9 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slides[current].classList.remove('opacity-100');
       slides[current].classList.add('opacity-0');
       dots[current].classList.remove('active');
-
       current = (idx + slides.length) % slides.length;
-
       slides[current].classList.remove('opacity-0');
       slides[current].classList.add('opacity-100');
       dots[current].classList.add('active');
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       startTimer();
     }
 
-    // Dot click
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         goTo(parseInt(dot.dataset.dot, 10));
@@ -50,39 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Left / Right arrow buttons
     const prevBtn = document.getElementById('hero-prev');
     const nextBtn = document.getElementById('hero-next');
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        goTo(current - 1);
-        resetTimer();
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        goTo(current + 1);
-        resetTimer();
-      });
-    }
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
 
-    // Touch swipe support
     let touchStartX = 0;
-    carousel.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     carousel.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 40) {
-        goTo(dx < 0 ? current + 1 : current - 1);
-        resetTimer();
-      }
+      if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetTimer(); }
     }, { passive: true });
 
-    // Pause on hover (desktop)
     carousel.addEventListener('mouseenter', () => clearInterval(timer));
     carousel.addEventListener('mouseleave', startTimer);
-
     startTimer();
   }
 
@@ -140,5 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
       lightboxImg.src = '';
     }
   });
+
+  // ─── Testimonials marquee ──────────────────────────────────────────────────
+  const marqueeTrack = document.getElementById('testimonial-track');
+  if (marqueeTrack) {
+    // Pause CSS animation on hover / focus-within
+    marqueeTrack.addEventListener('mouseenter', () => {
+      marqueeTrack.style.animationPlayState = 'paused';
+    });
+    marqueeTrack.addEventListener('mouseleave', () => {
+      marqueeTrack.style.animationPlayState = 'running';
+    });
+    marqueeTrack.addEventListener('focusin', () => {
+      marqueeTrack.style.animationPlayState = 'paused';
+    });
+    marqueeTrack.addEventListener('focusout', () => {
+      marqueeTrack.style.animationPlayState = 'running';
+    });
+  }
 
 });

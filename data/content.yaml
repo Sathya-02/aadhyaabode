@@ -50,6 +50,47 @@ amenities:
     - title: "Local Exploration"
       text: "Curated itineraries for sunrise points, beaches, and temples."
 
+testimonials:
+  heading: "What Our Guests Say"
+  description: "Verified reviews from Airbnb and Google — straight from guests who stayed with us."
+  reviews:
+    - platform: "Airbnb"
+      author: "Priya M."
+      location: "Chennai, Tamil Nadu"
+      rating: 5
+      date: "March 2025"
+      text: "Absolutely loved our stay! The apartment was spotlessly clean, well-furnished, and felt like a home away from home. The host was super responsive and arranged a cab for us at short notice. Highly recommend for a Kanyakumari trip!"
+    - platform: "Google"
+      author: "Ramesh K."
+      location: "Bengaluru, Karnataka"
+      rating: 5
+      date: "January 2025"
+      text: "One of the best stays we've had as a family. The 2BHK was spacious, the kitchen was fully stocked, and the location was perfect — just minutes from the main viewpoints. Will definitely book again!"
+    - platform: "Airbnb"
+      author: "Ananya & Vikram"
+      location: "Hyderabad, Telangana"
+      rating: 5
+      date: "December 2024"
+      text: "We celebrated our anniversary here and it was magical. The host had decorated the room beautifully on request. Views from the balcony at sunset were breathtaking. Everything was as described, no surprises."
+    - platform: "Google"
+      author: "Suresh T."
+      location: "Coimbatore, Tamil Nadu"
+      rating: 5
+      date: "February 2025"
+      text: "Brought my parents for a trip and they were thoroughly impressed. The place is very neat, AC was great, power backup worked flawlessly. The host helped us plan the local sightseeing as well. 5 stars without hesitation."
+    - platform: "Airbnb"
+      author: "Meena R."
+      location: "Mumbai, Maharashtra"
+      rating: 5
+      date: "November 2024"
+      text: "The property photos don't do it justice — it looks even better in person. Very quiet neighbourhood, peaceful nights, and woke up to an ocean breeze every morning. The kitchen was a bonus for our group trip."
+    - platform: "Google"
+      author: "Dinesh & Family"
+      location: "Madurai, Tamil Nadu"
+      rating: 5
+      date: "April 2025"
+      text: "Stayed here for 4 nights with family during the summer vacation. Kids loved the space, adults loved the comfort. Checkout was smooth and the host was friendly throughout. Perfect balance of luxury and affordability."
+
 policies:
   heading: "Booking & Payment Policies"
   description: "Transparent, guest-first policies so you always know what to expect."
@@ -72,7 +113,7 @@ policies:
 
 location:
   heading: "Location & Nearby Highlights"
-  description: "Stay minutes away from Kanyakumari’s iconic Vivekananda Rock, sunrise and sunset points, with easy access to major landmarks."
+  description: "Stay minutes away from Kanyakumari's iconic Vivekananda Rock, sunrise and sunset points, with easy access to major landmarks."
   bullets:
     - "5 minutes to Vivekananda Rock Memorial & Thiruvalluvar Statue."
     - "Easy access to sunset viewpoints along the coastline."
