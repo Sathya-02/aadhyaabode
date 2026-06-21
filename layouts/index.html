@@ -2,292 +2,71 @@
 
 {{ define "main" }}
 
-<!-- Hero — full viewport carousel -->
+<!-- Hero — flush below sticky header, fills full visible viewport -->
 <section id="hero" class="relative">
   {{ $hero := .Site.Data.content.hero }}
-
-  {{ $heroImages := slice
-    "/images/hero/hero-1.jpg"
-    "/images/hero/hero-2.jpg"
-    "/images/hero/hero-3.jpg"
-  }}
-
-  <div class="relative hero-fullscreen overflow-hidden" id="hero-carousel">
-
-    <!-- Slides: stacked absolutely, JS controls opacity + zIndex via inline style -->
-    {{ range $i, $img := $heroImages }}
-    <div class="hero-slide absolute inset-0 pointer-events-none"
-         style="transition:opacity 0.8s ease-in-out; opacity:{{ if eq $i 0 }}1{{ else }}0{{ end }}; z-index:{{ if eq $i 0 }}1{{ else }}0{{ end }};">
+  <div class="relative hero-fullscreen overflow-hidden">
+    <div class="absolute inset-0">
+      <!-- Desktop: horizontal scroll carousel -->
+      <div class="hidden sm:flex h-full w-full overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div class="flex h-full w-full">
+          {{ range $heroIndex, $img := slice
+            "/images/hero/hero-1.jpg"
+            "/images/hero/hero-2.jpg"
+            "/images/hero/hero-3.jpg"
+          }}
+          <div class="relative h-full w-full flex-shrink-0 snap-start">
+            <img
+              src="{{ $img }}"
+              alt="Kanyakumari coastal view {{ add $heroIndex 1 }}"
+              class="h-full w-full object-cover"
+              loading="{{ if eq $heroIndex 0 }}eager{{ else }}lazy{{ end }}"
+            />
+            <div class="absolute inset-0 hero-overlay"></div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      <!-- Mobile: single image -->
       <img
-        src="{{ $img }}"
-        alt="Kanyakumari coastal view {{ add $i 1 }}"
-        class="h-full w-full object-cover object-center"
-        loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}"
+        src="/images/gallery/gallery-9.jpg"
+        alt="Aadhya Abode in Kanyakumari"
+        class="sm:hidden h-full w-full object-cover"
+        loading="eager"
       />
-      <div class="absolute inset-0 hero-overlay pointer-events-none"></div>
+      <div class="sm:hidden absolute inset-0 hero-overlay"></div>
     </div>
-    {{ end }}
 
-    <!-- Hero text — z-[5], sits above slides but below controls -->
-    <div class="absolute inset-0 flex items-center" style="z-index:5;">
+    <!-- Hero text content — vertically centred -->
+    <div class="relative h-full flex items-center">
       <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
           <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-amber-300 font-medium">
-            {{ $hero.tag }}
+            {{ if $hero }}{{ $hero.location_badge }}{{ else }}Kanyakumari • Coastal Luxury Stays{{ end }}
           </p>
-          <h1 class="font-semibold lg:font-extrabold leading-tight text-white text-[28px] sm:text-[34px] lg:text-[46px]">
-            {{ $hero.title }}
+          <h1 class="font-semibold lg:font-extrabold leading-tight text-white text-[28px] sm:text-[36px] lg:text-[46px]">
+            {{ if $hero }}{{ $hero.headline }}{{ else }}Where Coastal Serenity Meets Luxury Comfort{{ end }}
           </h1>
-          <p class="text-[13px] sm:text-[14px] lg:text-[15px] text-slate-100/95 font-normal">
-            {{ $hero.subtitle }}
+          <p class="text-sm sm:text-base text-slate-200 max-w-lg">
+            {{ if $hero }}{{ $hero.subheadline }}{{ else }}Fully furnished luxury apartments and villas for short-term stays in Kanyakumari.{{ end }}
           </p>
-          <div class="flex flex-wrap items-center gap-3 pt-3">
+          <div class="flex flex-wrap items-center gap-3 pt-2">
             <a href="#abodes"
-               class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-2.5 text-[13px] font-semibold text-slate-900 shadow-lg shadow-amber-500/50 hover:bg-amber-300 transition-transform transform hover:-translate-y-0.5">
+               class="inline-flex items-center justify-center rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-amber-300 transition">
               Check Availability
             </a>
             <a href="{{ .Site.Params.links.whatsapp_booking }}"
                target="_blank"
                rel="noopener noreferrer"
-               class="inline-flex items-center justify-center rounded-full border border-teal-200/80 bg-slate-900/40 px-6 py-2.5 text-[13px] font-medium text-slate-50 hover:bg-slate-900/65 hover:border-teal-100 transition-transform transform hover:-translate-y-0.5">
+               class="inline-flex items-center justify-center rounded-full border border-slate-200/60 bg-slate-900/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-900/60 transition">
               Chat with Host
             </a>
           </div>
-          <p class="text-[11px] text-slate-100/90 font-normal">
-            {{ $hero.note }}
+          <p class="text-[11px] text-slate-200/80">
+            Instant WhatsApp confirmations • Trusted host • Flexible short-term stays
           </p>
         </div>
       </div>
     </div>
-
-    <!-- Prev arrow (desktop) — z-[10] -->
-    <button id="hero-prev"
-            class="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center h-10 w-10 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            style="z-index:10;"
-            aria-label="Previous slide">
-      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-    </button>
-
-    <!-- Next arrow (desktop) — z-[10] -->
-    <button id="hero-next"
-            class="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center h-10 w-10 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            style="z-index:10;"
-            aria-label="Next slide">
-      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-    </button>
-
-    <!-- Dot indicators — z-[10], always above text layer -->
-    <div class="absolute bottom-5 left-0 right-0 flex justify-center items-center gap-2" style="z-index:10;" id="hero-dots">
-      {{ range $i, $img := $heroImages }}
-      <button
-        class="hero-dot {{ if eq $i 0 }}active{{ end }}"
-        data-dot="{{ $i }}"
-        aria-label="Go to slide {{ add $i 1 }}"
-      ></button>
-      {{ end }}
-    </div>
-
   </div>
 </section>
-
-<!-- Gallery section -->
-<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-20">
-  {{ $gallery := .Site.Data.content.gallery }}
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $gallery.heading }}</h3>
-      <p class="mt-1 text-sm text-slate-600 max-w-xl mx-auto">{{ $gallery.description }}</p>
-    </div>
-
-    <div class="group relative">
-      <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {{ range $gallery.images }}
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="{{ .src }}" data-gallery-alt="{{ .alt }}">
-          <img src="{{ .src }}" alt="{{ .alt }}" class="h-full w-full object-cover" loading="lazy" />
-        </figure>
-        {{ end }}
-      </div>
-      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
-      </div>
-      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8594;</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox modal -->
-  <div id="gallery-lightbox" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/80 p-4">
-    <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">
-      &#x2715;
-    </button>
-    <div class="max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
-      <img id="gallery-lightbox-image" src="" alt="" class="max-h-full w-auto rounded-2xl shadow-2xl" />
-    </div>
-  </div>
-</section>
-
-<!-- Our Abodes -->
-<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
-  {{ $abodesSection := .Site.Data.content.abodes_section }}
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">
-        {{ $abodesSection.heading }}
-      </h3>
-      <p class="text-sm text-slate-600">
-        {{ $abodesSection.description }}
-      </p>
-      <div class="flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs pt-2">
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium"
-                data-filter="all">All</button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="2bhk">Luxury 2BHK</button>
-      </div>
-    </div>
-
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="abode-grid">
-      {{ range .Site.Data.abodes }}
-      {{ $abode := . }}
-      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
-               data-type="{{ $abode.type }}">
-        <div class="relative">
-          <div class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory h-48 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <img
-              src="{{ $abode.image }}"
-              alt="{{ $abode.alt }}"
-              class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
-              loading="lazy"
-            />
-            {{ if $abode.gallery }}
-              {{ range $img := $abode.gallery }}
-              <img
-                src="{{ $img }}"
-                alt="{{ $abode.title }} gallery image"
-                class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
-                loading="lazy"
-              />
-              {{ end }}
-            {{ end }}
-          </div>
-          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/85 px-3 py-1 text-[11px] font-semibold text-amber-300">
-            {{ $abode.badge }}
-          </span>
-        </div>
-        <div class="flex-1 flex flex-col p-4 space-y-3">
-          <p class="text-sm text-slate-700 font-medium">{{ $abode.tagline }}</p>
-          <ul class="text-xs text-slate-600 space-y-1">
-            {{ range $abode.bullets }}
-            <li>• {{ . }}</li>
-            {{ end }}
-          </ul>
-          <div class="mt-3 flex items-center justify-between text-[11px] text-slate-500">
-            <span class="font-medium text-slate-700">{{ $abode.suitability }}</span>
-            <span>{{ $abode.occupancy }}</span>
-          </div>
-        </div>
-        <div class="px-4 pb-4">
-          <a href="{{ $.Site.Params.links.whatsapp_booking }}"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-700 transition-transform transform hover:-translate-y-0.5">
-            Book via WhatsApp
-          </a>
-        </div>
-      </article>
-      {{ end }}
-    </div>
-  </div>
-</section>
-
-<!-- Amenities / Value Proposition -->
-<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-20">
-  {{ $amenities := .Site.Data.content.amenities }}
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $amenities.heading }}</h3>
-      <p class="mt-2 text-sm text-slate-600">{{ $amenities.description }}</p>
-    </div>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {{ range $amenities.items }}
-      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-        <h3 class="text-sm font-semibold text-slate-900 mb-1">{{ .title }}</h3>
-        <p class="text-xs text-slate-600">{{ .text }}</p>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-
-<!-- Booking & Payment Policies -->
-<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-20">
-  {{ $policies := .Site.Data.content.policies }}
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $policies.heading }}</h3>
-      <p class="mt-2 text-sm text-slate-600">{{ $policies.description }}</p>
-    </div>
-    <div class="grid gap-6 md:grid-cols-3 text-sm text-slate-600">
-      {{ range $policies.columns }}
-      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-        <h3 class="text-sm font-semibold text-slate-900 mb-2">{{ .title }}</h3>
-        <ul class="space-y-1 text-xs text-left">
-          {{ range .bullets }}
-          <li>• {{ . }}</li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-
-<!-- Location & Map / Trust Triggers -->
-<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
-  {{ $location := .Site.Data.content.location }}
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">{{ $location.heading }}</h3>
-      <p class="text-sm text-slate-600">{{ $location.description }}</p>
-    </div>
-    <div class="grid gap-8 lg:grid-cols-2 items-start">
-      <div class="space-y-4">
-        <ul class="space-y-1 text-sm text-slate-700">
-          {{ range $location.bullets }}
-          <li>• {{ . }}</li>
-          {{ end }}
-        </ul>
-        <div class="mt-4 space-y-3 text-xs text-slate-600">
-          {{ range $location.trusts }}
-          <div class="rounded-xl bg-white border border-slate-100 px-4 py-3">
-            <p class="font-semibold text-slate-900 text-sm">{{ .title }}</p>
-            <p class="mt-1">{{ .text }}</p>
-          </div>
-          {{ end }}
-        </div>
-      </div>
-      <div class="rounded-2xl bg-white border border-slate-100 p-3">
-        <div class="aspect-video rounded-xl overflow-hidden bg-slate-200">
-          <img
-            src="/images/map-aadhya-abode.png"
-            alt="Map showing the location of Aadhya Abode in Kanyakumari"
-            class="h-full w-full object-cover"
-            loading="lazy"
-            width="1200"
-            height="675" />
-        </div>
-        <p class="mt-3 text-xs text-slate-500 text-center">
-          View the live location on Google Maps:
-          <a href="{{ .Site.Params.links.maps_url }}"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="text-teal-700 underline">
-            Open in Google Maps
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-{{ end }}
