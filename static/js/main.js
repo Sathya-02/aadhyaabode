@@ -1,119 +1,144 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu toggle
+
+  // ─── Mobile menu toggle ──────────────────────────────────────────────────
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-
   if (toggleBtn && mobileMenu) {
     toggleBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
-
-    // Close menu on link click (mobile)
     mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
   }
 
-  // Property filter
-  const filterPills = document.querySelectorAll('.filter-pill');
-  const cards = document.querySelectorAll('.abode-card');
+  // ─── Hero auto-slide carousel ────────────────────────────────────────────
+  const carousel   = document.getElementById('hero-carousel');
+  const dotsWrap   = document.getElementById('hero-dots');
+  if (carousel && dotsWrap) {
+    const slides   = Array.from(carousel.querySelectorAll('[data-slide]'));
+    const dots     = Array.from(dotsWrap.querySelectorAll('[data-dot]'));
+    let current    = 0;
+    let timer      = null;
 
+    function goTo(idx) {
+      slides[current].classList.remove('opacity-100');
+      slides[current].classList.add('opacity-0');
+      dots[current].classList.remove('active');
+
+      current = (idx + slides.length) % slides.length;
+
+      slides[current].classList.remove('opacity-0');
+      slides[current].classList.add('opacity-100');
+      dots[current].classList.add('active');
+    }
+
+    function startTimer() {
+      timer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      startTimer();
+    }
+
+    // Dot click
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goTo(parseInt(dot.dataset.dot, 10));
+        resetTimer();
+      });
+    });
+
+    // Left / Right arrow buttons
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goTo(current - 1);
+        resetTimer();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goTo(current + 1);
+        resetTimer();
+      });
+    }
+
+    // Touch swipe support
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        goTo(dx < 0 ? current + 1 : current - 1);
+        resetTimer();
+      }
+    }, { passive: true });
+
+    // Pause on hover (desktop)
+    carousel.addEventListener('mouseenter', () => clearInterval(timer));
+    carousel.addEventListener('mouseleave', startTimer);
+
+    startTimer();
+  }
+
+  // ─── Property filter ─────────────────────────────────────────────────────
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const cards       = document.querySelectorAll('.abode-card');
   if (filterPills.length && cards.length) {
     filterPills.forEach(pill => {
       pill.addEventListener('click', () => {
-        const filter = pill.getAttribute('data-filter');
-
-        // Active style
+        const filter = pill.dataset.filter;
         filterPills.forEach(p => {
           p.classList.remove('bg-teal-600', 'text-white', 'border-teal-600');
           p.classList.add('border-slate-300', 'text-slate-700');
         });
         pill.classList.add('bg-teal-600', 'text-white', 'border-teal-600');
         pill.classList.remove('border-slate-300', 'text-slate-700');
-
-        // Filter cards
         cards.forEach(card => {
-          const type = card.getAttribute('data-type');
-          const show = filter === 'all' || filter === type;
-          card.classList.toggle('hidden', !show);
+          card.classList.toggle('hidden', filter !== 'all' && card.dataset.type !== filter);
         });
       });
     });
   }
 
-  // Gallery arrows & lightbox
-  const galleryTrack = document.querySelector('.gallery-track');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const leftArrows = document.querySelectorAll('.gallery-arrow-left');
-  const rightArrows = document.querySelectorAll('.gallery-arrow-right');
+  // ─── Gallery scroll arrows + lightbox ────────────────────────────────────
+  const track     = document.querySelector('.gallery-track');
+  const leftArrow = document.querySelector('.gallery-arrow-left');
+  const rightArrow= document.querySelector('.gallery-arrow-right');
+  if (track && leftArrow && rightArrow) {
+    const scrollAmt = 340;
+    leftArrow.addEventListener('click',  () => track.scrollBy({ left: -scrollAmt, behavior: 'smooth' }));
+    rightArrow.addEventListener('click', () => track.scrollBy({ left:  scrollAmt, behavior: 'smooth' }));
+  }
 
-  if (galleryTrack && galleryItems.length) {
-    const scrollByAmount = () => {
-      const firstItem = galleryItems[0];
-      const itemWidth = firstItem.getBoundingClientRect().width;
-      // scroll roughly 1.5 cards per click for overlap
-      return itemWidth * 1.5;
-    };
-
-    leftArrows.forEach(btn => {
-      btn.addEventListener('click', () => {
-        galleryTrack.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
-      });
-    });
-
-    rightArrows.forEach(btn => {
-      btn.addEventListener('click', () => {
-        galleryTrack.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
-      });
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('gallery-lightbox');
-    const lightboxImg = document.getElementById('gallery-lightbox-image');
-    const closeBtn = lightbox ? lightbox.querySelector('button') : null;
-
-    const openLightbox = (src, alt) => {
+  const lightbox      = document.getElementById('gallery-lightbox');
+  const lightboxImg   = document.getElementById('gallery-lightbox-image');
+  const lightboxClose = lightbox && lightbox.querySelector('button');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
       if (!lightbox || !lightboxImg) return;
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
+      lightboxImg.src = item.dataset.galleryImage || '';
+      lightboxImg.alt = item.dataset.galleryAlt   || '';
       lightbox.classList.remove('hidden');
       lightbox.classList.add('flex');
-    };
-
-    const closeLightbox = () => {
-      if (!lightbox || !lightboxImg) return;
+    });
+  });
+  lightboxClose && lightboxClose.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    lightboxImg.src = '';
+  });
+  lightbox && lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
       lightbox.classList.add('hidden');
       lightbox.classList.remove('flex');
       lightboxImg.src = '';
-      lightboxImg.alt = '';
-    };
-
-    galleryItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const src = item.getAttribute('data-gallery-image');
-        const alt = item.getAttribute('data-gallery-alt');
-        if (src) openLightbox(src, alt);
-      });
-    });
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeLightbox);
     }
+  });
 
-    if (lightbox) {
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-          closeLightbox();
-        }
-      });
-    }
-  }
 });
