@@ -3,13 +3,12 @@
 <section id="testimonials" class="py-10 sm:py-14 bg-slate-50 overflow-hidden scroll-mt-20">
 
   <style>
-    /* Marquee animation */
     @keyframes marquee-scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
     .testimonial-marquee {
-      animation: marquee-scroll 40s linear infinite;
+      animation: marquee-scroll 48s linear infinite;
     }
     .testimonial-marquee:hover,
     .testimonial-marquee:focus-within {
@@ -20,20 +19,42 @@
         animation: none;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
       }
     }
-    .testimonial-card {
-      transition: transform 180ms cubic-bezier(0.16,1,0.3,1),
-                  box-shadow 180ms cubic-bezier(0.16,1,0.3,1);
+    .review-screenshot-card {
+      transition: transform 200ms cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 200ms cubic-bezier(0.16,1,0.3,1);
+      cursor: zoom-in;
     }
-    .testimonial-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px oklch(0.2 0.01 80 / 0.10);
+    .review-screenshot-card:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 12px 32px oklch(0.2 0.01 80 / 0.13);
+    }
+    /* Lightbox */
+    #review-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0,0,0,0.82);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #review-lightbox.open {
+      display: flex;
+    }
+    #review-lightbox img {
+      max-height: 90vh;
+      max-width: min(680px, 100%);
+      border-radius: 1rem;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      object-fit: contain;
     }
   </style>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
     <!-- Section header -->
     <div class="text-center max-w-2xl mx-auto mb-8">
       <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $t.heading }}</h3>
@@ -42,10 +63,8 @@
       <!-- Aggregate rating badges -->
       {{ with $t.summary_stats }}
       <div class="mt-5 flex items-center justify-center gap-3 flex-wrap">
-
         <!-- Airbnb aggregate -->
         <div class="inline-flex items-center gap-2 rounded-xl border border-rose-200 bg-white px-4 py-2 shadow-sm">
-          <!-- Airbnb icon -->
           <svg class="h-4 w-4 text-rose-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 16.515c-.32.77-.96 1.29-1.77 1.44-.15.03-.3.04-.45.04-.63 0-1.23-.21-1.8-.63-.36-.27-.75-.62-1.42-1.29-.67.67-1.06 1.02-1.42 1.29-.57.42-1.17.63-1.8.63-.15 0-.3-.01-.45-.04-.81-.15-1.45-.67-1.77-1.44-.34-.82-.18-1.74.42-2.52l3.87-5.02c.18-.24.45-.37.73-.37s.55.13.73.37l3.87 5.02c.6.78.76 1.7.42 2.52z"/>
           </svg>
@@ -54,13 +73,9 @@
             <p class="text-sm font-bold text-slate-900 leading-tight">★ {{ .airbnb_rating }}</p>
           </div>
         </div>
-
-        <!-- Divider dot -->
         <span class="text-slate-300 text-lg" aria-hidden="true">·</span>
-
         <!-- Google aggregate -->
         <div class="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-4 py-2 shadow-sm">
-          <!-- Google G icon -->
           <svg class="h-4 w-4 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
           </svg>
@@ -69,10 +84,7 @@
             <p class="text-sm font-bold text-slate-900 leading-tight">★ {{ .google_rating }}</p>
           </div>
         </div>
-
-        <!-- Divider dot -->
         <span class="text-slate-300 text-lg" aria-hidden="true">·</span>
-
         <!-- Total reviews count -->
         <div class="inline-flex items-center gap-1.5 rounded-xl border border-teal-200 bg-white px-4 py-2 shadow-sm">
           <svg class="h-4 w-4 text-teal-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -88,10 +100,13 @@
         </div>
       </div>
       {{ end }}
+
+      <!-- Instruction nudge -->
+      <p class="mt-4 text-[11px] text-slate-400">Click any screenshot to expand &middot; Tap to zoom on mobile</p>
     </div>
   </div>
 
-  <!-- Marquee track (infinite scroll, pause on hover) -->
+  <!-- Marquee strip -->
   <div class="relative mt-2">
     <!-- Left fade -->
     <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-28"
@@ -101,69 +116,155 @@
          style="background: linear-gradient(to left, rgb(248 250 252), transparent);"></div>
 
     <div class="testimonial-marquee flex gap-5 w-max px-6" id="testimonial-track">
-      <!-- Cards rendered twice for seamless loop -->
+      <!-- Render twice for seamless infinite loop -->
       {{ range seq 2 }}
         {{ range $t.reviews }}
-        <article class="testimonial-card flex-shrink-0 w-72 sm:w-80 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm flex flex-col gap-3">
+        <div class="review-screenshot-card flex-shrink-0 w-64 sm:w-72 rounded-2xl overflow-hidden shadow-sm border border-slate-100 bg-white relative"
+             data-src="{{ .screenshot }}"
+             data-alt="{{ .alt }}"
+             role="button"
+             tabindex="0"
+             aria-label="View {{ .platform }} review screenshot">
 
-          <!-- Platform + Rating row -->
-          <div class="flex items-center justify-between">
+          <!-- Screenshot image -->
+          {{ if .screenshot }}
+          <img
+            src="{{ .screenshot }}"
+            alt="{{ .alt }}"
+            class="w-full h-auto object-cover block"
+            loading="lazy"
+            width="540"
+            height="360"
+          />
+          {{ else }}
+          <!-- Placeholder shown until screenshot is dropped in -->
+          <div class="w-full h-48 bg-slate-100 flex flex-col items-center justify-center gap-2 text-slate-400">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <p class="text-xs font-medium">Add screenshot</p>
+            <p class="text-[10px]">/images/reviews/{{ .filename }}</p>
+          </div>
+          {{ end }}
+
+          <!-- Platform badge overlay (bottom-left) -->
+          <div class="absolute bottom-0 left-0 right-0 flex items-center justify-between px-3 py-2"
+               style="background: linear-gradient(to top, rgba(15,23,42,0.72), transparent);">
             {{ if eq .platform "Airbnb" }}
-            <span class="inline-flex items-center gap-1.5 rounded-full border border-rose-100 bg-rose-50 px-2.5 py-1 text-[11px] font-semibold text-rose-500">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-white">
               <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 16.515c-.32.77-.96 1.29-1.77 1.44-.15.03-.3.04-.45.04-.63 0-1.23-.21-1.8-.63-.36-.27-.75-.62-1.42-1.29-.67.67-1.06 1.02-1.42 1.29-.57.42-1.17.63-1.8.63-.15 0-.3-.01-.45-.04-.81-.15-1.45-.67-1.77-1.44-.34-.82-.18-1.74.42-2.52l3.87-5.02c.18-.24.45-.37.73-.37s.55.13.73.37l3.87 5.02c.6.78.76 1.7.42 2.52z"/>
               </svg>
-              Airbnb
+              Airbnb Review
             </span>
             {{ else }}
-            <span class="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-500">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-white">
               <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
               </svg>
-              Google
+              Google Review
             </span>
             {{ end }}
 
-            <!-- Star rating -->
-            <div class="flex gap-0.5" aria-label="{{ .rating }} out of 5 stars">
-              {{ range seq .rating }}
-              <svg class="h-3.5 w-3.5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            <!-- Verified chip -->
+            <span class="inline-flex items-center gap-0.5 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
+              <svg class="h-2.5 w-2.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
               </svg>
-              {{ end }}
-            </div>
+              Verified
+            </span>
           </div>
 
-          <!-- Review text -->
-          <p class="text-xs text-slate-600 leading-relaxed flex-1">&ldquo;{{ .text }}&rdquo;</p>
-
-          <!-- Author chip -->
-          <div class="flex items-center justify-between pt-2 border-t border-slate-100">
-            <div class="flex items-center gap-2">
-              <!-- Avatar initials -->
-              <span class="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-teal-100 text-[10px] font-bold text-teal-700">
-                {{ slice .author 0 1 }}
-              </span>
-              <div class="min-w-0">
-                <p class="text-[11px] font-semibold text-slate-800 truncate">{{ .author }}</p>
-                <p class="text-[10px] text-slate-500 truncate">{{ .location }}</p>
-              </div>
-            </div>
-            <!-- Verified badge + date -->
-            <div class="text-right flex-shrink-0">
-              <p class="text-[10px] text-slate-400">{{ .date }}</p>
-              <span class="inline-flex items-center gap-0.5 text-[9px] font-medium text-teal-600">
-                <svg class="h-2.5 w-2.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                Verified
-              </span>
-            </div>
-          </div>
-        </article>
+          <!-- Optional: link to original review -->
+          {{ if .link }}
+          <a href="{{ .link }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="absolute top-2 right-2 inline-flex items-center justify-center h-6 w-6 rounded-full bg-white/80 text-slate-600 hover:bg-white shadow-sm backdrop-blur-sm"
+             aria-label="Open original review on {{ .platform }}"
+             title="View on {{ .platform }}"
+             onclick="event.stopPropagation();">
+            <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          {{ end }}
+        </div>
         {{ end }}
       {{ end }}
     </div>
   </div>
+
+  <!-- Lightbox modal -->
+  <div id="review-lightbox" role="dialog" aria-modal="true" aria-label="Review screenshot">
+    <button
+      id="review-lightbox-close"
+      type="button"
+      class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+      aria-label="Close">
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <img id="review-lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    (function () {
+      var lightbox = document.getElementById('review-lightbox');
+      var lbImg    = document.getElementById('review-lightbox-img');
+      var lbClose  = document.getElementById('review-lightbox-close');
+
+      function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      // Open on card click / enter
+      document.querySelectorAll('.review-screenshot-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var src = card.dataset.src;
+          var alt = card.dataset.alt;
+          if (src) openLightbox(src, alt);
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            var src = card.dataset.src;
+            var alt = card.dataset.alt;
+            if (src) openLightbox(src, alt);
+          }
+        });
+      });
+
+      // Close on button
+      lbClose && lbClose.addEventListener('click', closeLightbox);
+
+      // Close on backdrop click
+      lightbox && lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      });
+    })();
+  </script>
+
 </section>
 {{ end }}
