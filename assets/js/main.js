@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ─── Hero auto-slide carousel ────────────────────────────────────────────
-  const carousel   = document.getElementById('hero-carousel');
-  const dotsWrap   = document.getElementById('hero-dots');
+  const carousel = document.getElementById('hero-carousel');
+  const dotsWrap = document.getElementById('hero-dots');
   if (carousel && dotsWrap) {
-    const slides   = Array.from(carousel.querySelectorAll('[data-slide]'));
-    const dots     = Array.from(dotsWrap.querySelectorAll('[data-dot]'));
-    let current    = 0;
-    let timer      = null;
+    const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+    const dots   = Array.from(dotsWrap.querySelectorAll('[data-dot]'));
+    let current  = 0;
+    let timer    = null;
 
     function goTo(idx) {
       slides[current].classList.remove('opacity-100');
@@ -50,14 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Touch swipe support
+    // Touch swipe — only intercept HORIZONTAL swipes for slide changes.
+    // Vertical swipes are intentionally ignored so native page scroll works.
     let touchStartX = 0;
+    let touchStartY = 0;
+
     carousel.addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
     }, { passive: true });
+
     carousel.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 40) {
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      // Only treat as a slide swipe when horizontal motion dominates
+      // AND exceeds the 40px threshold. Otherwise let the browser scroll.
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
         goTo(dx < 0 ? current + 1 : current - 1);
         resetTimer();
       }
@@ -91,13 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ─── Gallery scroll arrows + lightbox ────────────────────────────────────
-  const track     = document.querySelector('.gallery-track');
-  const leftArrow = document.querySelector('.gallery-arrow-left');
-  const rightArrow= document.querySelector('.gallery-arrow-right');
+  const track      = document.querySelector('.gallery-track');
+  const leftArrow  = document.querySelector('.gallery-arrow-left');
+  const rightArrow = document.querySelector('.gallery-arrow-right');
   if (track && leftArrow && rightArrow) {
-    const scrollBy = 340;
-    leftArrow.addEventListener('click',  () => track.scrollBy({ left: -scrollBy, behavior: 'smooth' }));
-    rightArrow.addEventListener('click', () => track.scrollBy({ left:  scrollBy, behavior: 'smooth' }));
+    const scrollAmount = 340;
+    leftArrow.addEventListener('click',  () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+    rightArrow.addEventListener('click', () => track.scrollBy({ left:  scrollAmount, behavior: 'smooth' }));
   }
 
   const lightbox      = document.getElementById('gallery-lightbox');
