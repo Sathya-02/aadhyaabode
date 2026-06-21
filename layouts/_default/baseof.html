@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-padding-top: 7rem;">
 <head>
   <meta charset="UTF-8" />
   <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
@@ -15,7 +15,8 @@
 
   <style>
     html, body { margin: 0; padding: 0; }
-    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+    /* scroll-padding-top set inline above to offset fixed h-28 (7rem) header */
+    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; scroll-behavior: smooth; }
 
     /* Hero fills full viewport height minus sticky header */
     .hero-fullscreen {
@@ -46,6 +47,8 @@
       background: rgba(255,255,255,0.45);
       transition: background 0.3s, width 0.3s;
       cursor: pointer;
+      border: none;
+      padding: 0;
     }
     .hero-dot.active {
       background: rgba(255,255,255,0.95);
@@ -53,10 +56,9 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 scroll-smooth">
+<body class="bg-slate-50 text-slate-900">
   {{ partial "header.html" . }}
 
-  <!-- Non-hero sections use scroll-mt-20 on the section element for anchor offset -->
   <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
