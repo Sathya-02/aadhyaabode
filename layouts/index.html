@@ -2,43 +2,34 @@
 
 {{ define "main" }}
 
-<!-- Hero — flush below sticky header, fills full visible viewport -->
+<!-- Hero — full viewport carousel (mobile + desktop unified) -->
 <section id="hero" class="relative">
   {{ $hero := .Site.Data.content.hero }}
-  <div class="relative hero-fullscreen overflow-hidden">
-    <div class="absolute inset-0">
-      <!-- Desktop: horizontal scroll carousel -->
-      <div class="hidden sm:flex h-full w-full overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div class="flex h-full w-full">
-          {{ range $heroIndex, $img := slice
-            "/images/hero/hero-1.jpg"
-            "/images/hero/hero-2.jpg"
-            "/images/hero/hero-3.jpg"
-          }}
-          <div class="relative h-full w-full flex-shrink-0 snap-start">
-            <img
-              src="{{ $img }}"
-              alt="Kanyakumari coastal view {{ add $heroIndex 1 }}"
-              class="h-full w-full object-cover"
-              loading="{{ if eq $heroIndex 0 }}eager{{ else }}lazy{{ end }}"
-            />
-            <div class="absolute inset-0 hero-overlay"></div>
-          </div>
-          {{ end }}
-        </div>
-      </div>
-      <!-- Mobile: single image -->
-      <img
-        src="/images/gallery/gallery-9.jpg"
-        alt="Aadhya Abode in Kanyakumari"
-        class="sm:hidden h-full w-full object-cover"
-        loading="eager"
-      />
-      <div class="sm:hidden absolute inset-0 hero-overlay"></div>
-    </div>
 
-    <!-- Hero text content — vertically centred -->
-    <div class="relative h-full flex items-center">
+  <!-- Hero images list — shared across mobile & desktop -->
+  {{ $heroImages := slice
+    "/images/hero/hero-1.jpg"
+    "/images/hero/hero-2.jpg"
+    "/images/hero/hero-3.jpg"
+  }}
+
+  <div class="relative hero-fullscreen overflow-hidden" id="hero-carousel">
+
+    <!-- Slide stack: absolutely positioned, cross-fade via JS -->
+    {{ range $i, $img := $heroImages }}
+    <div class="hero-slide absolute inset-0 {{ if eq $i 0 }}opacity-100{{ else }}opacity-0{{ end }}" data-slide="{{ $i }}">
+      <img
+        src="{{ $img }}"
+        alt="Kanyakumari coastal view {{ add $i 1 }}"
+        class="h-full w-full object-cover object-center"
+        loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}"
+      />
+      <div class="absolute inset-0 hero-overlay"></div>
+    </div>
+    {{ end }}
+
+    <!-- Hero text content — vertically centred, above slides -->
+    <div class="relative z-10 h-full flex items-center">
       <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
           <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-amber-300 font-medium">
@@ -67,6 +58,17 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <!-- Dot indicators — bottom centre, above overlay -->
+    <div class="absolute bottom-5 left-0 right-0 z-10 flex justify-center items-center gap-2" id="hero-dots">
+      {{ range $i, $img := $heroImages }}
+      <button
+        class="hero-dot {{ if eq $i 0 }}active{{ end }}"
+        data-dot="{{ $i }}"
+        aria-label="Go to slide {{ add $i 1 }}"
+      ></button>
+      {{ end }}
     </div>
   </div>
 </section>
