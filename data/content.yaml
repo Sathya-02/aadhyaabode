@@ -53,6 +53,10 @@ amenities:
 testimonials:
   heading: "What Our Guests Say"
   description: "Verified reviews from Airbnb and Google — straight from guests who stayed with us."
+  summary_stats:
+    airbnb_rating: "4.9"
+    google_rating: "5.0"
+    total_reviews: "10+"
   reviews:
     - platform: "Airbnb"
       author: "Priya M."
@@ -90,6 +94,30 @@ testimonials:
       rating: 5
       date: "April 2025"
       text: "Stayed here for 4 nights with family during the summer vacation. Kids loved the space, adults loved the comfort. Checkout was smooth and the host was friendly throughout. Perfect balance of luxury and affordability."
+    - platform: "Airbnb"
+      author: "Kavitha S."
+      location: "Tirunelveli, Tamil Nadu"
+      rating: 5
+      date: "May 2025"
+      text: "We were a group of 6 friends and this was the perfect base for exploring Kanyakumari. Rooftop evenings were unforgettable. Host arranged a sightseeing vehicle for us — so convenient. Clean, spacious, and premium feel."
+    - platform: "Google"
+      author: "Arjun V."
+      location: "Pune, Maharashtra"
+      rating: 5
+      date: "June 2025"
+      text: "Travelled solo for a work trip and was blown away by the comfort. Fast Wi-Fi, total power backup — the essentials were perfect. The neighbourhood is calm and the sunrise from the terrace is something I'll remember for years."
+    - platform: "Airbnb"
+      author: "Lakshmi & Mohan"
+      location: "Thrissur, Kerala"
+      rating: 5
+      date: "October 2024"
+      text: "Booked the 2BHK for a family reunion and it was absolutely perfect. The kitchen had everything we needed to cook a full meal. Host responded in minutes on WhatsApp for every query. Would 100% recommend to anyone visiting KK."
+    - platform: "Google"
+      author: "Siva P."
+      location: "Chennai, Tamil Nadu"
+      rating: 5
+      date: "March 2025"
+      text: "Exceptional hospitality and an immaculate property. The host goes above and beyond — from pickup coordination to local recommendations. This is not just a rental, it feels like staying with family. Truly a 5-star experience."
 
 policies:
   heading: "Booking & Payment Policies"
