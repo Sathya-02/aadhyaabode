@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Smooth scroll with header offset for all internal nav links (header + mobile)
-  const header = document.querySelector('header.sticky');
-  const headerHeight = header ? header.offsetHeight : 0;
+  // Smooth scroll with header offset for all internal nav links (header + mobile + hero CTAs)
+  const header = document.querySelector('header');
+  const getHeaderHeight = () => (header ? header.offsetHeight : 0);
 
   const handleInternalNavClick = event => {
     const href = event.currentTarget.getAttribute('href');
@@ -56,11 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     event.preventDefault();
 
+    const headerHeight = getHeaderHeight();
     const rect = target.getBoundingClientRect();
-    const offset = window.pageYOffset + rect.top - headerHeight + 1; // +1 to avoid being hidden
+    const offset = window.pageYOffset + rect.top - headerHeight - 8; // extra 8px gap
 
     window.scrollTo({
-      top: offset,
+      top: offset < 0 ? 0 : offset,
       behavior: 'smooth'
     });
   };
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', handleInternalNavClick);
   });
 
-  // Also attach to any other internal links in main if needed
+  // Also attach to internal links in main (hero "Check Availability" etc.)
   document.querySelectorAll('main a[href^="#"]').forEach(link => {
     link.addEventListener('click', handleInternalNavClick);
   });
