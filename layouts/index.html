@@ -3,7 +3,7 @@
 {{ define "main" }}
 
 <!-- Hero -->
-<section id="hero" class="relative">
+<section id="hero" class="relative scroll-mt-28">
   {{ $hero := .Site.Data.content.hero }}
   <!-- Background image with horizontal scrollable strip on desktop -->
   <div class="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden">
@@ -70,7 +70,7 @@
 </section>
 
 <!-- Gallery section -->
-<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100">
+<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-28">
   {{ $gallery := .Site.Data.content.gallery }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -108,7 +108,7 @@
 </section>
 
 <!-- Our Abodes -->
-<section id="abodes" class="py-10 sm:py-12 bg-slate-50">
+<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
@@ -124,18 +124,10 @@
                 data-filter="all">
           All
         </button>
-       <!-- <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="1bhk">
-          Premium 1BHK
-        </button>-->
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="2bhk">
           Luxury 2BHK
         </button>
-        <!--<button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="villa">
-          4BHK Villa
-        </button>-->
       </div>
     </div>
 
@@ -197,7 +189,7 @@
 </section>
 
 <!-- Amenities / Value Proposition -->
-<section id="amenities" class="py-10 sm:py-12 bg-white">
+<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-28">
   {{ $amenities := .Site.Data.content.amenities }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -223,7 +215,7 @@
 </section>
 
 <!-- Booking & Payment Policies -->
-<section id="policies" class="py-10 sm:py-12 bg-white">
+<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-28">
   {{ $policies := .Site.Data.content.policies }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -251,7 +243,7 @@
 </section>
 
 <!-- Location & Map / Trust Triggers -->
-<section id="location" class="py-10 sm:py-12 bg-slate-50">
+<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
   {{ $location := .Site.Data.content.location }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">

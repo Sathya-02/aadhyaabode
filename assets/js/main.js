@@ -43,36 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Smooth scroll with header offset for all internal nav links (header + mobile + hero CTAs)
-  const header = document.querySelector('header');
-  const getHeaderHeight = () => (header ? header.offsetHeight : 0);
-
-  const handleInternalNavClick = event => {
-    const href = event.currentTarget.getAttribute('href');
-    if (!href || !href.startsWith('#')) return;
-
-    const target = document.querySelector(href);
-    if (!target) return;
-
-    event.preventDefault();
-
-    const headerHeight = getHeaderHeight();
-    const rect = target.getBoundingClientRect();
-    const offset = window.pageYOffset + rect.top - headerHeight - 8; // extra 8px gap
-
-    window.scrollTo({
-      top: offset < 0 ? 0 : offset,
-      behavior: 'smooth'
-    });
-  };
-
-  // Attach to header nav links and mobile menu links
-  document.querySelectorAll('header a[href^="#"]').forEach(link => {
-    link.addEventListener('click', handleInternalNavClick);
-  });
-
-  // Also attach to internal links in main (hero "Check Availability" etc.)
-  document.querySelectorAll('main a[href^="#"]').forEach(link => {
-    link.addEventListener('click', handleInternalNavClick);
-  });
+  // NOTE: smooth scrolling to sections now relies on CSS scroll-mt-28 classes
+  // on each section, so the browser's native anchor scrolling handles header
+  // offset. No additional JS is required here.
 });
