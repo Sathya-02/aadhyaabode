@@ -60,6 +60,31 @@
       </div>
     </div>
 
+    <!-- Left / Right arrow navigation -->
+    <button
+      id="hero-prev"
+      type="button"
+      aria-label="Previous slide"
+      class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center h-9 w-9 sm:h-11 sm:w-11 rounded-full bg-white/30 hover:bg-white/55 backdrop-blur-sm text-white shadow transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+           class="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+    <button
+      id="hero-next"
+      type="button"
+      aria-label="Next slide"
+      class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center h-9 w-9 sm:h-11 sm:w-11 rounded-full bg-white/30 hover:bg-white/55 backdrop-blur-sm text-white shadow transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+           class="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+
     <!-- Dot indicators — bottom centre, above overlay -->
     <div class="absolute bottom-5 left-0 right-0 z-10 flex justify-center items-center gap-2" id="hero-dots">
       {{ range $i, $img := $heroImages }}

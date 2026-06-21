@@ -50,6 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // ── Left / Right arrow buttons ──────────────────────────────────────
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goTo(current - 1);
+        resetTimer();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goTo(current + 1);
+        resetTimer();
+      });
+    }
+
     // Touch swipe support
     let touchStartX = 0;
     carousel.addEventListener('touchstart', e => {
