@@ -2,11 +2,10 @@
 
 {{ define "main" }}
 
-<!-- Hero — full viewport carousel (mobile + desktop unified) -->
+<!-- Hero — full viewport carousel -->
 <section id="hero" class="relative">
   {{ $hero := .Site.Data.content.hero }}
 
-  <!-- Hero images list — shared across mobile & desktop -->
   {{ $heroImages := slice
     "/images/hero/hero-1.jpg"
     "/images/hero/hero-2.jpg"
@@ -15,21 +14,22 @@
 
   <div class="relative hero-fullscreen overflow-hidden" id="hero-carousel">
 
-    <!-- Slide stack: absolutely positioned, cross-fade via JS -->
+    <!-- Slides: stacked absolutely, JS controls opacity + zIndex via inline style -->
     {{ range $i, $img := $heroImages }}
-    <div class="hero-slide absolute inset-0 {{ if eq $i 0 }}opacity-100{{ else }}opacity-0{{ end }}" data-slide="{{ $i }}">
+    <div class="hero-slide absolute inset-0 pointer-events-none"
+         style="transition:opacity 0.8s ease-in-out; opacity:{{ if eq $i 0 }}1{{ else }}0{{ end }}; z-index:{{ if eq $i 0 }}1{{ else }}0{{ end }};">
       <img
         src="{{ $img }}"
         alt="Kanyakumari coastal view {{ add $i 1 }}"
         class="h-full w-full object-cover object-center"
         loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}"
       />
-      <div class="absolute inset-0 hero-overlay"></div>
+      <div class="absolute inset-0 hero-overlay pointer-events-none"></div>
     </div>
     {{ end }}
 
-    <!-- Hero text content — vertically centred, above slides -->
-    <div class="relative z-10 h-full flex items-center">
+    <!-- Hero text — z-[5], sits above slides but below controls -->
+    <div class="absolute inset-0 flex items-center" style="z-index:5;">
       <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
           <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-amber-300 font-medium">
@@ -60,8 +60,24 @@
       </div>
     </div>
 
-    <!-- Dot indicators — bottom centre, above overlay -->
-    <div class="absolute bottom-5 left-0 right-0 z-10 flex justify-center items-center gap-2" id="hero-dots">
+    <!-- Prev arrow (desktop) — z-[10] -->
+    <button id="hero-prev"
+            class="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center h-10 w-10 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            style="z-index:10;"
+            aria-label="Previous slide">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+
+    <!-- Next arrow (desktop) — z-[10] -->
+    <button id="hero-next"
+            class="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center h-10 w-10 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            style="z-index:10;"
+            aria-label="Next slide">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <!-- Dot indicators — z-[10], always above text layer -->
+    <div class="absolute bottom-5 left-0 right-0 flex justify-center items-center gap-2" style="z-index:10;" id="hero-dots">
       {{ range $i, $img := $heroImages }}
       <button
         class="hero-dot {{ if eq $i 0 }}active{{ end }}"
@@ -70,6 +86,7 @@
       ></button>
       {{ end }}
     </div>
+
   </div>
 </section>
 
