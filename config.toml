@@ -24,7 +24,7 @@ whatsapp_message = "Hi Aadhya Abode, I'd like to check availability"
 email           = "care.babystep@gmail.com"
 
 [params.links]
-whatsapp_booking = "https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I'd%20like%20to%20check%20availability"
+whatsapp_booking = "https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I'd%20like%20to%20check%20availability"
 maps_url         = "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA"
 
 [params.footer]

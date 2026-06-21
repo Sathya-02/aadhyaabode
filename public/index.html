@@ -12,33 +12,22 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    body {
-      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
     .hero-overlay {
-      background: linear-gradient(to bottom, rgba(15,23,42,0.12), rgba(15,23,42,0.5));
-    }
-    .hero-title {
-      text-shadow: 0 16px 40px rgba(15,23,42,0.7);
-      letter-spacing: 0.03em;
-    }
-    .hero-subtitle {
-      text-shadow: 0 10px 26px rgba(15,23,42,0.55);
-    }
-    .section-heading {
-      letter-spacing: 0.04em;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.8), rgba(15,23,42,0.95));
     }
     .floating-whatsapp {
       z-index: 40;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 scroll-smooth text-[15px] leading-relaxed">
-  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+<body class="bg-slate-50 text-slate-900 scroll-smooth">
+  <header class="fixed top-0 left-0 w-full z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-28">
     
     <a href="/" class="flex items-center gap-3">
       
@@ -78,7 +67,7 @@
         </span>
         <span>&#43;91 80151 60563</span>
       </a>
-      <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
+      <a href="https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
          target="_blank"
          rel="noopener noreferrer"
          class="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-[#1ebe5b] transition">
@@ -125,7 +114,7 @@
           </span>
           <span>&#43;91 80151 60563</span>
         </a>
-        <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
+        <a href="https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
            target="_blank"
            rel="noopener noreferrer"
            class="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] px-3 py-2 text-xs font-semibold text-slate-900">
@@ -142,7 +131,7 @@
   </div>
 
   
-  <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
+  <a href="https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
      target="_blank"
      rel="noopener noreferrer"
      class="floating-whatsapp fixed bottom-4 right-4 md:hidden inline-flex items-center justify-center rounded-full bg-[#25D366] text-slate-900 shadow-lg h-12 w-12 hover:bg-[#1ebe5b] transition">
@@ -155,7 +144,7 @@
 </header>
 
 
-  <main id="main-content" class="tracking-[0.01em]">
+  <main id="main-content" class="pt-28">
     
 
 
@@ -225,7 +214,7 @@
                class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-2.5 text-[13px] font-semibold text-slate-900 shadow-lg shadow-amber-500/50 hover:bg-amber-300 transition-transform transform hover:-translate-y-0.5">
               Check Availability
             </a>
-            <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
+            <a href="https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
                target="_blank"
                rel="noopener noreferrer"
                class="inline-flex items-center justify-center rounded-full border border-teal-200/80 bg-slate-900/40 px-6 py-2.5 text-[13px] font-medium text-slate-50 hover:bg-slate-900/65 hover:border-teal-100 transition-transform transform hover:-translate-y-0.5">
@@ -340,18 +329,12 @@
                 data-filter="all">
           All
         </button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="1bhk">
-          Premium 1BHK
-        </button>
+       
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
                 data-filter="2bhk">
           Luxury 2BHK
         </button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="villa">
-          4BHK Villa
-        </button>
+        
       </div>
     </div>
 
@@ -482,7 +465,7 @@
           </div>
         </div>
         <div class="px-4 pb-4">
-          <a href="https://wa.me/08015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
+          <a href="https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I%27d%20like%20to%20check%20availability"
              target="_blank"
              rel="noopener noreferrer"
              class="inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-700 transition-transform transform hover:-translate-y-0.5">
@@ -621,7 +604,7 @@
       <div class="space-y-4">
         <ul class="space-y-1 text-sm text-slate-700">
           
-          <li>• Short drive to Vivekananda Rock Memorial &amp; Thiruvalluvar Statue.</li>
+          <li>• 5 minutes to Vivekananda Rock Memorial &amp; Thiruvalluvar Statue.</li>
           
           <li>• Easy access to sunset viewpoints along the coastline.</li>
           
