@@ -1,0 +1,8 @@
+# Cloudflare Pages — explicitly declare Hugo as the framework
+# so Cloudflare tooling does not auto-detect multiple frameworks.
+
+name = "aadhyaabode"
+pages_build_output_dir = "public"
+
+[build]
+command = "hugo --minify"

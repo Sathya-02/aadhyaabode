@@ -1,0 +1,13 @@
+# Hugo build output — never commit, Cloudflare Pages builds this
+public/
+resources/_gen/
+.hugo_build.lock
+
+# macOS
+.DS_Store
+
+# Node (if Tailwind build pipeline is added later)
+node_modules/
+
+# Wrangler local state
+.wrangler/
