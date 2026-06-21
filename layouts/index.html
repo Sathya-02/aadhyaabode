@@ -6,6 +6,7 @@
 <section id="hero" class="relative">
   {{ $hero := .Site.Data.content.hero }}
 
+  <!-- Hero images list — shared across mobile & desktop -->
   {{ $heroImages := slice
     "/images/hero/hero-1.jpg"
     "/images/hero/hero-2.jpg"
@@ -16,7 +17,7 @@
 
     <!-- Slide stack: absolutely positioned, cross-fade via JS -->
     {{ range $i, $img := $heroImages }}
-    <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out {{ if eq $i 0 }}opacity-100{{ else }}opacity-0{{ end }}" data-slide="{{ $i }}">
+    <div class="hero-slide absolute inset-0 {{ if eq $i 0 }}opacity-100{{ else }}opacity-0{{ end }}" data-slide="{{ $i }}">
       <img
         src="{{ $img }}"
         alt="Kanyakumari coastal view {{ add $i 1 }}"
@@ -59,39 +60,7 @@
       </div>
     </div>
 
-    <!-- LEFT arrow -->
-    <button
-      id="hero-prev"
-      aria-label="Previous slide"
-      class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20
-             inline-flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center
-             rounded-full bg-slate-900/45 text-white backdrop-blur-sm
-             border border-white/20
-             hover:bg-slate-900/70 active:scale-95
-             transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-
-    <!-- RIGHT arrow -->
-    <button
-      id="hero-next"
-      aria-label="Next slide"
-      class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20
-             inline-flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center
-             rounded-full bg-slate-900/45 text-white backdrop-blur-sm
-             border border-white/20
-             hover:bg-slate-900/70 active:scale-95
-             transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
-
-    <!-- Dot indicators — bottom centre -->
+    <!-- Dot indicators — bottom centre, above overlay -->
     <div class="absolute bottom-5 left-0 right-0 z-10 flex justify-center items-center gap-2" id="hero-dots">
       {{ range $i, $img := $heroImages }}
       <button
@@ -105,7 +74,7 @@
 </section>
 
 <!-- Gallery section -->
-<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-28">
+<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-20">
   {{ $gallery := .Site.Data.content.gallery }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -142,7 +111,7 @@
 </section>
 
 <!-- Our Abodes -->
-<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
+<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
@@ -215,7 +184,7 @@
 </section>
 
 <!-- Amenities / Value Proposition -->
-<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-28">
+<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $amenities := .Site.Data.content.amenities }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -234,7 +203,7 @@
 </section>
 
 <!-- Booking & Payment Policies -->
-<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-28">
+<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $policies := .Site.Data.content.policies }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -257,7 +226,7 @@
 </section>
 
 <!-- Location & Map / Trust Triggers -->
-<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
+<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $location := .Site.Data.content.location }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
