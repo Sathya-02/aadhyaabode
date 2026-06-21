@@ -12,70 +12,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── Hero auto-slide carousel ────────────────────────────────────────────
+  // ─── Hero carousel ───────────────────────────────────────────────────────
   const carousel = document.getElementById('hero-carousel');
-  const dotsWrap = document.getElementById('hero-dots');
-  if (carousel && dotsWrap) {
-    const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
-    const dots   = Array.from(dotsWrap.querySelectorAll('[data-dot]'));
-    let current  = 0;
-    let timer    = null;
+  if (carousel) {
+    const slides = Array.from(carousel.querySelectorAll('.hero-slide'));
+    const dots   = Array.from(document.querySelectorAll('.hero-dot'));
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+    let current = 0;
+    let timer   = null;
 
-    function goTo(idx) {
-      slides[current].classList.remove('opacity-100');
-      slides[current].classList.add('opacity-0');
-      dots[current].classList.remove('active');
+    function showSlide(idx) {
+      // Clamp index
+      const next = ((idx % slides.length) + slides.length) % slides.length;
 
-      current = (idx + slides.length) % slides.length;
+      // Hide current
+      slides[current].style.opacity = '0';
+      slides[current].style.zIndex  = '0';
+      if (dots[current]) dots[current].classList.remove('active');
 
-      slides[current].classList.remove('opacity-0');
-      slides[current].classList.add('opacity-100');
-      dots[current].classList.add('active');
+      // Show next
+      current = next;
+      slides[current].style.opacity = '1';
+      slides[current].style.zIndex  = '1';
+      if (dots[current]) dots[current].classList.add('active');
     }
 
-    function startTimer() {
-      timer = setInterval(() => goTo(current + 1), 4000);
+    function startAuto() {
+      stopAuto();
+      if (slides.length < 2) return;
+      timer = setInterval(() => showSlide(current + 1), 4000);
     }
 
-    function resetTimer() {
-      clearInterval(timer);
-      startTimer();
+    function stopAuto() {
+      if (timer) { clearInterval(timer); timer = null; }
     }
 
-    // Dot click
-    dots.forEach(dot => {
+    // Init: make sure first slide is visible and rest hidden via inline style
+    slides.forEach((s, i) => {
+      s.style.transition = 'opacity 0.8s ease-in-out';
+      s.style.opacity    = i === 0 ? '1' : '0';
+      s.style.zIndex     = i === 0 ? '1' : '0';
+    });
+    if (dots[0]) dots[0].classList.add('active');
+
+    // Dot clicks
+    dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        goTo(parseInt(dot.dataset.dot, 10));
-        resetTimer();
+        showSlide(i);
+        startAuto(); // reset timer on manual nav
       });
     });
 
-    // Touch swipe — only intercept HORIZONTAL swipes for slide changes.
-    // Vertical swipes are intentionally ignored so native page scroll works.
-    let touchStartX = 0;
-    let touchStartY = 0;
+    // Arrow buttons
+    if (prevBtn) prevBtn.addEventListener('click', () => { showSlide(current - 1); startAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { showSlide(current + 1); startAuto(); });
 
+    // Swipe — only horizontal swipes change slide; vertical falls through to page scroll
+    let txStart = 0, tyStart = 0;
     carousel.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
+      txStart = e.touches[0].clientX;
+      tyStart = e.touches[0].clientY;
     }, { passive: true });
-
     carousel.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = e.changedTouches[0].clientY - touchStartY;
-      // Only treat as a slide swipe when horizontal motion dominates
-      // AND exceeds the 40px threshold. Otherwise let the browser scroll.
+      const dx = e.changedTouches[0].clientX - txStart;
+      const dy = e.changedTouches[0].clientY - tyStart;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-        goTo(dx < 0 ? current + 1 : current - 1);
-        resetTimer();
+        showSlide(dx < 0 ? current + 1 : current - 1);
+        startAuto();
       }
     }, { passive: true });
 
-    // Pause on hover (desktop)
-    carousel.addEventListener('mouseenter', () => clearInterval(timer));
-    carousel.addEventListener('mouseleave', startTimer);
+    // Pause auto-slide while user hovers (desktop)
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('focusin',    stopAuto);
+    carousel.addEventListener('focusout',   startAuto);
 
-    startTimer();
+    startAuto();
   }
 
   // ─── Property filter ─────────────────────────────────────────────────────
