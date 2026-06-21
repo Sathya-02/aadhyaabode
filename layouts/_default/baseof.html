@@ -16,10 +16,23 @@
   <style>
     html, body { margin: 0; padding: 0; }
     body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
-    .hero-overlay {
-      /* Slightly lighter overlay so hero image stays visible */
-      background: radial-gradient(circle at top, rgba(15,23,42,0.6), rgba(15,23,42,0.85));
+
+    /* Hero fills full viewport height minus sticky header (h-16 = 4rem) */
+    .hero-fullscreen {
+      height: calc(100dvh - 4rem);
+      min-height: 480px;
     }
+
+    /* Light top-to-bottom overlay — image fully visible, text readable at bottom */
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.25) 0%,
+        rgba(15, 23, 42, 0.50) 60%,
+        rgba(15, 23, 42, 0.70) 100%
+      );
+    }
+
     .floating-whatsapp {
       z-index: 40;
     }
@@ -28,7 +41,9 @@
 <body class="bg-slate-50 text-slate-900 scroll-smooth">
   {{ partial "header.html" . }}
 
-  <main id="main-content" class="pt-28">
+  <!-- No pt-* padding — hero sits flush below the sticky header -->
+  <!-- Non-hero sections use scroll-mt-20 on the section element for anchor offset -->
+  <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
 

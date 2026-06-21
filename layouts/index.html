@@ -2,12 +2,12 @@
 
 {{ define "main" }}
 
-<!-- Hero -->
-<section id="hero" class="relative scroll-mt-28">
+<!-- Hero — flush below sticky header, fills full visible viewport -->
+<section id="hero" class="relative">
   {{ $hero := .Site.Data.content.hero }}
-  <!-- Background image with horizontal scrollable strip on desktop -->
-  <div class="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden">
+  <div class="relative hero-fullscreen overflow-hidden">
     <div class="absolute inset-0">
+      <!-- Desktop: horizontal scroll carousel -->
       <div class="hidden sm:flex h-full w-full overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div class="flex h-full w-full">
           {{ range $heroIndex, $img := slice
@@ -20,32 +20,34 @@
               src="{{ $img }}"
               alt="Kanyakumari coastal view {{ add $heroIndex 1 }}"
               class="h-full w-full object-cover"
-              loading="lazy"
+              loading="{{ if eq $heroIndex 0 }}eager{{ else }}lazy{{ end }}"
             />
             <div class="absolute inset-0 hero-overlay"></div>
           </div>
           {{ end }}
         </div>
       </div>
+      <!-- Mobile: single image -->
       <img
         src="/images/gallery/gallery-9.jpg"
         alt="Aadhya Abode in Kanyakumari"
         class="sm:hidden h-full w-full object-cover"
-        loading="lazy"
+        loading="eager"
       />
       <div class="sm:hidden absolute inset-0 hero-overlay"></div>
     </div>
 
-    <div class="relative inset-0 flex items-center h-full">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-50">
+    <!-- Hero text content — vertically centred -->
+    <div class="relative h-full flex items-center">
+      <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
           <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-amber-300 font-medium">
             {{ $hero.tag }}
           </p>
-          <h1 class="hero-title font-semibold lg:font-extrabold leading-tight text-white text-[28px] sm:text-[34px] lg:text-[46px]">
+          <h1 class="font-semibold lg:font-extrabold leading-tight text-white text-[28px] sm:text-[34px] lg:text-[46px]">
             {{ $hero.title }}
           </h1>
-          <p class="hero-subtitle text-[13px] sm:text-[14px] lg:text-[15px] text-slate-100/95 font-normal">
+          <p class="text-[13px] sm:text-[14px] lg:text-[15px] text-slate-100/95 font-normal">
             {{ $hero.subtitle }}
           </p>
           <div class="flex flex-wrap items-center gap-3 pt-3">
@@ -70,7 +72,7 @@
 </section>
 
 <!-- Gallery section -->
-<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-28">
+<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-20">
   {{ $gallery := .Site.Data.content.gallery }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -86,7 +88,6 @@
         </figure>
         {{ end }}
       </div>
-      <!-- Overlay arrows for all viewports -->
       <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1">
         <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
       </div>
@@ -99,7 +100,7 @@
   <!-- Lightbox modal -->
   <div id="gallery-lightbox" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/80 p-4">
     <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">
-      ✕
+      &#x2715;
     </button>
     <div class="max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
       <img id="gallery-lightbox-image" src="" alt="" class="max-h-full w-auto rounded-2xl shadow-2xl" />
@@ -108,7 +109,7 @@
 </section>
 
 <!-- Our Abodes -->
-<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
+<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
@@ -118,20 +119,14 @@
       <p class="text-sm text-slate-600">
         {{ $abodesSection.description }}
       </p>
-      <!-- Interactive filter -->
       <div class="flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs pt-2">
         <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium"
-                data-filter="all">
-          All
-        </button>
+                data-filter="all">All</button>
         <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="2bhk">
-          Luxury 2BHK
-        </button>
+                data-filter="2bhk">Luxury 2BHK</button>
       </div>
     </div>
 
-    <!-- Grid -->
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="abode-grid">
       {{ range .Site.Data.abodes }}
       {{ $abode := . }}
@@ -161,9 +156,7 @@
           </span>
         </div>
         <div class="flex-1 flex flex-col p-4 space-y-3">
-          <p class="text-sm text-slate-700 font-medium">
-            {{ $abode.tagline }}
-          </p>
+          <p class="text-sm text-slate-700 font-medium">{{ $abode.tagline }}</p>
           <ul class="text-xs text-slate-600 space-y-1">
             {{ range $abode.bullets }}
             <li>• {{ . }}</li>
@@ -189,25 +182,18 @@
 </section>
 
 <!-- Amenities / Value Proposition -->
-<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-28">
+<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $amenities := .Site.Data.content.amenities }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">
-        {{ $amenities.heading }}
-      </h3>
-      <p class="mt-2 text-sm text-slate-600">
-        {{ $amenities.description }}
-      </p>
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $amenities.heading }}</h3>
+      <p class="mt-2 text-sm text-slate-600">{{ $amenities.description }}</p>
     </div>
-
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $amenities.items }}
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
         <h3 class="text-sm font-semibold text-slate-900 mb-1">{{ .title }}</h3>
-        <p class="text-xs text-slate-600">
-          {{ .text }}
-        </p>
+        <p class="text-xs text-slate-600">{{ .text }}</p>
       </div>
       {{ end }}
     </div>
@@ -215,18 +201,13 @@
 </section>
 
 <!-- Booking & Payment Policies -->
-<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-28">
+<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $policies := .Site.Data.content.policies }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:tex-3xl font-semibold text-slate-900">
-        {{ $policies.heading }}
-      </h3>
-      <p class="mt-2 text-sm text-slate-600">
-        {{ $policies.description }}
-      </p>
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $policies.heading }}</h3>
+      <p class="mt-2 text-sm text-slate-600">{{ $policies.description }}</p>
     </div>
-
     <div class="grid gap-6 md:grid-cols-3 text-sm text-slate-600">
       {{ range $policies.columns }}
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
@@ -243,18 +224,13 @@
 </section>
 
 <!-- Location & Map / Trust Triggers -->
-<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
+<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $location := .Site.Data.content.location }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">
-        {{ $location.heading }}
-      </h3>
-      <p class="text-sm text-slate-600">
-        {{ $location.description }}
-      </p>
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">{{ $location.heading }}</h3>
+      <p class="text-sm text-slate-600">{{ $location.description }}</p>
     </div>
-
     <div class="grid gap-8 lg:grid-cols-2 items-start">
       <div class="space-y-4">
         <ul class="space-y-1 text-sm text-slate-700">
@@ -262,21 +238,15 @@
           <li>• {{ . }}</li>
           {{ end }}
         </ul>
-
-        <!-- Simple trust triggers -->
         <div class="mt-4 space-y-3 text-xs text-slate-600">
           {{ range $location.trusts }}
           <div class="rounded-xl bg-white border border-slate-100 px-4 py-3">
             <p class="font-semibold text-slate-900 text-sm">{{ .title }}</p>
-            <p class="mt-1">
-              {{ .text }}
-            </p>
+            <p class="mt-1">{{ .text }}</p>
           </div>
           {{ end }}
         </div>
       </div>
-
-      <!-- Map image + link -->
       <div class="rounded-2xl bg-white border border-slate-100 p-3">
         <div class="aspect-video rounded-xl overflow-hidden bg-slate-200">
           <img
