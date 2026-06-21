@@ -14,10 +14,10 @@
 
   <div class="relative hero-fullscreen overflow-hidden" id="hero-carousel">
 
-    <!-- Slides: stacked absolutely, JS controls opacity + zIndex -->
+    <!-- Slides: stacked absolutely, JS controls opacity + zIndex via inline style -->
     {{ range $i, $img := $heroImages }}
     <div class="hero-slide absolute inset-0 pointer-events-none"
-         style="opacity:{{ if eq $i 0 }}1{{ else }}0{{ end }}; z-index:{{ if eq $i 0 }}1{{ else }}0{{ end }};">
+         style="transition:opacity 0.8s ease-in-out; opacity:{{ if eq $i 0 }}1{{ else }}0{{ end }}; z-index:{{ if eq $i 0 }}1{{ else }}0{{ end }};">
       <img
         src="{{ $img }}"
         alt="Kanyakumari coastal view {{ add $i 1 }}"
@@ -28,8 +28,7 @@
     </div>
     {{ end }}
 
-    <!-- Hero text layer — NO pointer-events-none here; slides below are
-         already pointer-events-none so clicks fall through correctly -->
+    <!-- Hero text — z-[5], sits above slides but below controls -->
     <div class="absolute inset-0 flex items-center" style="z-index:5;">
       <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
@@ -43,9 +42,7 @@
             {{ $hero.subtitle }}
           </p>
           <div class="flex flex-wrap items-center gap-3 pt-3">
-            <!-- data-scroll-to used by JS smooth scroll handler -->
             <a href="#abodes"
-               data-scroll-to="abodes"
                class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-2.5 text-[13px] font-semibold text-slate-900 shadow-lg shadow-amber-500/50 hover:bg-amber-300 transition-transform transform hover:-translate-y-0.5">
               Check Availability
             </a>
@@ -63,7 +60,7 @@
       </div>
     </div>
 
-    <!-- Prev arrow -->
+    <!-- Prev arrow (desktop) — z-[10] -->
     <button id="hero-prev"
             class="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center h-10 w-10 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             style="z-index:10;"
@@ -71,7 +68,7 @@
       <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
     </button>
 
-    <!-- Next arrow -->
+    <!-- Next arrow (desktop) — z-[10] -->
     <button id="hero-next"
             class="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center h-10 w-10 rounded-full bg-slate-900/40 text-white hover:bg-slate-900/70 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             style="z-index:10;"
@@ -79,7 +76,7 @@
       <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     </button>
 
-    <!-- Dot indicators -->
+    <!-- Dot indicators — z-[10], always above text layer -->
     <div class="absolute bottom-5 left-0 right-0 flex justify-center items-center gap-2" style="z-index:10;" id="hero-dots">
       {{ range $i, $img := $heroImages }}
       <button
@@ -93,14 +90,15 @@
   </div>
 </section>
 
-<!-- Gallery -->
-<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-28">
+<!-- Gallery section -->
+<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-20">
   {{ $gallery := .Site.Data.content.gallery }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
       <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $gallery.heading }}</h3>
       <p class="mt-1 text-sm text-slate-600 max-w-xl mx-auto">{{ $gallery.description }}</p>
     </div>
+
     <div class="group relative">
       <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {{ range $gallery.images }}
@@ -110,16 +108,19 @@
         {{ end }}
       </div>
       <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm cursor-pointer" aria-hidden="true">&#8592;</div>
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
       </div>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm cursor-pointer" aria-hidden="true">&#8594;</div>
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8594;</div>
       </div>
     </div>
   </div>
-  <!-- Lightbox -->
+
+  <!-- Lightbox modal -->
   <div id="gallery-lightbox" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/80 p-4">
-    <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">&#x2715;</button>
+    <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">
+      &#x2715;
+    </button>
     <div class="max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
       <img id="gallery-lightbox-image" src="" alt="" class="max-h-full w-auto rounded-2xl shadow-2xl" />
     </div>
@@ -127,36 +128,58 @@
 </section>
 
 <!-- Our Abodes -->
-<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
+<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $abodesSection.heading }}</h3>
-      <p class="text-sm text-slate-600">{{ $abodesSection.description }}</p>
+      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        {{ $abodesSection.heading }}
+      </h3>
+      <p class="text-sm text-slate-600">
+        {{ $abodesSection.description }}
+      </p>
       <div class="flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs pt-2">
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium" data-filter="all">All</button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition" data-filter="2bhk">Luxury 2BHK</button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium"
+                data-filter="all">All</button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
+                data-filter="2bhk">Luxury 2BHK</button>
       </div>
     </div>
+
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="abode-grid">
       {{ range .Site.Data.abodes }}
       {{ $abode := . }}
-      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col" data-type="{{ $abode.type }}">
+      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
+               data-type="{{ $abode.type }}">
         <div class="relative">
           <div class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory h-48 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <img src="{{ $abode.image }}" alt="{{ $abode.alt }}" class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none" loading="lazy" />
+            <img
+              src="{{ $abode.image }}"
+              alt="{{ $abode.alt }}"
+              class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
+              loading="lazy"
+            />
             {{ if $abode.gallery }}
               {{ range $img := $abode.gallery }}
-              <img src="{{ $img }}" alt="{{ $abode.title }} gallery image" class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none" loading="lazy" />
+              <img
+                src="{{ $img }}"
+                alt="{{ $abode.title }} gallery image"
+                class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
+                loading="lazy"
+              />
               {{ end }}
             {{ end }}
           </div>
-          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/85 px-3 py-1 text-[11px] font-semibold text-amber-300">{{ $abode.badge }}</span>
+          <span class="absolute top-3 left-3 inline-flex items-center rounded-full bg-slate-900/85 px-3 py-1 text-[11px] font-semibold text-amber-300">
+            {{ $abode.badge }}
+          </span>
         </div>
         <div class="flex-1 flex flex-col p-4 space-y-3">
           <p class="text-sm text-slate-700 font-medium">{{ $abode.tagline }}</p>
           <ul class="text-xs text-slate-600 space-y-1">
-            {{ range $abode.bullets }}<li>• {{ . }}</li>{{ end }}
+            {{ range $abode.bullets }}
+            <li>• {{ . }}</li>
+            {{ end }}
           </ul>
           <div class="mt-3 flex items-center justify-between text-[11px] text-slate-500">
             <span class="font-medium text-slate-700">{{ $abode.suitability }}</span>
@@ -164,7 +187,9 @@
           </div>
         </div>
         <div class="px-4 pb-4">
-          <a href="{{ $.Site.Params.links.whatsapp_booking }}" target="_blank" rel="noopener noreferrer"
+          <a href="{{ $.Site.Params.links.whatsapp_booking }}"
+             target="_blank"
+             rel="noopener noreferrer"
              class="inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-700 transition-transform transform hover:-translate-y-0.5">
             Book via WhatsApp
           </a>
@@ -175,8 +200,8 @@
   </div>
 </section>
 
-<!-- Amenities -->
-<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-28">
+<!-- Amenities / Value Proposition -->
+<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $amenities := .Site.Data.content.amenities }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -194,8 +219,8 @@
   </div>
 </section>
 
-<!-- Policies -->
-<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-28">
+<!-- Booking & Payment Policies -->
+<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $policies := .Site.Data.content.policies }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -207,7 +232,9 @@
       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
         <h3 class="text-sm font-semibold text-slate-900 mb-2">{{ .title }}</h3>
         <ul class="space-y-1 text-xs text-left">
-          {{ range .bullets }}<li>• {{ . }}</li>{{ end }}
+          {{ range .bullets }}
+          <li>• {{ . }}</li>
+          {{ end }}
         </ul>
       </div>
       {{ end }}
@@ -215,8 +242,8 @@
   </div>
 </section>
 
-<!-- Location -->
-<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-28">
+<!-- Location & Map / Trust Triggers -->
+<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $location := .Site.Data.content.location }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
@@ -226,7 +253,9 @@
     <div class="grid gap-8 lg:grid-cols-2 items-start">
       <div class="space-y-4">
         <ul class="space-y-1 text-sm text-slate-700">
-          {{ range $location.bullets }}<li>• {{ . }}</li>{{ end }}
+          {{ range $location.bullets }}
+          <li>• {{ . }}</li>
+          {{ end }}
         </ul>
         <div class="mt-4 space-y-3 text-xs text-slate-600">
           {{ range $location.trusts }}
@@ -239,11 +268,22 @@
       </div>
       <div class="rounded-2xl bg-white border border-slate-100 p-3">
         <div class="aspect-video rounded-xl overflow-hidden bg-slate-200">
-          <img src="/images/map-aadhya-abode.png" alt="Map showing Aadhya Abode location in Kanyakumari" class="h-full w-full object-cover" loading="lazy" width="1200" height="675" />
+          <img
+            src="/images/map-aadhya-abode.png"
+            alt="Map showing the location of Aadhya Abode in Kanyakumari"
+            class="h-full w-full object-cover"
+            loading="lazy"
+            width="1200"
+            height="675" />
         </div>
         <p class="mt-3 text-xs text-slate-500 text-center">
-          View on Google Maps:
-          <a href="{{ .Site.Params.links.maps_url }}" target="_blank" rel="noopener noreferrer" class="text-teal-700 underline">Open in Google Maps</a>
+          View the live location on Google Maps:
+          <a href="{{ .Site.Params.links.maps_url }}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="text-teal-700 underline">
+            Open in Google Maps
+          </a>
         </p>
       </div>
     </div>
