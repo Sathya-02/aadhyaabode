@@ -1,5 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ─── Smooth scroll for ALL internal anchor links (incl. hero CTAs) ────────
+  // Uses JS scrollIntoView so it works regardless of CSS scroll-behavior
+  // support or Tailwind CDN preflight overrides. The header is h-28 = 112px.
+  const HEADER_HEIGHT = 112;
+
+  function smoothScrollTo(targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  }
+
+  // Intercept every <a href="#..."> on the page
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const hash = link.getAttribute('href').slice(1); // strip leading #
+    if (!hash) return;
+    const target = document.getElementById(hash);
+    if (!target) return;
+    e.preventDefault();
+    smoothScrollTo(hash);
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+  });
+
   // ─── Mobile menu toggle ──────────────────────────────────────────────────
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -7,31 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
-    mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
   }
 
   // ─── Hero carousel ───────────────────────────────────────────────────────
   const carousel = document.getElementById('hero-carousel');
   if (carousel) {
-    const slides = Array.from(carousel.querySelectorAll('.hero-slide'));
-    const dots   = Array.from(document.querySelectorAll('.hero-dot'));
+    const slides  = Array.from(carousel.querySelectorAll('.hero-slide'));
+    const dots    = Array.from(document.querySelectorAll('.hero-dot'));
     const prevBtn = document.getElementById('hero-prev');
     const nextBtn = document.getElementById('hero-next');
     let current = 0;
     let timer   = null;
 
     function showSlide(idx) {
-      // Clamp index
       const next = ((idx % slides.length) + slides.length) % slides.length;
-
-      // Hide current
       slides[current].style.opacity = '0';
       slides[current].style.zIndex  = '0';
       if (dots[current]) dots[current].classList.remove('active');
-
-      // Show next
       current = next;
       slides[current].style.opacity = '1';
       slides[current].style.zIndex  = '1';
@@ -48,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (timer) { clearInterval(timer); timer = null; }
     }
 
-    // Init: make sure first slide is visible and rest hidden via inline style
+    // Init
     slides.forEach((s, i) => {
       s.style.transition = 'opacity 0.8s ease-in-out';
       s.style.opacity    = i === 0 ? '1' : '0';
@@ -56,19 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     if (dots[0]) dots[0].classList.add('active');
 
-    // Dot clicks
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        showSlide(i);
-        startAuto(); // reset timer on manual nav
-      });
-    });
-
-    // Arrow buttons
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); startAuto(); }));
     if (prevBtn) prevBtn.addEventListener('click', () => { showSlide(current - 1); startAuto(); });
     if (nextBtn) nextBtn.addEventListener('click', () => { showSlide(current + 1); startAuto(); });
 
-    // Swipe — only horizontal swipes change slide; vertical falls through to page scroll
+    // Swipe support
     let txStart = 0, tyStart = 0;
     carousel.addEventListener('touchstart', e => {
       txStart = e.touches[0].clientX;
@@ -83,11 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: true });
 
-    // Pause auto-slide while user hovers (desktop)
     carousel.addEventListener('mouseenter', stopAuto);
     carousel.addEventListener('mouseleave', startAuto);
-    carousel.addEventListener('focusin',    stopAuto);
-    carousel.addEventListener('focusout',   startAuto);
 
     startAuto();
   }
