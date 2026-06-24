@@ -26,6 +26,8 @@ email           = "care.babystep@gmail.com"
 [params.links]
 whatsapp_booking = "https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I'd%20like%20to%20check%20availability"
 maps_url         = "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA"
+airbnb_review    = "https://www.airbnb.co.in/rooms/1702921509210422797?guests=1&adults=1&s=67&unique_share_id=a304044a-0d28-4f04-95c6-850d8063c956"
+google_review    = "https://maps.app.goo.gl/WEwM1EP2isBjCJ617"
 
 [params.footer]
 instagram = "https://instagram.com/aadhyaabode"
