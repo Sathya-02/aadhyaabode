@@ -92,20 +92,34 @@
       box-shadow: 0 6px 20px rgba(15,23,42,0.10), 0 1px 4px rgba(15,23,42,0.06);
     }
 
-    /* Fixed-height image area — wider & shorter than before */
+    /* ── Image area: auto-height, full image always visible ── */
     .card-img-wrap {
       width: 100%;
-      height: 8rem;          /* shorter fixed height */
+      /* No fixed height — let image dictate height up to a max */
+      max-height: 20rem;
+      min-height: 6rem;
       overflow: hidden;
       background: #f1f5f9;
-    }
-    @media (min-width: 640px) {
-      .card-img-wrap { height: 9rem; }
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .review-screenshot-card .card-img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-height: 20rem;
       display: block;
+      /* object-fit: contain ensures small/narrow images are never cropped */
+      object-fit: contain;
+      object-position: top center;
+      /* Scale up images narrower than the card to fill the width */
+      min-width: 100%;
+    }
+
+    /* For images with natural width < 514px: scale up to fill card */
+    .review-screenshot-card .card-img[data-narrow="true"] {
+      width: 100%;
+      height: auto;
       object-fit: cover;
       object-position: top center;
     }
@@ -114,6 +128,7 @@
     .review-placeholder {
       width: 100%;
       height: 100%;
+      min-height: 8rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -330,8 +345,7 @@
               alt="{{ .alt }}"
               class="card-img"
               loading="lazy"
-              width="720"
-              height="144"
+              decoding="async"
             />
             {{ else }}
             <div class="review-placeholder">
@@ -426,6 +440,20 @@
         lbImg.src = '';
         document.body.style.overflow = '';
       }
+
+      /* Auto-scale images narrower than 514px to fill the card width */
+      document.querySelectorAll('.card-img').forEach(function (img) {
+        function checkNarrow() {
+          if (img.naturalWidth > 0 && img.naturalWidth < 514) {
+            img.setAttribute('data-narrow', 'true');
+          }
+        }
+        if (img.complete) {
+          checkNarrow();
+        } else {
+          img.addEventListener('load', checkNarrow);
+        }
+      });
 
       document.querySelectorAll('.review-screenshot-card').forEach(function (c) {
         c.addEventListener('click', function () { open(c.dataset.src, c.dataset.alt); });
