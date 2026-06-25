@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── Mobile menu toggle ──────────────────────────────────────────────────
+  // ─── Mobile menu toggle ─────────────────────────────────────────────────
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   if (toggleBtn && mobileMenu) {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── Hero auto-slide carousel ────────────────────────────────────────────
+  // ─── Hero auto-slide carousel ───────────────────────────────────────────
   const carousel   = document.getElementById('hero-carousel');
   const dotsWrap   = document.getElementById('hero-dots');
   if (carousel && dotsWrap) {
@@ -67,6 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // ─── Property filter ─────────────────────────────────────────────────────
   const filterPills = document.querySelectorAll('.filter-pill');
   const cards       = document.querySelectorAll('.abode-card');
+  const abodeGrid   = document.getElementById('abode-grid');
+
+  function syncGridAlignment() {
+    if (!abodeGrid) return;
+    const visibleCount = Array.from(cards).filter(c => !c.classList.contains('hidden')).length;
+    if (visibleCount === 1) {
+      // Collapse to a single centred column
+      abodeGrid.style.gridTemplateColumns = 'minmax(0, 24rem)';
+      abodeGrid.style.justifyContent      = 'center';
+    } else {
+      // Restore responsive grid
+      abodeGrid.style.gridTemplateColumns = '';
+      abodeGrid.style.justifyContent      = '';
+    }
+  }
+
   if (filterPills.length && cards.length) {
     filterPills.forEach(pill => {
       pill.addEventListener('click', () => {
@@ -80,8 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
         cards.forEach(card => {
           card.classList.toggle('hidden', filter !== 'all' && card.dataset.type !== filter);
         });
+        syncGridAlignment();
       });
     });
+    // Run once on load in case the page starts with a non-"all" default
+    syncGridAlignment();
   }
 
   // ─── Gallery scroll arrows + lightbox ────────────────────────────────────
@@ -119,10 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ─── Testimonials marquee ──────────────────────────────────────────────────
+  // ─── Testimonials marquee ──────────────────────────────────────────────
   const marqueeTrack = document.getElementById('testimonial-track');
   if (marqueeTrack) {
-    // Pause CSS animation on hover / focus-within
     marqueeTrack.addEventListener('mouseenter', () => {
       marqueeTrack.style.animationPlayState = 'paused';
     });
