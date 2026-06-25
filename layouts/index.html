@@ -135,6 +135,9 @@
   </div>
 </section>
 
+<!-- Testimonials -->
+{{ partial "testimonials.html" . }}
+
 <!-- Our Abodes -->
 <section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
@@ -226,9 +229,6 @@
     </div>
   </div>
 </section>
-
-<!-- Testimonials -->
-{{ partial "testimonials.html" . }}
 
 <!-- Booking & Payment Policies -->
 <section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-20">
