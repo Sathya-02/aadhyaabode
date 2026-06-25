@@ -157,10 +157,10 @@
       </div>
     </div>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="abode-grid">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-center justify-items-center" id="abode-grid">
       {{ range .Site.Data.abodes }}
       {{ $abode := . }}
-      <article class="abode-card bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
+      <article class="abode-card w-full bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
                data-type="{{ $abode.type }}">
         <div class="relative">
           <div class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory h-48 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
