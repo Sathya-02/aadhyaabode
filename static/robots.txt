@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://aadhyaabode.com/sitemap.xml
+
+# Block non-content directories
+Disallow: /css/
+Disallow: /js/

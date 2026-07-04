@@ -1,12 +1,16 @@
-{{ define "title" }}Aadhya Abode | Coastal Luxury Stays in Kanyakumari{{ end }}
+{{ define "title" }}Aadhya Abode | Luxury Vacation Home in Kanyakumari — Book 2BHK Stay{{ end }}
+{{ define "description" }}Aadhya Abode is a premium fully-furnished 2BHK luxury vacation home in Kanyakumari, Tamil Nadu. 5-star rated, sleeps up to 8 guests. 5 min from Vivekananda Rock. Instant WhatsApp booking.{{ end }}
+{{ define "og_title" }}Aadhya Abode — Luxury 2BHK Vacation Home in Kanyakumari{{ end }}
+{{ define "og_description" }}Book a premium 2BHK holiday home in Kanyakumari. AC bedrooms, full kitchen, Wi-Fi, parking. 5-star rated on Airbnb & Google. Instant WhatsApp confirmation.{{ end }}
 
 {{ define "main" }}
 
-<!-- Hero — full viewport carousel (mobile + desktop unified) -->
-<section id="hero" class="relative">
+<!-- ══════════════════════════════════════════════════════════════════
+     HERO — full viewport carousel
+══════════════════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Welcome to Aadhya Abode — Luxury Vacation Home in Kanyakumari" class="relative">
   {{ $hero := .Site.Data.content.hero }}
 
-  <!-- Hero images list — shared across mobile & desktop -->
   {{ $heroImages := slice
     "/images/hero/hero-1.jpg"
     "/images/hero/hero-2.jpg"
@@ -14,32 +18,33 @@
   }}
 
   <div class="relative hero-fullscreen overflow-hidden" id="hero-carousel">
-
-    <!-- Slide stack: absolutely positioned, cross-fade via JS -->
     {{ range $i, $img := $heroImages }}
     <div class="hero-slide absolute inset-0 {{ if eq $i 0 }}opacity-100{{ else }}opacity-0{{ end }}" data-slide="{{ $i }}">
       <img
         src="{{ $img }}"
-        alt="Kanyakumari coastal view {{ add $i 1 }}"
+        alt="{{ if eq $i 0 }}Luxury 2BHK vacation home interior at Aadhya Abode, Kanyakumari{{ else if eq $i 1 }}Spacious AC bedroom in Aadhya Abode holiday home, Kanyakumari{{ else }}Coastal view from Aadhya Abode, short-term stay in Kanyakumari{{ end }}"
         class="h-full w-full object-cover object-center"
         loading="{{ if eq $i 0 }}eager{{ else }}lazy{{ end }}"
+        width="1920"
+        height="1080"
+        {{ if eq $i 0 }}fetchpriority="high"{{ end }}
       />
       <div class="absolute inset-0 hero-overlay"></div>
     </div>
     {{ end }}
 
-    <!-- Hero text content — vertically centred, above slides -->
     <div class="relative z-10 h-full flex items-center">
       <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-slate-50">
         <div class="max-w-xl space-y-4">
           <p class="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-amber-300 font-medium">
             {{ $hero.tag }}
           </p>
+          <!-- h1: primary keyword-rich heading, one per page -->
           <h1 class="font-semibold lg:font-extrabold leading-tight text-white text-[28px] sm:text-[34px] lg:text-[46px]">
-            {{ $hero.title }}
+            Luxury Vacation Home in Kanyakumari
           </h1>
           <p class="text-[13px] sm:text-[14px] lg:text-[15px] text-slate-100/95 font-normal">
-            {{ $hero.subtitle }}
+            Fully furnished <strong>2BHK holiday home</strong> for short-term stays in Kanyakumari. Modern amenities, warm hospitality, and a perfect base to explore the coastal tip of India.
           </p>
           <div class="flex flex-wrap items-center gap-3 pt-3">
             <a href="#abodes"
@@ -60,100 +65,103 @@
       </div>
     </div>
 
-    <!-- Left / Right arrow navigation -->
-    <button
-      id="hero-prev"
-      type="button"
-      aria-label="Previous slide"
+    <button id="hero-prev" type="button" aria-label="Previous slide"
       class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center h-9 w-9 sm:h-11 sm:w-11 rounded-full bg-white/30 hover:bg-white/55 backdrop-blur-sm text-white shadow transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-           class="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-
-    <button
-      id="hero-next"
-      type="button"
-      aria-label="Next slide"
+    <button id="hero-next" type="button" aria-label="Next slide"
       class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 inline-flex items-center justify-center h-9 w-9 sm:h-11 sm:w-11 rounded-full bg-white/30 hover:bg-white/55 backdrop-blur-sm text-white shadow transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-white">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-           class="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true">
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
 
-    <!-- Dot indicators — bottom centre, above overlay -->
     <div class="absolute bottom-5 left-0 right-0 z-10 flex justify-center items-center gap-2" id="hero-dots">
       {{ range $i, $img := $heroImages }}
-      <button
-        class="hero-dot {{ if eq $i 0 }}active{{ end }}"
-        data-dot="{{ $i }}"
-        aria-label="Go to slide {{ add $i 1 }}"
-      ></button>
+      <button class="hero-dot {{ if eq $i 0 }}active{{ end }}" data-dot="{{ $i }}" aria-label="Go to slide {{ add $i 1 }}"></button>
       {{ end }}
     </div>
   </div>
 </section>
 
-<!-- Gallery section -->
-<section id="gallery" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-20">
+<!-- ══════════════════════════════════════════════════════════════════
+     TRUST BAR — star ratings + social proof strip
+══════════════════════════════════════════════════════════════════ -->
+<section aria-label="Guest ratings and trust signals" class="bg-teal-700 py-3">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-center gap-6 text-white text-xs sm:text-sm font-medium">
+      <span class="flex items-center gap-1.5">
+        <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+        <strong>5.0</strong> on Airbnb
+      </span>
+      <span class="text-teal-300" aria-hidden="true">|</span>
+      <span class="flex items-center gap-1.5">
+        <span aria-hidden="true">⭐⭐⭐⭐⭐</span>
+        <strong>5.0</strong> on Google
+      </span>
+      <span class="text-teal-300" aria-hidden="true">|</span>
+      <span>10+ verified reviews</span>
+      <span class="text-teal-300" aria-hidden="true">|</span>
+      <span>Kanyakumari, Tamil Nadu</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     GALLERY
+══════════════════════════════════════════════════════════════════ -->
+<section id="gallery" aria-labelledby="gallery-heading" class="py-10 sm:py-12 bg-white border-b border-slate-100 scroll-mt-20">
   {{ $gallery := .Site.Data.content.gallery }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $gallery.heading }}</h3>
-      <p class="mt-1 text-sm text-slate-600 max-w-xl mx-auto">{{ $gallery.description }}</p>
+      <h2 id="gallery-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">Inside Aadhya Abode — Photo Gallery</h2>
+      <p class="mt-1 text-sm text-slate-600 max-w-xl mx-auto">A glimpse into our luxuriously furnished interiors, cozy bedrooms, modular kitchen, and the coastal charm around Aadhya Abode in Kanyakumari.</p>
     </div>
 
     <div class="group relative">
       <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {{ range $gallery.images }}
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="{{ .src }}" data-gallery-alt="{{ .alt }}">
-          <img src="{{ .src }}" alt="{{ .alt }}" class="h-full w-full object-cover" loading="lazy" />
+        {{ range $i, $img := $gallery.images }}
+        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="{{ $img.src }}" data-gallery-alt="{{ $img.alt }}">
+          <img src="{{ $img.src }}" alt="{{ $img.alt }}" class="h-full w-full object-cover" loading="lazy" width="360" height="320" />
         </figure>
         {{ end }}
       </div>
       <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8592;</div>
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-label="Scroll gallery left">&#8592;</div>
       </div>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1">
-        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-hidden="true">&#8594;</div>
+        <div class="pointer-events-auto gallery-arrow gallery-arrow-right inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-label="Scroll gallery right">&#8594;</div>
       </div>
     </div>
   </div>
 
-  <!-- Lightbox modal -->
   <div id="gallery-lightbox" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/80 p-4">
-    <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">
-      &#x2715;
-    </button>
+    <button type="button" class="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-900 text-sm font-semibold shadow hover:bg-white" aria-label="Close image">&#x2715;</button>
     <div class="max-w-4xl w-full max-h-[90vh] flex items-center justify-center">
       <img id="gallery-lightbox-image" src="" alt="" class="max-h-full w-auto rounded-2xl shadow-2xl" />
     </div>
   </div>
 </section>
 
-<!-- Testimonials -->
+<!-- ══════════════════════════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════════════════════════ -->
 {{ partial "testimonials.html" . }}
 
-<!-- Our Abodes -->
-<section id="abodes" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
+<!-- ══════════════════════════════════════════════════════════════════
+     OUR ABODES — property listings
+══════════════════════════════════════════════════════════════════ -->
+<section id="abodes" aria-labelledby="abodes-heading" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">
-        {{ $abodesSection.heading }}
-      </h3>
+      <h2 id="abodes-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        Vacation Homes in Kanyakumari — Book Your Stay
+      </h2>
       <p class="text-sm text-slate-600">
-        {{ $abodesSection.description }}
+        Fully furnished <strong>luxury 2BHK holiday home</strong> in Kanyakumari for families and groups. Self check-in, private parking, and instant WhatsApp booking.
       </p>
       <div class="flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs pt-2">
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium"
-                data-filter="all">All</button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition"
-                data-filter="2bhk">Luxury 2BHK</button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium" data-filter="all">All</button>
+        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition" data-filter="2bhk">Luxury 2BHK</button>
       </div>
     </div>
 
@@ -161,22 +169,30 @@
       {{ range .Site.Data.abodes }}
       {{ $abode := . }}
       <article class="abode-card w-full bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col"
-               data-type="{{ $abode.type }}">
+               data-type="{{ $abode.type }}"
+               itemscope itemtype="https://schema.org/LodgingBusiness">
+        <meta itemprop="name" content="{{ $abode.title }} — Aadhya Abode, Kanyakumari" />
+        <meta itemprop="description" content="{{ $abode.tagline }}" />
         <div class="relative">
           <div class="flex gap-2 overflow-x-auto scroll-smooth snap-x snap-mandatory h-48 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             <img
               src="{{ $abode.image }}"
-              alt="{{ $abode.alt }}"
+              alt="{{ $abode.alt }} — Aadhya Abode luxury vacation home Kanyakumari"
               class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
               loading="lazy"
+              width="640"
+              height="192"
+              itemprop="image"
             />
             {{ if $abode.gallery }}
               {{ range $img := $abode.gallery }}
               <img
                 src="{{ $img }}"
-                alt="{{ $abode.title }} gallery image"
+                alt="{{ $abode.title }} interior — holiday home in Kanyakumari, Tamil Nadu"
                 class="h-full w-full max-w-full flex-shrink-0 snap-start object-cover rounded-none"
                 loading="lazy"
+                width="640"
+                height="192"
               />
               {{ end }}
             {{ end }}
@@ -186,10 +202,11 @@
           </span>
         </div>
         <div class="flex-1 flex flex-col p-4 space-y-3">
-          <p class="text-sm text-slate-700 font-medium">{{ $abode.tagline }}</p>
-          <ul class="text-xs text-slate-600 space-y-1">
+          <h3 class="text-sm font-semibold text-slate-900" itemprop="name">{{ $abode.title }}</h3>
+          <p class="text-sm text-slate-700" itemprop="description">{{ $abode.tagline }}</p>
+          <ul class="text-xs text-slate-600 space-y-1" aria-label="Room features">
             {{ range $abode.bullets }}
-            <li>• {{ . }}</li>
+            <li>✓ {{ . }}</li>
             {{ end }}
           </ul>
           <div class="mt-3 flex items-center justify-between text-[11px] text-slate-500">
@@ -201,7 +218,8 @@
           <a href="{{ $.Site.Params.links.whatsapp_booking }}"
              target="_blank"
              rel="noopener noreferrer"
-             class="inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-700 transition-transform transform hover:-translate-y-0.5">
+             class="inline-flex w-full items-center justify-center rounded-full bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white shadow-sm hover:bg-teal-700 transition-transform transform hover:-translate-y-0.5"
+             aria-label="Book {{ $abode.title }} via WhatsApp">
             Book via WhatsApp
           </a>
         </div>
@@ -211,13 +229,15 @@
   </div>
 </section>
 
-<!-- Amenities / Value Proposition -->
-<section id="amenities" class="py-10 sm:py-12 bg-white scroll-mt-20">
+<!-- ══════════════════════════════════════════════════════════════════
+     AMENITIES
+══════════════════════════════════════════════════════════════════ -->
+<section id="amenities" aria-labelledby="amenities-heading" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $amenities := .Site.Data.content.amenities }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $amenities.heading }}</h3>
-      <p class="mt-2 text-sm text-slate-600">{{ $amenities.description }}</p>
+      <h2 id="amenities-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">Amenities &amp; Services at Aadhya Abode</h2>
+      <p class="mt-2 text-sm text-slate-600">Everything you need for a seamless Kanyakumari vacation — from stay essentials to local guidance and transit support.</p>
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {{ range $amenities.items }}
@@ -230,12 +250,89 @@
   </div>
 </section>
 
-<!-- Booking & Payment Policies -->
-<section id="policies" class="py-10 sm:py-12 bg-white scroll-mt-20">
+<!-- ══════════════════════════════════════════════════════════════════
+     FAQ SECTION — targets featured snippet & People Also Ask
+══════════════════════════════════════════════════════════════════ -->
+<section id="faq" aria-labelledby="faq-heading" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <h2 id="faq-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">Frequently Asked Questions</h2>
+      <p class="mt-2 text-sm text-slate-600">Everything you need to know before booking your Kanyakumari stay at Aadhya Abode.</p>
+    </div>
+    <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+
+      <details class="group rounded-2xl border border-slate-200 bg-white p-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-sm list-none">
+          <span itemprop="name">Where is Aadhya Abode located in Kanyakumari?</span>
+          <span class="ml-2 text-teal-600 text-lg" aria-hidden="true">+</span>
+        </summary>
+        <div class="mt-3 text-sm text-slate-600" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Aadhya Abode is located in a calm residential neighbourhood in Kanyakumari, Tamil Nadu — just <strong>5 minutes from the iconic Vivekananda Rock Memorial</strong> and Thiruvalluvar Statue. It is well connected to the railway station, bus stand, and major tourist spots.</p>
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-slate-200 bg-white p-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-sm list-none">
+          <span itemprop="name">How many guests can stay at Aadhya Abode?</span>
+          <span class="ml-2 text-teal-600 text-lg" aria-hidden="true">+</span>
+        </summary>
+        <div class="mt-3 text-sm text-slate-600" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Our luxury 2BHK holiday home comfortably accommodates <strong>6 to 8 guests</strong> with two spacious AC bedrooms and a large living area — ideal for families and groups visiting Kanyakumari.</p>
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-slate-200 bg-white p-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-sm list-none">
+          <span itemprop="name">What amenities are included in the stay?</span>
+          <span class="ml-2 text-teal-600 text-lg" aria-hidden="true">+</span>
+        </summary>
+        <div class="mt-3 text-sm text-slate-600" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Aadhya Abode includes <strong>high-speed Wi-Fi, AC in all bedrooms, 100% power backup, a fully equipped modular kitchen, smart TV, private parking</strong>, and curated local sightseeing guidance.</p>
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-slate-200 bg-white p-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-sm list-none">
+          <span itemprop="name">How do I book Aadhya Abode?</span>
+          <span class="ml-2 text-teal-600 text-lg" aria-hidden="true">+</span>
+        </summary>
+        <div class="mt-3 text-sm text-slate-600" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">You can <a href="https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I'd%20like%20to%20check%20availability" class="text-teal-700 underline" target="_blank" rel="noopener noreferrer">book instantly via WhatsApp</a> at <strong>+91 80151 60563</strong>. Booking confirmation and check-in instructions are shared directly on WhatsApp.</p>
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-slate-200 bg-white p-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-sm list-none">
+          <span itemprop="name">What are the check-in and check-out times?</span>
+          <span class="ml-2 text-teal-600 text-lg" aria-hidden="true">+</span>
+        </summary>
+        <div class="mt-3 text-sm text-slate-600" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Standard check-in is at <strong>2:00 PM</strong> and check-out is at <strong>11:00 AM</strong>. Early check-in and late check-out can be arranged on prior request, subject to availability.</p>
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-slate-200 bg-white p-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900 text-sm list-none">
+          <span itemprop="name">Is Aadhya Abode suitable for a family trip to Kanyakumari?</span>
+          <span class="ml-2 text-teal-600 text-lg" aria-hidden="true">+</span>
+        </summary>
+        <div class="mt-3 text-sm text-slate-600" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">Absolutely. Aadhya Abode is designed for families — with two spacious bedrooms, a full kitchen for self-cooking, a safe gated compound, and proximity to <a href="#location" class="text-teal-700 underline">Kanyakumari's top tourist spots</a> like Vivekananda Rock, sunrise viewpoints, and local beaches.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     POLICIES
+══════════════════════════════════════════════════════════════════ -->
+<section id="policies" aria-labelledby="policies-heading" class="py-10 sm:py-12 bg-white scroll-mt-20">
   {{ $policies := .Site.Data.content.policies }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $policies.heading }}</h3>
+      <h2 id="policies-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">{{ $policies.heading }}</h2>
       <p class="mt-2 text-sm text-slate-600">{{ $policies.description }}</p>
     </div>
     <div class="grid gap-6 md:grid-cols-3 text-sm text-slate-600">
@@ -253,19 +350,22 @@
   </div>
 </section>
 
-<!-- Location & Map / Trust Triggers -->
-<section id="location" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
+<!-- ══════════════════════════════════════════════════════════════════
+     LOCATION & MAP
+══════════════════════════════════════════════════════════════════ -->
+<section id="location" aria-labelledby="location-heading" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $location := .Site.Data.content.location }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h3 class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">{{ $location.heading }}</h3>
-      <p class="text-sm text-slate-600">{{ $location.description }}</p>
+      <h2 id="location-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3">Aadhya Abode Location — Kanyakumari, Tamil Nadu</h2>
+      <p class="text-sm text-slate-600">Stay minutes away from Kanyakumari's iconic landmarks. Our holiday home is perfectly placed for sunrise views, temple visits, and coastal walks.</p>
     </div>
     <div class="grid gap-8 lg:grid-cols-2 items-start">
       <div class="space-y-4">
-        <ul class="space-y-1 text-sm text-slate-700">
+        <h3 class="text-base font-semibold text-slate-900">Nearby Attractions</h3>
+        <ul class="space-y-1 text-sm text-slate-700" aria-label="Distance to landmarks from Aadhya Abode">
           {{ range $location.bullets }}
-          <li>• {{ . }}</li>
+          <li>📍 {{ . }}</li>
           {{ end }}
         </ul>
         <div class="mt-4 space-y-3 text-xs text-slate-600">
@@ -276,28 +376,58 @@
           </div>
           {{ end }}
         </div>
+        <!-- Internal CTA -->
+        <div class="pt-2">
+          <a href="#abodes" class="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-700 hover:text-teal-900 underline underline-offset-2">View available rooms &rarr;</a>
+        </div>
       </div>
       <div class="rounded-2xl bg-white border border-slate-100 p-3">
         <div class="aspect-video rounded-xl overflow-hidden bg-slate-200">
           <img
             src="/images/map-aadhya-abode.png"
-            alt="Map showing the location of Aadhya Abode in Kanyakumari"
+            alt="Map showing Aadhya Abode location in Kanyakumari, Tamil Nadu — near Vivekananda Rock Memorial"
             class="h-full w-full object-cover"
             loading="lazy"
             width="1200"
             height="675" />
         </div>
         <p class="mt-3 text-xs text-slate-500 text-center">
-          View the live location on Google Maps:
+          View our exact location:
           <a href="{{ .Site.Params.links.maps_url }}"
              target="_blank"
              rel="noopener noreferrer"
              class="text-teal-700 underline">
-            Open in Google Maps
+            Open Aadhya Abode on Google Maps
           </a>
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FINAL CTA STRIP
+══════════════════════════════════════════════════════════════════ -->
+<section aria-label="Book your stay at Aadhya Abode" class="py-12 bg-teal-700 text-white">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center space-y-4">
+    <h2 class="text-2xl sm:text-3xl font-bold">Ready to Book Your Kanyakumari Holiday Home?</h2>
+    <p class="text-sm text-teal-100">Check availability and get instant confirmation via WhatsApp. Perfect for families, couples, and groups.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="{{ .Site.Params.links.whatsapp_booking }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-teal-800 shadow hover:bg-amber-50 transition">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.76 11.76 0 0 0 12.01 0C5.73 0 .6 5.13.6 11.41c0 2.01.53 3.98 1.55 5.72L0 24l6.05-2.11a11.4 11.4 0 0 0 5.96 1.64h.01c6.28 0 11.41-5.13 11.41-11.41a11.3 11.3 0 0 0-3.91-8.64Z"/></svg>
+        Book Now on WhatsApp
+      </a>
+      <a href="{{ .Site.Params.links.airbnb_review }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-medium text-white hover:bg-white/10 transition">
+        View on Airbnb
+      </a>
+    </div>
+    <p class="text-xs text-teal-200">+91 80151 60563 &nbsp;·&nbsp; care.babystep@gmail.com &nbsp;·&nbsp; Kanyakumari, Tamil Nadu</p>
   </div>
 </section>
 

@@ -1,14 +1,29 @@
 baseURL = "https://aadhyaabode.com/"
-# Use locale instead of deprecated languageCode
 locale = "en-IN"
 
-title = "Aadhya Abode | Kanyakumari"
+title = "Aadhya Abode | Luxury Vacation Home in Kanyakumari"
 
-#theme = ""
+# ── SEO & Sitemap ──────────────────────────────────────────────────────────
+[sitemap]
+  changefreq = "monthly"
+  priority    = 0.8
+  filename    = "sitemap.xml"
+
+# ── Output formats: HTML + sitemap ────────────────────────────────────────
+[outputs]
+  home = ["HTML", "RSS"]
+
+# ── Minify for performance ─────────────────────────────────────────────────
+[minify]
+  minifyOutput = true
+
+[params]
+  description = "Aadhya Abode offers premium fully-furnished 2BHK vacation homes in Kanyakumari, Tamil Nadu. Book a luxury short-term stay near Vivekananda Rock. Instant WhatsApp confirmation."
+  keywords    = "holiday home Kanyakumari, vacation rental Kanyakumari, 2BHK stay Kanyakumari, luxury homestay, short term rental Tamil Nadu, family vacation home Kanyakumari"
 
 [params.brand]
 name    = "Aadhya Abode"
-tagline = "Coastal luxury stays in Kanyakumari"
+tagline = "Luxury vacation home in Kanyakumari, Tamil Nadu"
 logo = "/images/logo/aadhya-abode-logo.jpeg"
 
 [params.location]
@@ -31,4 +46,3 @@ google_review    = "https://maps.app.goo.gl/WEwM1EP2isBjCJ617"
 
 [params.footer]
 instagram = "https://instagram.com/aadhyaabode"
-#facebook  = "https://facebook.com/aadhyaabode"
