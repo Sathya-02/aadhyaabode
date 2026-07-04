@@ -1,107 +1,166 @@
-<footer style="background:#0f172a;color:#cbd5e1;">
+<footer style="background:#0f172a;color:#cbd5e1;" itemscope itemtype="https://schema.org/LodgingBusiness">
   <meta itemprop="name"      content="Aadhya Abode" />
   <meta itemprop="url"       content="https://aadhyaabode.com/" />
   <meta itemprop="telephone" content="+918015160563" />
   <meta itemprop="image"     content="https://aadhyaabode.com/images/logo/aadhya-abode-logo.jpeg" />
 
-  <div style="max-width:72rem;margin:0 auto;padding:3rem 1.5rem;">
+  <div style="max-width:72rem;margin:0 auto;padding:3rem 1.5rem 2rem;">
 
-    <!-- Row 1: Brand (full width) -->
-    <div style="margin-bottom:2.5rem;">
-      <a href="/" style="display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;" aria-label="Aadhya Abode — Home">
-        {{ with .Site.Params.brand.logo }}
-        <img src="{{ . }}" alt="Aadhya Abode logo" style="height:2.5rem;width:2.5rem;border-radius:9999px;object-fit:cover;flex-shrink:0;" loading="lazy" width="40" height="40" />
-        {{ end }}
-        <div>
-          <p style="font-weight:600;color:#ffffff;font-size:1rem;margin:0;">{{ .Site.Params.brand.name }}</p>
-          <p style="font-size:0.75rem;color:#94a3b8;margin:0;">{{ .Site.Params.brand.tagline }}</p>
-        </div>
-      </a>
-      <p style="font-size:0.875rem;color:#94a3b8;max-width:36rem;margin-bottom:0.75rem;">
-        Premium 2BHK luxury vacation home for families &amp; groups in Kanyakumari, Tamil Nadu. 5-star rated on Airbnb &amp; Google. Instant WhatsApp booking.
-      </p>
-      <address style="font-style:normal;font-size:0.875rem;color:#94a3b8;line-height:1.8;" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-        <span itemprop="streetAddress">Kanyakumari</span>,
-        <span itemprop="addressLocality">Kanyakumari</span>,
-        <span itemprop="addressRegion">Tamil Nadu</span>
-        <span itemprop="postalCode">629702</span>,
-        <span itemprop="addressCountry">India</span><br/>
-        <a href="{{ .Site.Params.contact.phone_link }}" style="color:#94a3b8;text-decoration:none;" itemprop="telephone">{{ .Site.Params.contact.phone_display }}</a><br/>
-        <a href="mailto:{{ .Site.Params.contact.email }}" style="color:#94a3b8;text-decoration:none;" itemprop="email">{{ .Site.Params.contact.email }}</a>
-      </address>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:0.75rem;font-size:0.75rem;color:#94a3b8;">
-        <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
-          <meta itemprop="ratingValue" content="5.0" />
-          <meta itemprop="reviewCount" content="10" />
-          <meta itemprop="bestRating"  content="5" />
-          &#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:#ffffff;font-weight:600;">5.0</span> Airbnb
-        </span>
-        <span>&#9733;&#9733;&#9733;&#9733;&#9733; <span style="color:#ffffff;font-weight:600;">5.0</span> Google</span>
-      </div>
-    </div>
+    <!-- ── 4-column grid: Brand | Quick Links | Find Us On | Book Your Stay ── -->
+    <div style="
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:2.5rem;
+      align-items:start;
+    " class="footer-grid">
 
-    <!-- Row 2: 3 columns -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;">
-
-      <!-- Quick Links -->
+      <!-- Col 1: Brand -->
       <div>
-        <h3 style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin-bottom:1rem;">Quick Links</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;font-size:0.875rem;">
+        <a href="/" style="display:inline-flex;align-items:center;gap:0.625rem;margin-bottom:0.875rem;text-decoration:none;" aria-label="Aadhya Abode — Home">
+          {{ with .Site.Params.brand.logo }}
+          <img src="{{ . }}" alt="Aadhya Abode logo" style="height:2.25rem;width:2.25rem;border-radius:9999px;object-fit:cover;flex-shrink:0;" loading="lazy" width="36" height="36" />
+          {{ end }}
+          <div>
+            <p style="font-weight:700;color:#ffffff;font-size:0.9375rem;margin:0;line-height:1.2;">{{ .Site.Params.brand.name }}</p>
+            <p style="font-size:0.6875rem;color:#64748b;margin:0;line-height:1.3;">{{ .Site.Params.brand.tagline }}</p>
+          </div>
+        </a>
+
+        <p style="font-size:0.8125rem;color:#94a3b8;line-height:1.65;margin-bottom:0.75rem;max-width:28rem;">
+          Premium fully-furnished 2BHK luxury vacation home for families &amp; groups in Kanyakumari, Tamil Nadu.
+          5&#9733; rated on Airbnb &amp; Google.
+        </p>
+
+        <address style="font-style:normal;font-size:0.8125rem;color:#64748b;line-height:1.8;"
+          itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+          <span itemprop="streetAddress">Near Vivekananda Rock Memorial</span>,
+          <span itemprop="addressLocality">Kanyakumari</span>,
+          <span itemprop="addressRegion">Tamil Nadu</span>
+          <span itemprop="postalCode">629702</span>,
+          <span itemprop="addressCountry">India</span><br/>
+          <a href="{{ .Site.Params.contact.phone_link }}" style="color:#94a3b8;text-decoration:none;" itemprop="telephone">{{ .Site.Params.contact.phone_display }}</a><br/>
+          <a href="mailto:{{ .Site.Params.contact.email }}" style="color:#94a3b8;text-decoration:none;" itemprop="email">{{ .Site.Params.contact.email }}</a>
+        </address>
+
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.875rem;margin-top:0.75rem;font-size:0.75rem;color:#94a3b8;">
+          <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="5.0" />
+            <meta itemprop="reviewCount" content="10" />
+            <meta itemprop="bestRating"  content="5" />
+            &#9733;&#9733;&#9733;&#9733;&#9733;&nbsp;<strong style="color:#ffffff;">5.0</strong>&nbsp;Airbnb
+          </span>
+          <span style="color:#1e293b;">|</span>
+          <span>&#9733;&#9733;&#9733;&#9733;&#9733;&nbsp;<strong style="color:#ffffff;">5.0</strong>&nbsp;Google</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div>
+        <h3 style="font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin:0 0 0.875rem;">Quick Links</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;font-size:0.8125rem;">
           <li><a href="#hero"      class="footer-link">Home</a></li>
           <li><a href="#gallery"   class="footer-link">Photo Gallery</a></li>
-          <li><a href="#abodes"    class="footer-link">Our Abodes — Rooms &amp; Pricing</a></li>
-          <li><a href="#amenities" class="footer-link">Amenities &amp; Services</a></li>
+          <li><a href="#abodes"    class="footer-link">Rooms &amp; Pricing</a></li>
+          <li><a href="#amenities" class="footer-link">Amenities</a></li>
           <li><a href="#faq"       class="footer-link">FAQ</a></li>
           <li><a href="#policies"  class="footer-link">Booking Policies</a></li>
-          <li><a href="#location"  class="footer-link">Location &amp; Directions</a></li>
+          <li><a href="#location"  class="footer-link">Location &amp; Map</a></li>
         </ul>
       </div>
 
-      <!-- Find Us On -->
+      <!-- Col 3: Find Us On -->
       <div>
-        <h3 style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin-bottom:1rem;">Find Us On</h3>
-        <div style="display:flex;flex-direction:column;gap:0.625rem;font-size:0.875rem;">
-          <a href="{{ .Site.Params.links.airbnb_review }}" target="_blank" rel="noopener noreferrer" class="footer-link" style="display:flex;align-items:center;gap:0.375rem;" aria-label="View Aadhya Abode on Airbnb">
-            <svg style="width:1rem;height:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.75 17.25c-.414 0-.75-.336-.75-.75s.336-.75.75-.75.75.336.75.75-.336.75-.75.75zm.75-3.75h-1.5V6.75h1.5v6.75z"/></svg>
-            View on Airbnb
+        <h3 style="font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin:0 0 0.875rem;">Find Us On</h3>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;font-size:0.8125rem;">
+          <a href="{{ .Site.Params.links.airbnb_review }}" target="_blank" rel="noopener noreferrer"
+             class="footer-link" style="display:flex;align-items:center;gap:0.4rem;"
+             aria-label="View Aadhya Abode on Airbnb">
+            <svg style="width:0.9rem;height:0.9rem;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.001 0C5.373 0 0 5.372 0 12s5.373 12 12.001 12C18.63 24 24 18.628 24 12S18.63 0 12.001 0zm4.562 16.704c-.24.676-.96 1.248-1.752 1.392-.48.084-.96.096-1.44.036-.552-.072-1.08-.264-1.596-.492-.84-.36-1.608-.864-2.352-1.416a14.65 14.65 0 0 1-2.016-1.956 8.966 8.966 0 0 1-1.2-2.064c-.24-.648-.3-1.296-.072-1.944.168-.492.504-.888.924-1.164.18-.12.372-.18.576-.18.144 0 .288.024.42.024h.468c.168 0 .348.048.492.168.168.144.252.36.336.564l.48 1.248c.084.228.168.456.132.696-.024.168-.12.324-.228.456-.06.072-.132.132-.192.204-.072.072-.144.144-.168.24-.024.084 0 .18.048.264.288.576.672 1.092 1.116 1.548.504.504 1.068.936 1.692 1.272.108.06.228.108.348.072.132-.036.228-.144.312-.252.228-.288.444-.588.672-.876.132-.168.276-.324.48-.384.18-.048.372-.012.54.06l1.344.636c.204.096.408.192.564.348.168.168.192.432.132.636zm-1.272-5.904c0 .228-.192.432-.432.432-.24 0-.432-.204-.432-.432V9.084c0-.228.192-.432.432-.432.24 0 .432.204.432.432V10.8zm0-2.604c0 .228-.192.432-.432.432-.24 0-.432-.204-.432-.432V6.48c0-.228.192-.432.432-.432.24 0 .432.204.432.432v1.716z"/>
+            </svg>
+            Airbnb
           </a>
-          <a href="{{ .Site.Params.links.google_review }}" target="_blank" rel="noopener noreferrer" class="footer-link" style="display:flex;align-items:center;gap:0.375rem;" aria-label="View Aadhya Abode on Google Maps">
-            <svg style="width:1rem;height:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            View on Google Maps
+          <a href="{{ .Site.Params.links.google_review }}" target="_blank" rel="noopener noreferrer"
+             class="footer-link" style="display:flex;align-items:center;gap:0.4rem;"
+             aria-label="View Aadhya Abode on Google Maps">
+            <svg style="width:0.9rem;height:0.9rem;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            Google Maps
           </a>
           {{ with .Site.Params.footer.instagram }}
-          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="footer-link" style="display:flex;align-items:center;gap:0.375rem;" aria-label="Follow Aadhya Abode on Instagram">
-            <svg style="width:1rem;height:1rem;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
+             class="footer-link" style="display:flex;align-items:center;gap:0.4rem;"
+             aria-label="Follow Aadhya Abode on Instagram">
+            <svg style="width:0.9rem;height:0.9rem;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
             Instagram
           </a>
           {{ end }}
         </div>
       </div>
 
-      <!-- Book Now -->
+      <!-- Col 4: Book Your Stay -->
       <div>
-        <h3 style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin-bottom:1rem;">Book Your Stay</h3>
+        <h3 style="font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin:0 0 0.875rem;">Book Your Stay</h3>
         <a href="{{ .Site.Params.links.whatsapp_booking }}" target="_blank" rel="noopener noreferrer"
            class="footer-wa-btn"
            aria-label="Book Aadhya Abode vacation home via WhatsApp">
-          <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;flex-shrink:0;" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" style="width:0.9rem;height:0.9rem;flex-shrink:0;" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.52 3.48A11.76 11.76 0 0 0 12.01 0C5.73 0 .6 5.13.6 11.41c0 2.01.53 3.98 1.55 5.72L0 24l6.05-2.11a11.4 11.4 0 0 0 5.96 1.64h.01c6.28 0 11.41-5.13 11.41-11.41a11.3 11.3 0 0 0-3.91-8.64ZM12.02 21.2h-.01c-1.82 0-3.6-.49-5.16-1.42l-.37-.22-3.59 1.26 1.23-3.49-.24-.36a9.45 9.45 0 0 1-1.47-5.1c0-5.23 4.26-9.49 9.5-9.49a9.4 9.4 0 0 1 6.73 2.78 9.4 9.4 0 0 1 2.77 6.72c0 5.23-4.26 9.49-9.49 9.49Zm5.2-7.08c-.28-.14-1.65-.81-1.9-.9-.25-.09-.44-.14-.63.14-.19.28-.73.9-.9 1.08-.17.18-.33.2-.61.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.4-1.66-1.56-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.3.42-.45.14-.15.18-.25.27-.42.09-.18.05-.34-.02-.48-.07-.14-.63-1.52-.87-2.08-.23-.55-.47-.47-.64-.48h-.54c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.13 2.84.14.19 1.95 2.98 4.72 4.17.66.29 1.18.47 1.58.6.66.21 1.27.18 1.75.11.53-.08 1.65-.68 1.88-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33Z"/>
           </svg>
           Book via WhatsApp
         </a>
-        <p style="font-size:0.7rem;color:#64748b;margin-top:0.5rem;">Instant confirmation &middot; Self check-in &middot; 5&#9733; rated</p>
+        <p style="font-size:0.6875rem;color:#64748b;margin-top:0.5rem;line-height:1.5;">
+          Instant confirmation<br/>
+          Self check-in &middot; 5&#9733; rated
+        </p>
+        <a href="{{ .Site.Params.links.airbnb_review }}" target="_blank" rel="noopener noreferrer"
+           style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:0.75rem;font-size:0.75rem;color:#94a3b8;text-decoration:none;"
+           aria-label="Book on Airbnb">
+          <svg style="width:0.8rem;height:0.8rem;flex-shrink:0;" viewBox="0 0 24 24" fill="#FF5A5F" aria-hidden="true">
+            <path d="M12.001 0C5.373 0 0 5.372 0 12s5.373 12 12.001 12C18.63 24 24 18.628 24 12S18.63 0 12.001 0zm4.562 16.704c-.24.676-.96 1.248-1.752 1.392-.48.084-.96.096-1.44.036-.552-.072-1.08-.264-1.596-.492-.84-.36-1.608-.864-2.352-1.416a14.65 14.65 0 0 1-2.016-1.956 8.966 8.966 0 0 1-1.2-2.064c-.24-.648-.3-1.296-.072-1.944.168-.492.504-.888.924-1.164.18-.12.372-.18.576-.18.144 0 .288.024.42.024h.468c.168 0 .348.048.492.168.168.144.252.36.336.564l.48 1.248c.084.228.168.456.132.696-.024.168-.12.324-.228.456-.06.072-.132.132-.192.204-.072.072-.144.144-.168.24-.024.084 0 .18.048.264.288.576.672 1.092 1.116 1.548.504.504 1.068.936 1.692 1.272.108.06.228.108.348.072.132-.036.228-.144.312-.252.228-.288.444-.588.672-.876.132-.168.276-.324.48-.384.18-.048.372-.012.54.06l1.344.636c.204.096.408.192.564.348.168.168.192.432.132.636z"/>
+          </svg>
+          Also on Airbnb
+        </a>
       </div>
 
-    </div><!-- end row 2 -->
+    </div><!-- end 4-col grid -->
 
-    <!-- Bottom bar -->
-    <div style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1e293b;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;font-size:0.75rem;color:#475569;">
-      <p style="margin:0;">&copy; {{ now.Year }} Aadhya Abode. All rights reserved. Kanyakumari, Tamil Nadu, India.</p>
-      <p style="margin:0;">
-        Luxury vacation home &amp; short-term rental in Kanyakumari &middot;
-        <a href="{{ .Site.Params.links.maps_url }}" target="_blank" rel="noopener noreferrer" style="color:#2dd4bf;text-decoration:none;" aria-label="Get directions to Aadhya Abode on Google Maps">Get Directions</a>
+    <!-- ── Bottom bar ── -->
+    <div style="
+      margin-top:2.5rem;
+      padding-top:1.25rem;
+      border-top:1px solid #1e293b;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:0.5rem;
+      font-size:0.75rem;
+      color:#475569;
+    ">
+      <p style="margin:0;">&copy; {{ now.Year }} Aadhya Abode. All rights reserved. Kanyakumari, Tamil Nadu.</p>
+      <p style="margin:0;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+        <span>Luxury vacation home &amp; short-term rental in Kanyakumari</span>
+        <span style="color:#1e293b;">·</span>
+        <a href="{{ .Site.Params.links.maps_url }}" target="_blank" rel="noopener noreferrer"
+           style="color:#2dd4bf;text-decoration:none;"
+           aria-label="Get directions to Aadhya Abode on Google Maps">Get Directions ↗</a>
       </p>
     </div>
 
   </div>
+
+  <!-- Responsive: stack to 2-col on tablet, 1-col on mobile -->
+  <style>
+    @media (max-width:1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width:600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
 </footer>
