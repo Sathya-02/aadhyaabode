@@ -26,7 +26,6 @@
         </p>
         <address style="font-style:normal;font-size:0.8125rem;color:#64748b;line-height:1.8;"
           itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-          <span itemprop="streetAddress">Near Vivekananda Rock Memorial</span>,
           <span itemprop="addressLocality">Kanyakumari</span>,
           <span itemprop="addressRegion">Tamil Nadu</span>
           <span itemprop="postalCode">629702</span>,
@@ -65,7 +64,6 @@
         <h3 style="font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin:0 0 0.875rem;">Find Us On</h3>
         <div style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.8125rem;">
 
-          <!-- Airbnb — same SVG path as testimonials section -->
           <a href="{{ .Site.Params.links.airbnb_review }}" target="_blank" rel="noopener noreferrer"
              class="footer-link" style="display:flex;align-items:center;gap:0.5rem;"
              aria-label="View Aadhya Abode on Airbnb">
@@ -75,7 +73,6 @@
             Airbnb
           </a>
 
-          <!-- Google Maps -->
           <a href="{{ .Site.Params.links.google_review }}" target="_blank" rel="noopener noreferrer"
              class="footer-link" style="display:flex;align-items:center;gap:0.5rem;"
              aria-label="View Aadhya Abode on Google Maps">
@@ -88,7 +85,6 @@
             Google Maps
           </a>
 
-          <!-- Instagram -->
           {{ with .Site.Params.footer.instagram }}
           <a href="{{ . }}" target="_blank" rel="noopener noreferrer"
              class="footer-link" style="display:flex;align-items:center;gap:0.5rem;"
@@ -106,11 +102,9 @@
       </div>
 
       <!-- Col 4: Book Your Stay -->
-      <!-- All items use the same font-size/weight as the other footer columns -->
       <div style="display:flex;flex-direction:column;gap:0.45rem;">
         <h3 style="font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;font-weight:600;margin:0 0 0.875rem;">Book Your Stay</h3>
 
-        <!-- WhatsApp — plain link row, same style as footer-link -->
         <a href="{{ .Site.Params.links.whatsapp_booking }}" target="_blank" rel="noopener noreferrer"
            class="footer-link" style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;"
            aria-label="Book Aadhya Abode vacation home via WhatsApp">
@@ -120,11 +114,9 @@
           Book via WhatsApp
         </a>
 
-        <!-- Sub-text: same muted colour, slightly smaller, indented to align under link text -->
         <p style="font-size:0.75rem;color:#64748b;margin:0 0 0 1.5rem;line-height:1.6;">Instant confirmation</p>
         <p style="font-size:0.75rem;color:#64748b;margin:0 0 0.5rem 1.5rem;line-height:1.6;">Self check-in &middot; 5&#9733; rated</p>
 
-        <!-- Also on Airbnb — same style as footer-link -->
         <a href="{{ .Site.Params.links.airbnb_review }}" target="_blank" rel="noopener noreferrer"
            class="footer-link" style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;"
            aria-label="View Aadhya Abode listing on Airbnb">
