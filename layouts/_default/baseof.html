@@ -20,9 +20,7 @@
   {{/* ── Canonical — per-page absolute URL ── */}}
   <link rel="canonical" href="{{ .Permalink }}" />
 
-  {{/* ── Open Graph ──
-       og:title / og:description use block so index.html can override them.
-       NOTE: Hugo blocks cannot be captured into variables; they are rendered inline. ── */}}
+  {{/* ── Open Graph ── */}}
   <meta property="og:type"         content="website" />
   <meta property="og:url"          content="{{ .Permalink }}" />
   <meta property="og:title"        content="{{ block "og_title" . }}{{ .Site.Title }}{{ end }}" />
@@ -42,8 +40,15 @@
   <meta name="twitter:image"       content="{{ .Site.Params.og_image }}" />
   <meta name="twitter:image:alt"   content="Aadhya Abode — Luxury 2BHK Vacation Home in Kanyakumari" />
 
-  {{/* ── Favicons ── */}}
-  <link rel="icon"             href="/images/logo/aadhya-abode-logo.jpeg" type="image/jpeg" />
+  {{/* ── Favicons
+       Google requires:
+       1. A crawlable favicon URL (not blocked by robots.txt)
+       2. Square image — 48×48px minimum, multiples of 48 preferred
+       3. Served from same domain
+       Using the logo JPEG directly; Google accepts JPEG favicons.
+  ── */}}
+  <link rel="icon"             type="image/jpeg" href="/images/logo/aadhya-abode-logo.jpeg" />
+  <link rel="shortcut icon"    type="image/jpeg" href="/images/logo/aadhya-abode-logo.jpeg" />
   <link rel="apple-touch-icon" href="/images/logo/aadhya-abode-logo.jpeg" />
 
   {{/* ── Preconnect / DNS-prefetch ── */}}
@@ -63,10 +68,6 @@
 
   {{/* ══════════════════════════════════════════════════════════════
        JSON-LD Structured Data — @graph
-       • LodgingBusiness + LocalBusiness  (merged type)
-       • WebSite  (with SearchAction)
-       • WebPage  (with BreadcrumbList)
-       • FAQPage  (answers user-intent questions)
   ══════════════════════════════════════════════════════════════ */}}
   <script type="application/ld+json">
   {
