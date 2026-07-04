@@ -1,8 +1,19 @@
 /*
   Tailwind CSS v4 entry point.
   Run: npm run css:watch  (dev)  |  npm run css:build  (production)
+
+  IMPORTANT: tailwind.config.js content[] is v3 syntax and is IGNORED
+  by Tailwind v4. Use @source directives here instead.
 */
 @import "tailwindcss";
+
+/* ── Tell Tailwind v4 where to scan for class names ─────────── */
+@source "../../layouts/**/*.html";
+@source "../../content/**/*.md";
+@source "../../content/**/*.html";
+@source "../../data/**/*.yaml";
+@source "../../data/**/*.json";
+@source "../../static/**/*.html";
 
 /* ── Base ───────────────────────────────────────────────────── */
 html, body { margin: 0; padding: 0; }
@@ -52,7 +63,6 @@ body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-
   will-change: transform;
 }
 
-/* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
   .testimonial-marquee {
     animation: none;
@@ -62,3 +72,74 @@ body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-
     padding: 0 1rem;
   }
 }
+
+/* ── CTA section & footer safety overrides ───────────────────
+   Belt-and-braces: these rules ensure the CTA button and footer
+   links are always visible regardless of Tailwind purge state.
+   They do NOT conflict with utility classes (same specificity).
+──────────────────────────────────────────────────────────────── */
+
+/* CTA strip: WhatsApp primary button */
+.cta-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #064e3b;          /* dark green — always visible on white */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  min-width: 200px;
+  transition: background-color 0.18s, transform 0.18s;
+  text-decoration: none;
+}
+.cta-wa-btn:hover  { background-color: #fef3c7; }
+.cta-wa-btn:active { transform: scale(0.97); }
+
+/* CTA strip: Airbnb outline button */
+.cta-airbnb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(255,255,255,0.75);
+  padding: 0.75rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  min-width: 160px;
+  transition: background-color 0.18s, transform 0.18s;
+  text-decoration: none;
+}
+.cta-airbnb-btn:hover  { background-color: rgba(255,255,255,0.12); }
+.cta-airbnb-btn:active { transform: scale(0.97); }
+
+/* Footer: ensure all link text is visible */
+.footer-link {
+  color: #94a3b8;   /* slate-400 */
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.footer-link:hover { color: #2dd4bf; }  /* teal-400 */
+
+/* Footer: WhatsApp book button */
+.footer-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: #25D366;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;   /* near-black — always readable on green */
+  transition: background-color 0.18s, transform 0.18s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.footer-wa-btn:hover  { background-color: #1ebe5b; }
+.footer-wa-btn:active { transform: scale(0.97); }
