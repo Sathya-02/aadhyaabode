@@ -20,7 +20,7 @@ relativeURLs    = false
 [params]
   description   = "Aadhya Abode is a premium fully-furnished 2BHK luxury vacation home in Kanyakumari, Tamil Nadu. Sleeps 6\u20138 guests. 5-star rated on Airbnb & Google. 5 min from Vivekananda Rock. Book instantly via WhatsApp."
   keywords      = "holiday home Kanyakumari, vacation rental Kanyakumari, 2BHK stay Kanyakumari, luxury homestay Kanyakumari, short term rental Tamil Nadu, family vacation home Kanyakumari, Kanyakumari villa rental, holiday home near Vivekananda Rock"
-  og_image      = "https://aadhyaabode.com/images/og-cover.jpg"
+  og_image      = "https://aadhyaabode.com/images/hero/hero-1.jpg"
   twitter_card  = "summary_large_image"
   twitter_site  = "@aadhyaabode"
   locale        = "en_IN"
