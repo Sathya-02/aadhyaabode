@@ -1,61 +1,117 @@
 <!DOCTYPE html>
-<html lang="en-IN">
+<html lang="{{ .Site.LanguageCode | default "en" }}" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="theme-color" content="#0f766e" />
 
-  <!-- ── Primary SEO Meta ─────────────────────────────────────────── -->
+  {{/* ── Title ── */}}
   <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-  <meta name="description" content="{{ block "description" . }}Aadhya Abode offers premium fully-furnished 2BHK vacation homes in Kanyakumari, Tamil Nadu. Book a luxury short-term stay near Vivekananda Rock. Instant WhatsApp confirmation.{{ end }}" />
-  <meta name="keywords" content="holiday home Kanyakumari, vacation rental Kanyakumari, 2BHK stay Kanyakumari, luxury homestay Kanyakumari, short term rental Tamil Nadu, Aadhya Abode, Kanyakumari villa, family vacation home" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Aadhya Abode" />
-  <link rel="canonical" href="{{ .Site.BaseURL }}" />
 
-  <!-- ── Open Graph (Facebook / WhatsApp preview) ─────────────────── -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Aadhya Abode" />
-  <meta property="og:title" content="{{ block "og_title" . }}Aadhya Abode — Luxury Vacation Home in Kanyakumari{{ end }}" />
-  <meta property="og:description" content="{{ block "og_description" . }}Stay in a fully-furnished 2BHK luxury home at Kanyakumari. 5-star rated. Minutes from Vivekananda Rock. Book instantly via WhatsApp.{{ end }}" />
-  <meta property="og:url" content="{{ .Site.BaseURL }}" />
-  <meta property="og:image" content="{{ .Site.BaseURL }}images/og-cover.jpg" />
-  <meta property="og:image:width" content="1200" />
+  {{/* ── Meta description ── */}}
+  <meta name="description" content="{{ block "description" . }}{{ .Site.Params.description }}{{ end }}" />
+
+  {{/* ── Keywords & robots ── */}}
+  <meta name="keywords" content="{{ .Site.Params.keywords }}" />
+  <meta name="robots"   content="{{ .Site.Params.robots | default "index, follow" }}" />
+  <meta name="author"   content="{{ .Site.Params.author }}" />
+
+  {{/* ── Canonical — per-page absolute URL ── */}}
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  {{/* ── Open Graph ── */}}
+  {{ $og_title := block "og_title" . }}{{ .Site.Title }}{{ end }}
+  {{ $og_desc  := block "og_description" . }}{{ .Site.Params.description }}{{ end }}
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="{{ .Permalink }}" />
+  <meta property="og:title"        content="{{ $og_title }}" />
+  <meta property="og:description"  content="{{ $og_desc }}" />
+  <meta property="og:image"        content="{{ .Site.Params.og_image }}" />
+  <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image:alt"    content="Aadhya Abode — Luxury 2BHK Vacation Home in Kanyakumari" />
+  <meta property="og:locale"       content="{{ .Site.Params.locale | default "en_IN" }}" />
+  <meta property="og:site_name"    content="{{ .Site.Params.brand.name }}" />
 
-  <!-- ── Twitter Card ──────────────────────────────────────────────── -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ block "tw_title" . }}Aadhya Abode — Luxury Vacation Home in Kanyakumari{{ end }}" />
-  <meta name="twitter:description" content="{{ block "tw_description" . }}Stay in a fully-furnished 2BHK luxury home at Kanyakumari. 5-star rated. Instant WhatsApp booking.{{ end }}" />
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}images/og-cover.jpg" />
+  {{/* ── Twitter / X Card ── */}}
+  <meta name="twitter:card"        content="{{ .Site.Params.twitter_card | default "summary_large_image" }}" />
+  <meta name="twitter:site"        content="{{ .Site.Params.twitter_site }}" />
+  <meta name="twitter:title"       content="{{ $og_title }}" />
+  <meta name="twitter:description" content="{{ $og_desc }}" />
+  <meta name="twitter:image"       content="{{ .Site.Params.og_image }}" />
+  <meta name="twitter:image:alt"   content="Aadhya Abode — Luxury 2BHK Vacation Home in Kanyakumari" />
 
-  <!-- ── Favicon ───────────────────────────────────────────────────── -->
-  <link rel="icon" type="image/jpeg" href="/images/logo/aadhya-abode-logo.jpeg" />
+  {{/* ── Favicons ── */}}
+  <link rel="icon"             href="/images/logo/aadhya-abode-logo.jpeg" type="image/jpeg" />
   <link rel="apple-touch-icon" href="/images/logo/aadhya-abode-logo.jpeg" />
 
-  <!-- ── Compiled Tailwind CSS ─────────────────────────────────────── -->
-  <link rel="stylesheet" href="/css/tailwind.css" />
+  {{/* ── Preconnect / DNS-prefetch ── */}}
+  <link rel="preconnect"    href="https://fonts.googleapis.com" />
+  <link rel="preconnect"    href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch"  href="//wa.me" />
+  <link rel="dns-prefetch"  href="//fonts.googleapis.com" />
 
-  <!-- ── Typography: Inter ─────────────────────────────────────────── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {{/* ── Preload LCP hero image (critical for Core Web Vitals) ── */}}
+  <link rel="preload" as="image" href="/images/hero/hero-1.jpg" fetchpriority="high" />
+
+  {{/* ── Fonts ── */}}
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- ── JSON-LD Structured Data ───────────────────────────────────── -->
+  {{/* ── Stylesheet ── */}}
+  <link rel="stylesheet" href="/css/tailwind.css" />
+
+  {{/* ══════════════════════════════════════════════════════════════
+       JSON-LD Structured Data — @graph
+       • LodgingBusiness + LocalBusiness  (merged type)
+       • WebSite  (with SearchAction)
+       • WebPage  (with BreadcrumbList)
+       • FAQPage  (answers user-intent questions)
+  ══════════════════════════════════════════════════════════════ */}}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LodgingBusiness",
-        "@id": "https://aadhyaabode.com/#lodging",
+        "@type": ["LodgingBusiness", "LocalBusiness"],
+        "@id": "https://aadhyaabode.com/#business",
         "name": "Aadhya Abode",
-        "description": "Premium fully-furnished 2BHK luxury vacation home for short-term stays in Kanyakumari, Tamil Nadu, India. Ideal for families and groups up to 8 guests.",
+        "description": "Premium fully-furnished 2BHK luxury vacation home for short-term stays in Kanyakumari, Tamil Nadu. Ideal for families and groups up to 8 guests. 5-star rated on Airbnb and Google.",
         "url": "https://aadhyaabode.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://aadhyaabode.com/images/logo/aadhya-abode-logo.jpeg",
+          "width": 200,
+          "height": 200
+        },
+        "image": [
+          "https://aadhyaabode.com/images/hero/hero-1.jpg",
+          "https://aadhyaabode.com/images/hero/hero-2.jpg",
+          "https://aadhyaabode.com/images/hero/hero-3.jpg"
+        ],
         "telephone": "+918015160563",
         "email": "care.babystep@gmail.com",
-        "image": "https://aadhyaabode.com/images/og-cover.jpg",
-        "priceRange": "₹₹",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kanyakumari",
+          "addressLocality": "Kanyakumari",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "629702",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "8.0883",
+          "longitude": "77.5385"
+        },
+        "hasMap": "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA",
+        "priceRange": "\u20b9\u20b9",
+        "currenciesAccepted": "INR",
+        "paymentAccepted": "Cash, UPI, Bank Transfer",
+        "checkinTime": "14:00",
+        "checkoutTime": "11:00",
+        "numberOfRooms": 2,
+        "petsAllowed": false,
         "starRating": {
           "@type": "Rating",
           "ratingValue": "5"
@@ -67,70 +123,89 @@
           "bestRating": "5",
           "worstRating": "1"
         },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Kanyakumari",
-          "addressRegion": "Tamil Nadu",
-          "addressCountry": "IN"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "8.0883",
-          "longitude": "77.5385"
-        },
-        "sameAs": [
-          "https://instagram.com/aadhyaabode",
-          "https://www.airbnb.co.in/rooms/1702921509210422797",
-          "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA"
-        ],
         "amenityFeature": [
-          { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Full Kitchen", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Power Backup", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Smart TV", "value": true }
+          {"@type": "LocationFeatureSpecification", "name": "Air Conditioning",  "value": true},
+          {"@type": "LocationFeatureSpecification", "name": "Free Wi-Fi",         "value": true},
+          {"@type": "LocationFeatureSpecification", "name": "Free Parking",       "value": true},
+          {"@type": "LocationFeatureSpecification", "name": "Full Kitchen",       "value": true},
+          {"@type": "LocationFeatureSpecification", "name": "Power Backup",       "value": true},
+          {"@type": "LocationFeatureSpecification", "name": "Smart TV",           "value": true},
+          {"@type": "LocationFeatureSpecification", "name": "Self Check-in",      "value": true}
         ],
-        "numberOfRooms": 2,
-        "petsAllowed": false,
-        "checkinTime": "14:00",
-        "checkoutTime": "11:00",
-        "currenciesAccepted": "INR",
-        "paymentAccepted": "UPI, Bank Transfer"
+        "sameAs": [
+          "https://www.airbnb.co.in/rooms/1702921509210422797",
+          "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA",
+          "https://instagram.com/aadhyaabode"
+        ],
+        "areaServed": {
+          "@type": "City",
+          "name": "Kanyakumari",
+          "sameAs": "https://en.wikipedia.org/wiki/Kanyakumari"
+        }
       },
       {
         "@type": "WebSite",
         "@id": "https://aadhyaabode.com/#website",
         "url": "https://aadhyaabode.com/",
         "name": "Aadhya Abode",
-        "description": "Luxury vacation home in Kanyakumari",
-        "inLanguage": "en-IN"
+        "description": "Luxury vacation home in Kanyakumari \u2014 premium 2BHK short-term stays",
+        "publisher": {"@id": "https://aadhyaabode.com/#business"},
+        "inLanguage": "en-IN",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://aadhyaabode.com/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://aadhyaabode.com/#webpage",
+        "url": "https://aadhyaabode.com/",
+        "name": "Aadhya Abode | Luxury Vacation Home in Kanyakumari \u2014 Book 2BHK Stay",
+        "description": "Premium fully-furnished 2BHK luxury vacation home in Kanyakumari, Tamil Nadu. 5-star rated, sleeps up to 8 guests. Instant WhatsApp booking.",
+        "isPartOf": {"@id": "https://aadhyaabode.com/#website"},
+        "about":    {"@id": "https://aadhyaabode.com/#business"},
+        "inLanguage": "en-IN",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://aadhyaabode.com/"
+            }
+          ]
+        }
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Where is Aadhya Abode located?",
+            "name": "Where is Aadhya Abode located in Kanyakumari?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Aadhya Abode is located in Kanyakumari, Tamil Nadu, India — just 5 minutes from the iconic Vivekananda Rock Memorial and Thiruvalluvar Statue."
+              "text": "Aadhya Abode is located in Kanyakumari, Tamil Nadu, India \u2014 just 5 minutes from the iconic Vivekananda Rock Memorial and Thiruvalluvar Statue. It is well connected to the railway station, bus stand, and major tourist spots."
             }
           },
           {
             "@type": "Question",
-            "name": "How many guests can Aadhya Abode accommodate?",
+            "name": "How many guests can stay at Aadhya Abode?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Our luxury 2BHK vacation home comfortably accommodates 6 to 8 guests, making it ideal for families and groups."
+              "text": "Our luxury 2BHK holiday home comfortably accommodates 6 to 8 guests with two spacious AC bedrooms and a large living area \u2014 ideal for families and groups visiting Kanyakumari."
             }
           },
           {
             "@type": "Question",
-            "name": "What amenities are included at Aadhya Abode?",
+            "name": "What amenities are included in the stay?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Aadhya Abode includes two AC bedrooms, high-speed Wi-Fi, 100% power backup, a fully equipped modular kitchen, smart TV, and private parking."
+              "text": "Aadhya Abode includes high-speed Wi-Fi, AC in all bedrooms, 100% power backup, a fully equipped modular kitchen, smart TV, private parking, and curated local sightseeing guidance."
             }
           },
           {
@@ -138,15 +213,15 @@
             "name": "How do I book Aadhya Abode?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "You can book instantly via WhatsApp at +91 80151 60563. Booking confirmations are shared directly on WhatsApp with complete check-in instructions."
+              "text": "You can book instantly via WhatsApp at +91 80151 60563. Booking confirmation and check-in instructions are shared directly on WhatsApp."
             }
           },
           {
             "@type": "Question",
-            "name": "What is the check-in and check-out time?",
+            "name": "What are the check-in and check-out times at Aadhya Abode?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Standard check-in is at 2:00 PM and check-out is at 11:00 AM. Early check-in and late check-out can be arranged on prior request subject to availability."
+              "text": "Standard check-in is at 2:00 PM and check-out is at 11:00 AM. Early check-in and late check-out can be arranged on prior request, subject to availability."
             }
           },
           {
@@ -154,7 +229,7 @@
             "name": "Is Aadhya Abode suitable for a family trip to Kanyakumari?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes! Aadhya Abode is specifically designed for families. With two spacious bedrooms, a full kitchen, and a child-friendly layout, it is the perfect base for exploring Kanyakumari's sunrise points, temples, and beaches."
+              "text": "Absolutely. Aadhya Abode is designed for families \u2014 with two spacious bedrooms, a full kitchen for self-cooking, a safe gated compound, and proximity to Kanyakumari\u2019s top tourist spots like Vivekananda Rock, sunrise viewpoints, and local beaches."
             }
           }
         ]
@@ -162,18 +237,27 @@
     ]
   }
   </script>
+
+  {{ block "schema_extra" . }}{{ end }}
 </head>
-<body class="bg-slate-50 text-slate-900 scroll-smooth">
+
+<body class="bg-slate-50 text-slate-900 scroll-smooth antialiased">
+
+  {{/* ── Skip to main content (accessibility + crawl efficiency) ── */}}
+  <a href="#main-content"
+     class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-teal-700 focus:px-4 focus:py-2 focus:text-white focus:text-sm focus:font-semibold focus:shadow-lg">
+    Skip to main content
+  </a>
+
   {{ partial "header.html" . }}
 
-  <!-- Non-hero sections use scroll-mt-20 on the section element for anchor offset -->
-  <main id="main-content">
+  <main id="main-content" tabindex="-1">
     {{ block "main" . }}{{ end }}
   </main>
 
   {{ partial "footer.html" . }}
 
-  <!-- Floating WhatsApp FAB -->
+  <!-- Floating WhatsApp FAB (mobile only) -->
   <a href="{{ .Site.Params.links.whatsapp_booking }}"
      target="_blank"
      rel="noopener noreferrer"

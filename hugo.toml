@@ -1,48 +1,59 @@
 baseURL = "https://aadhyaabode.com/"
-locale = "en-IN"
-
+languageCode = "en-IN"
+defaultContentLanguage = "en"
 title = "Aadhya Abode | Luxury Vacation Home in Kanyakumari"
+enableRobotsTXT = true
+canonicallURLs    = false
+relativeURLs    = false
 
-# ── SEO & Sitemap ──────────────────────────────────────────────────────────
 [sitemap]
-  changefreq = "monthly"
-  priority    = 0.8
+  changefreq = "weekly"
+  priority    = 0.9
   filename    = "sitemap.xml"
 
-# ── Output formats: HTML + sitemap ────────────────────────────────────────
 [outputs]
   home = ["HTML", "RSS"]
 
-# ── Minify for performance ─────────────────────────────────────────────────
 [minify]
   minifyOutput = true
 
 [params]
-  description = "Aadhya Abode offers premium fully-furnished 2BHK vacation homes in Kanyakumari, Tamil Nadu. Book a luxury short-term stay near Vivekananda Rock. Instant WhatsApp confirmation."
-  keywords    = "holiday home Kanyakumari, vacation rental Kanyakumari, 2BHK stay Kanyakumari, luxury homestay, short term rental Tamil Nadu, family vacation home Kanyakumari"
+  description   = "Aadhya Abode is a premium fully-furnished 2BHK luxury vacation home in Kanyakumari, Tamil Nadu. Sleeps 6\u20138 guests. 5-star rated on Airbnb & Google. 5 min from Vivekananda Rock. Book instantly via WhatsApp."
+  keywords      = "holiday home Kanyakumari, vacation rental Kanyakumari, 2BHK stay Kanyakumari, luxury homestay Kanyakumari, short term rental Tamil Nadu, family vacation home Kanyakumari, Kanyakumari villa rental, holiday home near Vivekananda Rock"
+  og_image      = "https://aadhyaabode.com/images/og-cover.jpg"
+  twitter_card  = "summary_large_image"
+  twitter_site  = "@aadhyaabode"
+  locale        = "en_IN"
+  robots        = "index, follow"
+  author        = "Aadhya Abode"
 
 [params.brand]
-name    = "Aadhya Abode"
-tagline = "Luxury vacation home in Kanyakumari, Tamil Nadu"
-logo = "/images/logo/aadhya-abode-logo.jpeg"
+  name    = "Aadhya Abode"
+  tagline = "Luxury vacation home in Kanyakumari, Tamil Nadu"
+  logo    = "/images/logo/aadhya-abode-logo.jpeg"
 
 [params.location]
-city    = "Kanyakumari"
-state   = "Tamil Nadu"
-country = "India"
+  city         = "Kanyakumari"
+  state        = "Tamil Nadu"
+  country      = "India"
+  country_code = "IN"
+  postal_code  = "629702"
+  address      = "Kanyakumari, Tamil Nadu 629702, India"
+  latitude     = "8.0883"
+  longitude    = "77.5385"
 
 [params.contact]
-phone_display = "+91 80151 60563"
-phone_link    = "tel:+918015160563"
-whatsapp_number  = "8015160563"
-whatsapp_message = "Hi Aadhya Abode, I'd like to check availability"
-email           = "care.babystep@gmail.com"
+  phone_display    = "+91 80151 60563"
+  phone_link       = "tel:+918015160563"
+  whatsapp_number  = "8015160563"
+  whatsapp_message = "Hi Aadhya Abode, I'd like to check availability"
+  email            = "care.babystep@gmail.com"
 
 [params.links]
-whatsapp_booking = "https://wa.me/918015160563?text=Hi%20Aadhya%20Abode,%20I'd%20like%20to%20check%20availability"
-maps_url         = "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA"
-airbnb_review    = "https://www.airbnb.co.in/rooms/1702921509210422797?guests=1&adults=1&s=67&unique_share_id=a304044a-0d28-4f04-95c6-850d8063c956"
-google_review    = "https://maps.app.goo.gl/WEwM1EP2isBjCJ617"
+  whatsapp_booking = "https://wa.me/918015160563?text=Hi%20Aadhya%20Abode%2C%20I%27d%20like%20to%20check%20availability"
+  maps_url         = "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA"
+  airbnb_review    = "https://www.airbnb.co.in/rooms/1702921509210422797?guests=1&adults=1&s=67&unique_share_id=a304044a-0d28-4f04-95c6-850d8063c956"
+  google_review    = "https://maps.app.goo.gl/WEwM1EP2isBjCJ617"
 
 [params.footer]
-instagram = "https://instagram.com/aadhyaabode"
+  instagram = "https://instagram.com/aadhyaabode"

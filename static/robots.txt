@@ -1,9 +1,17 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Block build artefacts and low-value paths
+Disallow: /admin/
+Disallow: /tags/
+Disallow: /categories/
+Disallow: /*.json$
+
+# Cloudflare Pages system paths
+Disallow: /_headers
+Disallow: /_redirects
+
+# Sitemap declaration
 Sitemap: https://aadhyaabode.com/sitemap.xml
 
-# Block non-content directories
-Disallow: /css/
-Disallow: /js/
+Crawl-delay: 1
