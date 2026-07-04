@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}" dir="ltr">
+<html lang="{{ .Site.Params.locale | default "en" }}" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +9,7 @@
   {{/* ── Title ── */}}
   <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
-  {{/* ── Meta description ── */}}
+  {{/* ── Meta description (overridable per page via define "description") ── */}}
   <meta name="description" content="{{ block "description" . }}{{ .Site.Params.description }}{{ end }}" />
 
   {{/* ── Keywords & robots ── */}}
@@ -20,13 +20,13 @@
   {{/* ── Canonical — per-page absolute URL ── */}}
   <link rel="canonical" href="{{ .Permalink }}" />
 
-  {{/* ── Open Graph ── */}}
-  {{ $og_title := block "og_title" . }}{{ .Site.Title }}{{ end }}
-  {{ $og_desc  := block "og_description" . }}{{ .Site.Params.description }}{{ end }}
+  {{/* ── Open Graph ──
+       og:title / og:description use block so index.html can override them.
+       NOTE: Hugo blocks cannot be captured into variables; they are rendered inline. ── */}}
   <meta property="og:type"         content="website" />
   <meta property="og:url"          content="{{ .Permalink }}" />
-  <meta property="og:title"        content="{{ $og_title }}" />
-  <meta property="og:description"  content="{{ $og_desc }}" />
+  <meta property="og:title"        content="{{ block "og_title" . }}{{ .Site.Title }}{{ end }}" />
+  <meta property="og:description"  content="{{ block "og_description" . }}{{ .Site.Params.description }}{{ end }}" />
   <meta property="og:image"        content="{{ .Site.Params.og_image }}" />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
@@ -37,8 +37,8 @@
   {{/* ── Twitter / X Card ── */}}
   <meta name="twitter:card"        content="{{ .Site.Params.twitter_card | default "summary_large_image" }}" />
   <meta name="twitter:site"        content="{{ .Site.Params.twitter_site }}" />
-  <meta name="twitter:title"       content="{{ $og_title }}" />
-  <meta name="twitter:description" content="{{ $og_desc }}" />
+  <meta name="twitter:title"       content="{{ block "tw_title" . }}{{ .Site.Title }}{{ end }}" />
+  <meta name="twitter:description" content="{{ block "tw_description" . }}{{ .Site.Params.description }}{{ end }}" />
   <meta name="twitter:image"       content="{{ .Site.Params.og_image }}" />
   <meta name="twitter:image:alt"   content="Aadhya Abode — Luxury 2BHK Vacation Home in Kanyakumari" />
 
@@ -47,10 +47,10 @@
   <link rel="apple-touch-icon" href="/images/logo/aadhya-abode-logo.jpeg" />
 
   {{/* ── Preconnect / DNS-prefetch ── */}}
-  <link rel="preconnect"    href="https://fonts.googleapis.com" />
-  <link rel="preconnect"    href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch"  href="//wa.me" />
-  <link rel="dns-prefetch"  href="//fonts.googleapis.com" />
+  <link rel="preconnect"   href="https://fonts.googleapis.com" />
+  <link rel="preconnect"   href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="//wa.me" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
   {{/* ── Preload LCP hero image (critical for Core Web Vitals) ── */}}
   <link rel="preload" as="image" href="/images/hero/hero-1.jpg" fetchpriority="high" />
