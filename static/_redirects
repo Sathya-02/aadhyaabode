@@ -1,2 +1,2 @@
 # Redirect bare domain → www (canonical)
-https://aadhyaabode.com/* https://www.aadhyaabode.com/:splat 301!
+https://www.aadhyaabode.com/* https://www.aadhyaabode.com/:splat 301!
