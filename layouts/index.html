@@ -76,11 +76,11 @@
     </div>
     <div class="group relative">
       <div class="gallery-track flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {{ range $i, $img := $gallery.images }}
-        <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer" data-gallery-image="{{ $img.src }}" data-gallery-alt="{{ $img.alt }}">
-          <img src="{{ $img.src }}" alt="{{ $img.alt }}" class="h-full w-full object-cover" loading="lazy" width="360" height="320" />
-        </figure>
-        {{ end }}
+        {{ partial "gallery-dynamic.html" (dict
+            "dir" "images/gallery"
+            "sortBy" "name"
+            "altOverrides" .Site.Data.gallery_alts
+        ) }}
       </div>
       <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1">
         <div class="pointer-events-auto gallery-arrow gallery-arrow-left inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/85 text-slate-700 shadow-sm" aria-label="Scroll gallery left">&#8592;</div>

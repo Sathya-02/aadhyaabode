@@ -1,0 +1,66 @@
+{{/*
+  Dynamically lists image files from a static directory at build time.
+  Usage:
+    {{ partial "gallery-dynamic.html" (dict
+        "dir" "images/gallery"
+        "sortBy" "name"
+        "altOverrides" .Site.Data.gallery_alts
+    ) }}
+
+  Params:
+    dir          - path relative to /static (default "images/gallery")
+    sortBy       - "name" (default, alphabetical) or "date" (newest ModTime first)
+    altOverrides - optional dict/data map of filename -> alt text
+*/}}
+
+{{ $relDir      := .dir | default "images/gallery" }}
+{{ $sortBy      := .sortBy | default "name" }}
+{{ $diskPath    := printf "static/%s" $relDir }}
+{{ $allowedExt  := slice "jpg" "jpeg" "png" "webp" "avif" "svg" }}
+{{ $altOverrides := .altOverrides }}
+
+{{ $files := slice }}
+
+{{ if os.FileExists $diskPath }}
+  {{ range os.ReadDir $diskPath }}
+    {{ if not .IsDir }}
+      {{ $name := .Name }}
+      {{ $ext  := strings.TrimPrefix "." (path.Ext $name) | strings.ToLower }}
+      {{ if in $allowedExt $ext }}
+        {{ $files = $files | append (dict
+            "name"    $name
+            "modTime" .ModTime
+        ) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* ── Sorting ──────────────────────────────────────────── */}}
+{{ if eq $sortBy "date" }}
+  {{ $files = sort $files "modTime" "desc" }}
+{{ else }}
+  {{ $files = sort $files "name" "asc" }}
+{{ end }}
+
+{{/* ── Render ───────────────────────────────────────────── */}}
+{{ if eq (len $files) 0 }}
+  <p class="text-sm text-slate-500 text-center w-full py-10">
+    No gallery images yet — add photos to <code>/static/{{ $relDir }}/</code>
+  </p>
+{{ else }}
+  {{ range $files }}
+    {{ $src  := printf "/%s/%s" $relDir .name }}
+    {{ $base := strings.TrimSuffix (path.Ext .name) .name }}
+    {{ $fallbackAlt := $base | strings.Replace "-" " " | strings.Replace "_" " " }}
+    {{ $alt := $fallbackAlt }}
+    {{ if $altOverrides }}
+      {{ with index $altOverrides .name }}{{ $alt = . }}{{ end }}
+    {{ end }}
+    <figure class="gallery-item relative w-[260px] sm:w-[320px] md:w-[360px] h-56 sm:h-64 md:h-80 flex-shrink-0 snap-start rounded-3xl overflow-hidden bg-slate-200 cursor-pointer"
+            data-gallery-image="{{ $src }}" data-gallery-alt="{{ $alt }}">
+      <img src="{{ $src }}" alt="{{ $alt }}" class="h-full w-full object-cover"
+           loading="lazy" decoding="async" width="360" height="320" />
+    </figure>
+  {{ end }}
+{{ end }}

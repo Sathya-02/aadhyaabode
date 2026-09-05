@@ -1,0 +1,16 @@
+# Optional — only list files where the auto-generated alt text isn't good enough.
+# Key = exact filename in static/images/gallery/, Value = alt text.
+# If a filename isn't listed here, a humanized version of the filename is used
+# automatically (e.g. "gallery-4.jpg" -> "gallery 4").
+gallery-1.jpg: "Warmly lit living room with sofa and coffee table"
+gallery-2.jpg: "Well designed bedroom with large window"
+gallery-3.jpg: "Dining space with table setup"
+gallery-4.jpg: "Well designed modular kitchen with breakfast counter"
+gallery-5.jpg: "Warmly lit living room with sofa and coffee table"
+gallery-6.jpg: "Well designed bedroom with large window"
+gallery-7.jpg: "Dining space with table setup"
+gallery-8.jpg: "Well designed modular kitchen with breakfast counter"
+gallery-9.jpg: "Warmly lit living room with sofa and coffee table"
+gallery-10.jpg: "Well designed bedroom with large window"
+gallery-11.jpg: "Dining space with table setup"
+gallery-12.jpg: "Well designed modular kitchen with breakfast counter"
