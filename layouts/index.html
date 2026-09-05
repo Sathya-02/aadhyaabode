@@ -104,17 +104,37 @@
 <!-- OUR ABODES -->
 <section id="abodes" aria-labelledby="abodes-heading" class="py-10 sm:py-12 bg-slate-50 scroll-mt-20">
   {{ $abodesSection := .Site.Data.content.abodes_section }}
+  {{ $abodes := .Site.Data.abodes }}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-8 space-y-3">
-      <h2 id="abodes-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">Vacation Homes in Kanyakumari — Book Your Stay</h2>
-      <p class="text-sm text-slate-600">Fully furnished <strong>luxury 2BHK holiday home</strong> in Kanyakumari for families and groups. Self check-in, private parking, and instant WhatsApp booking.</p>
+      <h2 id="abodes-heading" class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        {{ $abodesSection.heading | default "Vacation Homes in Kanyakumari — Book Your Stay" }}
+      </h2>
+      <p class="text-sm text-slate-600">
+        {{ $abodesSection.description | default "Fully furnished luxury 2BHK holiday home in Kanyakumari for families and groups. Self check-in, private parking, and instant WhatsApp booking." | safeHTML }}
+      </p>
+
+      {{ if gt (len $abodes) 0 }}
       <div class="flex flex-wrap justify-center gap-2 text-[11px] sm:text-xs pt-2">
         <button class="filter-pill px-3 py-1.5 rounded-full border border-teal-600 bg-teal-600 text-white font-medium" data-filter="all">All</button>
-        <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition" data-filter="2bhk">Luxury 2BHK</button>
+        {{ $seenTypes := slice }}
+        {{ range $abodes }}
+          {{ if not (in $seenTypes .type) }}
+            {{ $seenTypes = $seenTypes | append .type }}
+            <button class="filter-pill px-3 py-1.5 rounded-full border border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-700 transition" data-filter="{{ .type }}">{{ .filter_label | default .badge }}</button>
+          {{ end }}
+        {{ end }}
       </div>
+      {{ end }}
     </div>
+
+    {{ if eq (len $abodes) 0 }}
+      <p class="text-sm text-slate-500 text-center py-10">
+        No abodes listed yet — add an entry to <code>data/abodes.yaml</code>.
+      </p>
+    {{ else }}
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-center justify-items-center" id="abode-grid">
-      {{ range .Site.Data.abodes }}
+      {{ range $abodes }}
       {{ $abode := . }}
       <article class="abode-card w-full bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col" data-type="{{ $abode.type }}" itemscope itemtype="https://schema.org/LodgingBusiness">
         <meta itemprop="name" content="{{ $abode.title }} — Aadhya Abode, Kanyakumari" />
@@ -147,6 +167,7 @@
       </article>
       {{ end }}
     </div>
+    {{ end }}
   </div>
 </section>
 
