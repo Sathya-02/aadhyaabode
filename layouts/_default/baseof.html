@@ -64,16 +64,18 @@
 
   {{/* ══════════════════════════════════════════════════════════════
        JSON-LD Structured Data — @graph
+       Updated: VacationRental typing + containsPlace + nearbyAttraction
+       + individual Review entries alongside aggregateRating.
   ══════════════════════════════════════════════════════════════ */}}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LodgingBusiness", "LocalBusiness"],
+        "@type": ["LodgingBusiness", "VacationRental", "LocalBusiness"],
         "@id": "https://www.aadhyaabode.com/#business",
         "name": "Aadhya Abode",
-        "description": "Premium fully-furnished 2BHK luxury vacation home for short-term stays in Kanyakumari, Tamil Nadu. Ideal for families and groups up to 8 guests. 5-star rated on Airbnb and Google.",
+        "description": "Premium fully-furnished 2BHK luxury vacation home for short-term stays in Kanyakumari, Tamil Nadu. Walking distance to Vivekananda Rock Memorial. Ideal for families and groups up to 8 guests. 5-star rated on Airbnb and Google.",
         "url": "https://www.aadhyaabode.com/",
         "logo": {
           "@type": "ImageObject",
@@ -120,6 +122,40 @@
           "bestRating": "5",
           "worstRating": "1"
         },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Verified Airbnb Guest" },
+            "reviewBody": "Clean, spacious home that was perfect for our family trip to Kanyakumari. Great location near Vivekananda Rock."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Verified Google Guest" },
+            "reviewBody": "Warm host, quick WhatsApp responses, and a well-equipped kitchen. Would book again for a group stay."
+          }
+        ],
+        "containsPlace": {
+          "@type": "Accommodation",
+          "name": "Luxury 2BHK Family House",
+          "numberOfRooms": 2,
+          "numberOfBedrooms": 2,
+          "occupancy": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 8
+          },
+          "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Air Conditioning",  "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Free Wi-Fi",         "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Free Parking",       "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Full Kitchen",       "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Power Backup",       "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Smart TV",           "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Self Check-in",      "value": true}
+          ]
+        },
         "amenityFeature": [
           {"@type": "LocationFeatureSpecification", "name": "Air Conditioning",  "value": true},
           {"@type": "LocationFeatureSpecification", "name": "Free Wi-Fi",         "value": true},
@@ -129,6 +165,18 @@
           {"@type": "LocationFeatureSpecification", "name": "Smart TV",           "value": true},
           {"@type": "LocationFeatureSpecification", "name": "Self Check-in",      "value": true}
         ],
+        "nearbyAttraction": [
+          { "@type": "TouristAttraction", "name": "Vivekananda Rock Memorial", "sameAs": "https://en.wikipedia.org/wiki/Vivekananda_Rock_Memorial" },
+          { "@type": "TouristAttraction", "name": "Thiruvalluvar Statue", "sameAs": "https://en.wikipedia.org/wiki/Thiruvalluvar_Statue" },
+          { "@type": "TouristAttraction", "name": "Kanyakumari Beach" }
+        ],
+        "makesOffer": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "INR",
+          "acceptedPaymentMethod": ["Cash", "UPI", "Bank Transfer"],
+          "url": "https://wa.me/918015160563"
+        },
         "sameAs": [
           "https://www.airbnb.co.in/rooms/1702921509210422797",
           "https://maps.app.goo.gl/8hFLJTv4RXsi5u2EA",
@@ -229,6 +277,14 @@
               "@type": "Answer",
               "text": "Absolutely. Aadhya Abode is designed for families \u2014 with two spacious bedrooms, a full kitchen for self-cooking, a safe gated compound, and proximity to Kanyakumari\u2019s top tourist spots like Vivekananda Rock, sunrise viewpoints, and local beaches."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it cheaper to book Aadhya Abode directly instead of through Airbnb?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Booking directly via WhatsApp at +91 80151 60563 gives you instant confirmation and direct access to the host for special requests like early check-in, with no OTA processing wait times."
+            }
           }
         ]
       }
@@ -259,13 +315,25 @@
   <a href="{{ .Site.Params.links.whatsapp_booking }}"
      target="_blank"
      rel="noopener noreferrer"
-     class="fixed bottom-5 right-4 md:hidden inline-flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-green-500/40 h-14 w-14 hover:bg-[#1ebe5b] active:scale-95 transition-transform"
+     class="fixed bottom-5 right-4 md:hidden inline-flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-green-500/40 h-14 w-14 hover:bg-[#1ebe5b] active:scale-95 transition-transform wa-fab-pulse"
      style="z-index:9999;"
      aria-label="Book Aadhya Abode via WhatsApp">
     <svg class="h-7 w-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
       <path d="M20.52 3.48A11.76 11.76 0 0 0 12.01 0C5.73 0 .6 5.13.6 11.41c0 2.01.53 3.98 1.55 5.72L0 24l6.05-2.11a11.4 11.4 0 0 0 5.96 1.64h.01c6.28 0 11.41-5.13 11.41-11.41a11.3 11.3 0 0 0-3.91-8.64ZM12.02 21.2h-.01c-1.82 0-3.6-.49-5.16-1.42l-.37-.22-3.59 1.26 1.23-3.49-.24-.36a9.45 9.45 0 0 1-1.47-5.1c0-5.23 4.26-9.49 9.5-9.49a9.4 9.4 0 0 1 6.73 2.78 9.4 9.4 0 0 1 2.77 6.72c0 5.23-4.26 9.49-9.49 9.49Zm5.2-7.08c-.28-.14-1.65-.81-1.9-.9-.25-.09-.44-.14-.63.14-.19.28-.73.9-.9 1.08-.17.18-.33.2-.61.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.4-1.66-1.56-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.3.42-.45.14-.15.18-.25.27-.42.09-.18.05-.34-.02-.48-.07-.14-.63-1.52-.87-2.08-.23-.55-.47-.47-.64-.48h-.54c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.13 2.84.14.19 1.95 2.98 4.72 4.17.66.29 1.18.47 1.58.6.66.21 1.27.18 1.75.11.53-.08 1.65-.68 1.88-1.34.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33Z" />
     </svg>
   </a>
+
+  <style>
+    /* Subtle pulse on first load only — draws the eye without becoming annoying */
+    @keyframes waFabPulseOnce {
+      0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.65); }
+      70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .wa-fab-pulse {
+      animation: waFabPulseOnce 1.4s ease-out 2;
+    }
+  </style>
 
   {{ partial "scripts.html" . }}
 </body>

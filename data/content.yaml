@@ -1,41 +1,57 @@
 hero:
   tag: "Kanyakumari · Holiday Home"
-  title: "Where Coastal Serenity Meets Luxury Comfort"
-  subtitle: "Fully furnished luxury Home for short-term stays in Kanyakumari. Experience modern amenities, warm hospitality, and local guidance for the perfect coastal getaway."
-  note: "Instant WhatsApp confirmations · Trusted host · Flexible short-term stays"
+  title: "5-Star Rated Family Home, 5 Minutes from Vivekananda Rock"
+  subtitle: "Fully furnished 2BHK holiday home for 6–8 guests in Kanyakumari. Instant WhatsApp confirmation — no OTA wait times."
+  note: "★ 5.0 on Airbnb & Google · 10+ verified stays · Replies in ~15 mins"
+  cta_primary: "Check Availability on WhatsApp"
+  cta_secondary: "See Photos & Reviews"
 
 gallery:
   heading: "Gallery"
   description: "A glimpse into our interiors, cozy corners, and the coastal charm around Aadhya Abode."
   images:
-    - src: "/images/gallery/gallery-1.jpg"
+    - src: "/images/gallery/G-gallery-1.jpg"
       alt: "Warmly lit living room with sofa and coffee table"
-    - src: "/images/gallery/gallery-2.jpg"
+    - src: "/images/gallery/G-gallery-2.jpg"
       alt: "Well designed bedroom with large window"
-    - src: "/images/gallery/gallery-3.jpg"
+    - src: "/images/gallery/G-gallery-3.jpg"
       alt: "Dining space with table setup"
-    - src: "/images/gallery/gallery-4.jpg"
+    - src: "/images/gallery/G-gallery-4.jpg"
       alt: "Well designed Modular Kitchen with Breakfast counter."
-    - src: "/images/gallery/gallery-5.jpg"
+    - src: "/images/gallery/G-gallery-5.jpg"
       alt: "Warmly lit living room with sofa and coffee table"
-    - src: "/images/gallery/gallery-6.jpg"
+    - src: "/images/gallery/G-gallery-6.jpg"
       alt: "Well designed bedroom with large window"
-    - src: "/images/gallery/gallery-7.jpg"
+    - src: "/images/gallery/G-gallery-7.jpg"
       alt: "Dining space with table setup"
-    - src: "/images/gallery/gallery-8.jpg"
+    - src: "/images/gallery/G-gallery-8.jpg"
       alt: "Well designed Modular Kitchen with Breakfast counter."
-    - src: "/images/gallery/gallery-9.jpg"
+    - src: "/images/gallery/G-gallery-9.jpg"
       alt: "Warmly lit living room with sofa and coffee table"
-    - src: "/images/gallery/gallery-10.jpg"
+    - src: "/images/gallery/G-gallery-10.jpg"
       alt: "Well designed bedroom with large window"
-    - src: "/images/gallery/gallery-11.jpg"
+    - src: "/images/gallery/G-gallery-11.jpg"
       alt: "Dining space with table setup"
-    - src: "/images/gallery/gallery-12.jpg"
+    - src: "/images/gallery/G-gallery-12.jpg"
       alt: "Well designed Modular Kitchen with Breakfast counter."
 
 abodes_section:
-  heading: "Our Abodes"
-  description: "Fully furnished luxury Home for families, and groups."
+  heading: "Vacation Homes in Kanyakumari — Book Your Stay"
+  description: "Fully furnished luxury 2BHK holiday home in Kanyakumari for families and groups. Self check-in, private parking, and instant WhatsApp booking."
+
+# ── New: "Why Book Direct" trust/CRO section ─────────────────────
+# Rendered as a 3-column strip just above the FAQ section.
+# Framed as a benefit to the guest, not a knock against Airbnb.
+why_direct:
+  heading: "Why Book Direct with Us"
+  description: "Skip the wait — message us directly for the fastest, most flexible way to confirm your stay."
+  columns:
+    - title: "Instant Confirmation"
+      text: "No back-and-forth. Message us on WhatsApp and get real-time availability and confirmation from the host directly."
+    - title: "Talk to the Host Directly"
+      text: "Ask about early check-in, local tips, or special requests — you're chatting with the host, not a support queue."
+    - title: "Flexible on Request"
+      text: "Early check-in, late check-out, and small customizations are easier to arrange when you book direct."
 
 amenities:
   heading: "All-In-One Comfort Services"
